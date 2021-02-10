@@ -165,12 +165,13 @@ $(function() {
 <div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Token/AliasToken.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">for(llvm::StoreInst* SI = llvm::dyn_cast&lt;llvm::StoreInst&gt;(Inst)){</div>
 <div class="line">  Alias * X = <span class="keyword">new</span> Alias(SI -&gt; getPointerOperand());</div>
 <div class="line">  X = AT.getAliasToken(X);</div>
 <div class="line">}</div>
+<div class="ttc" id="anamespacespatial_html"><div class="ttname"><a href="namespacespatial.html">spatial</a></div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:11</div></div>
 </div><!-- fragment --><p> AT is an object of AliasTokens class and should be unique to a module. It store all the tokens for a single module getAliasToken returns alias token from AliasTokens either by creating a new one or using the already existing one. <br  />
 </p>
 <h3>Creating a dummy token</h3>
@@ -178,7 +179,7 @@ $(function() {
 <div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Token/AliasToken.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">AT.getAliasToken(&quot;?&quot;, nullptr) <span class="comment">// Creates a dummy alias token with name ? and with global scope</span></div>
 </div><!-- fragment --><h3>Extracting directly from instruction</h3>
@@ -186,7 +187,7 @@ $(function() {
 <div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Token/AliasToken.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">auto AliasVec = AT.extractAliasToken(Inst);</div>
 <div class="line"><span class="comment">// AT is the object of AliasTokens</span></div>
@@ -222,15 +223,18 @@ $(function() {
 <p>Spatial provides functions to get instruction successors and predecessors. </p><div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Utils/CFGUtils.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">auto Pred = spatila::GetPred(I);</div>
-<div class="line">suto Succ = spatial::GetSucc(I);</div>
+<div class="line">auto Pred = <a class="code" href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatila::GetPred</a>(I);</div>
+<div class="line">suto Succ = <a class="code" href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a>(I);</div>
+<div class="ttc" id="anamespacespatial_html_aed2671a5712d91510e7712d9e6a1b566"><div class="ttname"><a href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetSucc(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:46</div></div>
+<div class="ttc" id="anamespacespatial_html_afe0b261e835418c8428b64cacdea1776"><div class="ttname"><a href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatial::GetPred</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetPred(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:33</div></div>
 </div><!-- fragment --><h3>Can the function be analyzed</h3>
 <p>Not all functions are meant to be analyzed, for example, at least the one without a body. Use this utility to skip functions from your analysis. <br  />
  </p><div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Utils/CFGUtils.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">bool SkipFunction = spatial::SkipFunction(F);</div>
+<div class="line">bool <a class="code" href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">SkipFunction</a> = <a class="code" href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a>(F);</div>
 <div class="line">...</div>
+<div class="ttc" id="anamespacespatial_html_acb4476a68b23a85cbcbd35aaf5ff7cfb"><div class="ttname"><a href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a></div><div class="ttdeci">bool SkipFunction(llvm::Function &amp;F)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:25</div></div>
 </div><!-- fragment --><h2>Context sensitivity</h2>
 <p>Make your analysis context sensitive at ease with Spatial.</p>
 <h3>Initialize a value context object</h3>
@@ -238,10 +242,11 @@ $(function() {
  </p><div class="fragment"><div class="line">ValueContext&lt;AliasMap&gt; VC(BI, Top);</div>
 </div><!-- fragment --><h3>Initialize a context</h3>
 <p>Initailize a context for a given <code>llvm::Function F</code> and initial dataflow value <code>Initial</code> as follows: <br  />
- </p><div class="fragment"><div class="line">Context C = VC.initializeContext(F, Initial);</div>
+ </p><div class="fragment"><div class="line"><a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C = VC.initializeContext(F, Initial);</div>
+<div class="ttc" id="anamespacespatial_html_ab4ad64b23b2c519620a49644e76e933a"><div class="ttname"><a href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">spatial::Context</a></div><div class="ttdeci">int Context</div><div class="ttdef"><b>Definition:</b> ValueContext.h:11</div></div>
 </div><!-- fragment --><h3>Manipulate dataflow values</h3>
 <p>Manipulate data structures storing dataflow values directly through <code>getDataFlowIn</code> and <code>getDataFlowOut</code> <br  />
- </p><div class="fragment"><div class="line"><span class="keyword">auto</span> DataflowValue = VC.getDataFlowIn[Context][Instruction];</div>
+ </p><div class="fragment"><div class="line"><span class="keyword">auto</span> DataflowValue = VC.getDataFlowIn[<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a>][Instruction];</div>
 </div><!-- fragment --><h3>Update the context graph</h3>
 <p>You may want to update the context graph after initializing a new context. <br  />
  </p><div class="fragment"><div class="line">VC.updateContextGraph(InitialContext, NewContext, CallSite);</div>
@@ -263,7 +268,7 @@ $(function() {
 <p>Create an instance and use it for extracting benchmark data and evaluations </p><div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Benchmark/Benchmark.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">BenchmarkRunner Bench;</div>
 </div><!-- fragment --><ul>
@@ -274,7 +279,7 @@ $(function() {
 <p>It will react to specific function calls and will extract out information for its arguments. </p><div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Benchmark/Benchmark.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">BenchmarkRunner Bench;</div>
 <div class="line"><span class="comment">// Inst is the pointer to a LLVM Instruction </span></div>
@@ -287,7 +292,7 @@ $(function() {
 <p>Use the function evaluate for evaluating the results. </p><div class="fragment"><div class="line">...</div>
 <div class="line">#include <span class="stringliteral">&quot;spatial/Benchmark/Benchmark.h&quot;</span></div>
 <div class="line">...</div>
-<div class="line">using <span class="keyword">namespace </span>spatial</div>
+<div class="line">using <span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a></div>
 <div class="line">...</div>
 <div class="line">BenchmarkRunner Bench;</div>
 <div class="line"><span class="comment">// Inst is the pointer to a LLVM Instruction </span></div>
