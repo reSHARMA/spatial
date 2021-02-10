@@ -1,0 +1,33 @@
+language: cpp
+dist: xenial
+
+addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-11 main'
+        key_url: 'http://apt.llvm.org/llvm-snapshot.gpg.key'
+    packages:
+      - llvm-11
+      - llvm-11-dev
+      - llvm-11-tools
+      - clang-11
+
+env:
+  - LLVM_HOME=/usr/lib/llvm-11/
+
+compiler:
+  - gcc
+
+script:
+  - mkdir build
+  - pushd build  
+  - cmake .. && sudo make install
+  - popd
+  - git clone https://github.com/reSHARMA/AliasAnalysis.git  
+  - pushd AliasAnalysis
+  - mkdir build
+  - pushd build
+  - cmake .. && make
+  - popd
+  - ./build/src/AADriver ./test/sample.ll -fs -cs  
