@@ -82,30 +82,29 @@ Alias::Alias(Alias* A) {
 void Alias::setIndex(llvm::GetElementPtrInst* GEPInst) {
     auto IterRange = GEPInst->indices();
     auto Iter = IterRange.begin();
+    std::string Index = "[";
     while (Iter != IterRange.end()) {
         llvm::Value* temp = &(*Iter->get());
-        // TODO: Can also use getValue of ConstantInt
-        if (llvm::ConstantInt* CI = llvm::dyn_cast<llvm::ConstantInt>(temp))
-            if (CI->isOne())
-                this->Index += "1";
-            else
-                this->Index += "0";
+        if (llvm::ConstantInt* CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) {
+            Index += CI->getValue().toString(10, true) + "][";
+        }
         Iter++;
     }
+    this->Index = Index.substr(3, Index.size() - 4);
 }
 
 /// setIndex - For a GEP Operator find the offset and store it
 void Alias::setIndex(llvm::GEPOperator* GEPOp) {
     auto Iter = GEPOp->idx_begin();
+    std::string Index = "[";
     while (Iter != GEPOp->idx_end()) {
         llvm::Value* temp = &(*Iter->get());
-        if (llvm::ConstantInt* CI = llvm::dyn_cast<llvm::ConstantInt>(temp))
-            if (CI->isOne())
-                this->Index += "1";
-            else
-                this->Index += "0";
+        if (llvm::ConstantInt* CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) {
+            Index += CI->getValue().toString(10, true) + "][";
+        }
         Iter++;
     }
+    this->Index = Index.substr(3, Index.size() - 4);
 }
 
 /// getValue - Returns the underlying Value* for the alias
@@ -131,7 +130,7 @@ std::ostream& operator<<(std::ostream& OS, const Alias& A) {
         OS << A.name;
     }
     if (A.Index != "") {
-        for (char c : A.Index) OS << "[" << c << "]";
+        OS << A.Index;
     }
     return OS;
 }
