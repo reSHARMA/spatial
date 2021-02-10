@@ -73,45 +73,47 @@ $(function() {
 <a href="Benchmark_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BENCHMARK_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define BENCHMARK_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Argument.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instructions.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Type.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Value.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;set&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;string&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;set&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;string&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Argument.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instructions.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Type.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Value.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classspatial_1_1BenchmarkRunner.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::string Key;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::map&lt;llvm::Instruction*, std::string&gt; Result;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> evaluateUtil(llvm::CallInst*, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::string Key;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  std::map&lt;llvm::Instruction *, std::string&gt; Result;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> evaluateUtil(llvm::CallInst *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">   21</a></span>&#160;    <a class="code" href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">BenchmarkRunner</a>() { Key = <span class="stringliteral">&quot;ALIAS&quot;</span>; }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::vector&lt;llvm::Value*&gt; <a class="code" href="classspatial_1_1BenchmarkRunner.html#a708f9b24a7986fd0d913d1a377793275">extract</a>(llvm::Instruction* Inst);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classspatial_1_1BenchmarkRunner.html#a43697c97971eaaec8de133dbcc0eac58">operator&lt;&lt;</a>(std::ostream&amp; OS, <span class="keyword">const</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a>&amp; B);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Ty&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">evaluate</a>(llvm::Instruction* Inst, std::set&lt;Ty*&gt;, std::set&lt;Ty*&gt;);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">   21</a></span>&#160;  <a class="code" href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">BenchmarkRunner</a>() { Key = <span class="stringliteral">&quot;ALIAS&quot;</span>; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  std::vector&lt;llvm::Value *&gt; <a class="code" href="classspatial_1_1BenchmarkRunner.html#a708f9b24a7986fd0d913d1a377793275">extract</a>(llvm::Instruction *Inst);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="classspatial_1_1BenchmarkRunner.html#a43697c97971eaaec8de133dbcc0eac58">operator&lt;&lt;</a>(std::ostream &amp;OS, <span class="keyword">const</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> &amp;B);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> Ty&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">evaluate</a>(llvm::Instruction *Inst, std::set&lt;Ty *&gt;, std::set&lt;Ty *&gt;);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Ty&gt;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">BenchmarkRunner::evaluate</a>(llvm::Instruction* I, std::set&lt;Ty*&gt; A,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                            std::set&lt;Ty*&gt; B) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    llvm::CallInst* Inst = llvm::cast&lt;llvm::CallInst&gt;(I);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::set&lt;Ty&gt; Result;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> a : A) Result.insert(*a);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> b : B) Result.insert(*b);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    evaluateUtil(Inst, A.size(), B.size(), Result.size());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}  <span class="comment">// namespace spatial</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">BenchmarkRunner::evaluate</a>(llvm::Instruction *I, std::set&lt;Ty *&gt; A,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                               std::set&lt;Ty *&gt; B) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  llvm::CallInst *Inst = llvm::cast&lt;llvm::CallInst&gt;(I);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::set&lt;Ty&gt; Result;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> a : A)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    Result.insert(*a);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> b : B)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Result.insert(*b);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  evaluateUtil(Inst, A.size(), B.size(), Result.size());</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <span class="comment">// namespace spatial</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html">spatial::BenchmarkRunner</a></div><div class="ttdef"><b>Definition:</b> Benchmark.h:14</div></div>
 <div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html_a43697c97971eaaec8de133dbcc0eac58"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html#a43697c97971eaaec8de133dbcc0eac58">spatial::BenchmarkRunner::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;OS, const BenchmarkRunner &amp;B)</div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:13</div></div>
-<div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html_a708f9b24a7986fd0d913d1a377793275"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html#a708f9b24a7986fd0d913d1a377793275">spatial::BenchmarkRunner::extract</a></div><div class="ttdeci">std::vector&lt; llvm::Value * &gt; extract(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:40</div></div>
+<div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html_a708f9b24a7986fd0d913d1a377793275"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html#a708f9b24a7986fd0d913d1a377793275">spatial::BenchmarkRunner::extract</a></div><div class="ttdeci">std::vector&lt; llvm::Value * &gt; extract(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:43</div></div>
 <div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html_a9dc23b1f156baeb1e0bc69725405e1dc"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">spatial::BenchmarkRunner::BenchmarkRunner</a></div><div class="ttdeci">BenchmarkRunner()</div><div class="ttdef"><b>Definition:</b> Benchmark.h:21</div></div>
 <div class="ttc" id="aclassspatial_1_1BenchmarkRunner_html_af33c35c780eb295d0f05e3c5257fc22e"><div class="ttname"><a href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">spatial::BenchmarkRunner::evaluate</a></div><div class="ttdeci">void evaluate(llvm::Instruction *Inst, std::set&lt; Ty * &gt;, std::set&lt; Ty * &gt;)</div><div class="ttdef"><b>Definition:</b> Benchmark.h:29</div></div>
 <div class="ttc" id="anamespacespatial_html"><div class="ttname"><a href="namespacespatial.html">spatial</a></div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:11</div></div>

@@ -4,8 +4,8 @@ var searchData=
   ['getbi_27',['getBI',['../classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d',1,'spatial::ValueContext']]],
   ['getcontextchild_28',['getContextChild',['../classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8',1,'spatial::ValueContext']]],
   ['getcontexts_29',['getContexts',['../classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e',1,'spatial::ValueContext']]],
-  ['getdataflowin_30',['getDataFlowIn',['../classspatial_1_1ValueContext.html#aeadd388ba46e4dc879dba893fa787b1b',1,'spatial::ValueContext']]],
-  ['getdataflowout_31',['getDataFlowOut',['../classspatial_1_1ValueContext.html#ae64c9e8be8894a1105e3f097e74d8039',1,'spatial::ValueContext']]],
+  ['getdataflowin_30',['getDataFlowIn',['../classspatial_1_1ValueContext.html#a47b6a12bffdb38445bdb83796c34ff4d',1,'spatial::ValueContext']]],
+  ['getdataflowout_31',['getDataFlowOut',['../classspatial_1_1ValueContext.html#adf2e5295a905038f0ae4444580a3537b',1,'spatial::ValueContext']]],
   ['getfieldindex_32',['getFieldIndex',['../classspatial_1_1Alias.html#a079bd0b6f56a22ac4dd5490fe6c0ac4e',1,'spatial::Alias']]],
   ['getfunctionname_33',['getFunctionName',['../classspatial_1_1Alias.html#a3a73f045135b75d48842154273709be0',1,'spatial::Alias']]],
   ['gethash_34',['getHash',['../classspatial_1_1Alias.html#a78aecfb9436f4742cd88e0cb18a03803',1,'spatial::Alias']]],
@@ -20,5 +20,5 @@ var searchData=
   ['gettop_43',['getTop',['../classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90',1,'spatial::ValueContext']]],
   ['getuniquepointee_44',['getUniquePointee',['../classspatial_1_1AliasGraph.html#a7e3bc6f74ad562e48037e473ca28d72e',1,'spatial::AliasGraph']]],
   ['getvalue_45',['getValue',['../classspatial_1_1Alias.html#a87f08d74bc9e6013cd624084a22f4988',1,'spatial::Alias']]],
-  ['graphtype_46',['GraphType',['../classspatial_1_1AliasGraph.html#a0558b9edb6c1369fe7b5d49421f3b003',1,'spatial::AliasGraph']]]
+  ['graphtype_46',['GraphType',['../classspatial_1_1AliasGraph.html#ae1d78dd52fc755e3d3f426b85a9370f7',1,'spatial::AliasGraph']]]
 ];

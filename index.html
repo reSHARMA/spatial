@@ -226,8 +226,8 @@ $(function() {
 <div class="line">...</div>
 <div class="line">auto Pred = <a class="code" href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatila::GetPred</a>(I);</div>
 <div class="line">suto Succ = <a class="code" href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a>(I);</div>
-<div class="ttc" id="anamespacespatial_html_aed2671a5712d91510e7712d9e6a1b566"><div class="ttname"><a href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetSucc(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:46</div></div>
-<div class="ttc" id="anamespacespatial_html_afe0b261e835418c8428b64cacdea1776"><div class="ttname"><a href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatial::GetPred</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetPred(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:33</div></div>
+<div class="ttc" id="anamespacespatial_html_aed2671a5712d91510e7712d9e6a1b566"><div class="ttname"><a href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetSucc(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:51</div></div>
+<div class="ttc" id="anamespacespatial_html_afe0b261e835418c8428b64cacdea1776"><div class="ttname"><a href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatial::GetPred</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetPred(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:38</div></div>
 </div><!-- fragment --><h3>Can the function be analyzed</h3>
 <p>Not all functions are meant to be analyzed, for example, at least the one without a body. Use this utility to skip functions from your analysis. <br  />
  </p><div class="fragment"><div class="line">...</div>
@@ -235,7 +235,7 @@ $(function() {
 <div class="line">...</div>
 <div class="line">bool <a class="code" href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">SkipFunction</a> = <a class="code" href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a>(F);</div>
 <div class="line">...</div>
-<div class="ttc" id="anamespacespatial_html_acb4476a68b23a85cbcbd35aaf5ff7cfb"><div class="ttname"><a href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a></div><div class="ttdeci">bool SkipFunction(llvm::Function &amp;F)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:25</div></div>
+<div class="ttc" id="anamespacespatial_html_acb4476a68b23a85cbcbd35aaf5ff7cfb"><div class="ttname"><a href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a></div><div class="ttdeci">bool SkipFunction(llvm::Function &amp;F)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:28</div></div>
 </div><!-- fragment --><h2>Context sensitivity</h2>
 <p>Make your analysis context sensitive at ease with Spatial.</p>
 <h3>Initialize a value context object</h3>

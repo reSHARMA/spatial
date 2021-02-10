@@ -73,9 +73,9 @@ $(function() {
 <a href="CFGUtils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CFGUTILS_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CFGUTILS_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instruction.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;vector&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;vector&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instruction.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a> {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
@@ -83,16 +83,16 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">SkipFunction</a>(llvm::Function &amp;F);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;std::vector&lt;llvm::Instruction *&gt; <a class="code" href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">GetPred</a>(llvm::Instruction *);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;std::vector&lt;llvm::Instruction *&gt; <a class="code" href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">GetSucc</a>(llvm::Instruction *);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="namespacespatial.html#a4fe8bc02c3a95c9b71249819b48852c4">getPointerOperandIndex</a>(llvm::Instruction*);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="namespacespatial.html#a4fe8bc02c3a95c9b71249819b48852c4">getPointerOperandIndex</a>(llvm::Instruction *);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;} <span class="comment">// namespace spatial</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacespatial_html"><div class="ttname"><a href="namespacespatial.html">spatial</a></div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:11</div></div>
 <div class="ttc" id="anamespacespatial_html_a29a34be2bbf1888aff83b5951b908255"><div class="ttname"><a href="namespacespatial.html#a29a34be2bbf1888aff83b5951b908255">spatial::InstNamer</a></div><div class="ttdeci">void InstNamer(llvm::Function &amp;F)</div><div class="ttdoc">InstNamer - sets name to the SSA temporaries.</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:13</div></div>
-<div class="ttc" id="anamespacespatial_html_a4fe8bc02c3a95c9b71249819b48852c4"><div class="ttname"><a href="namespacespatial.html#a4fe8bc02c3a95c9b71249819b48852c4">spatial::getPointerOperandIndex</a></div><div class="ttdeci">int getPointerOperandIndex(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:59</div></div>
-<div class="ttc" id="anamespacespatial_html_acb4476a68b23a85cbcbd35aaf5ff7cfb"><div class="ttname"><a href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a></div><div class="ttdeci">bool SkipFunction(llvm::Function &amp;F)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:25</div></div>
-<div class="ttc" id="anamespacespatial_html_aed2671a5712d91510e7712d9e6a1b566"><div class="ttname"><a href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetSucc(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:46</div></div>
-<div class="ttc" id="anamespacespatial_html_afe0b261e835418c8428b64cacdea1776"><div class="ttname"><a href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatial::GetPred</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetPred(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:33</div></div>
+<div class="ttc" id="anamespacespatial_html_a4fe8bc02c3a95c9b71249819b48852c4"><div class="ttname"><a href="namespacespatial.html#a4fe8bc02c3a95c9b71249819b48852c4">spatial::getPointerOperandIndex</a></div><div class="ttdeci">int getPointerOperandIndex(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:64</div></div>
+<div class="ttc" id="anamespacespatial_html_acb4476a68b23a85cbcbd35aaf5ff7cfb"><div class="ttname"><a href="namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb">spatial::SkipFunction</a></div><div class="ttdeci">bool SkipFunction(llvm::Function &amp;F)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:28</div></div>
+<div class="ttc" id="anamespacespatial_html_aed2671a5712d91510e7712d9e6a1b566"><div class="ttname"><a href="namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566">spatial::GetSucc</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetSucc(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:51</div></div>
+<div class="ttc" id="anamespacespatial_html_afe0b261e835418c8428b64cacdea1776"><div class="ttname"><a href="namespacespatial.html#afe0b261e835418c8428b64cacdea1776">spatial::GetPred</a></div><div class="ttdeci">std::vector&lt; llvm::Instruction * &gt; GetPred(llvm::Instruction *Inst)</div><div class="ttdef"><b>Definition:</b> CFGUtils.cpp:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

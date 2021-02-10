@@ -73,128 +73,127 @@ $(function() {
 <a href="ValueContext_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef VALUECONTEXT_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define VALUECONTEXT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instructions.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;map&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;vector&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;map&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;vector&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Function.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;llvm/IR/Instructions.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacespatial.html">spatial</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">   11</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> = int;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classspatial_1_1ValueContext.html">ValueContext</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    DataflowValue BI;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    DataflowValue Top;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::map&lt;std::pair&lt;llvm::Function*, DataflowValue&gt;, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a>&gt;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        DataFlowToContext;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::map&lt;Context, DataflowValue&gt; Result;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::map&lt;llvm::Function*, std::vector&lt;Context&gt;&gt; FunctionToContexts;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::map&lt;Context, std::vector&lt;std::pair&lt;Context, llvm::Instruction*&gt;&gt;&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ContextGraph;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::map&lt;Context, std::map&lt;llvm::Instruction*, DataflowValue&gt;&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#aeadd388ba46e4dc879dba893fa787b1b">   28</a></span>&#160;        <a class="code" href="classspatial_1_1ValueContext.html#aeadd388ba46e4dc879dba893fa787b1b">getDataFlowIn</a>, <a class="code" href="classspatial_1_1ValueContext.html#ae64c9e8be8894a1105e3f097e74d8039">getDataFlowOut</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">ValueContext</a>(DataflowValue BI, DataflowValue Top);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">getBI</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">getTop</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;std::pair&lt;Context, llvm::Instruction*&gt;&gt; <a class="code" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">getContextChild</a>(</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">getSavedContext</a>(llvm::Function* Func, DataflowValue BI);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">initializeContext</a>(llvm::Function* Func, DataflowValue BI);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">setResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C, DataflowValue Value);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">getResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">updateContextGraph</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Dest,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                            llvm::Instruction* CallSite);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;Context&gt; <a class="code" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">getContexts</a>(llvm::Function* Func);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">   45</a></span>&#160;<a class="code" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">ValueContext&lt;DataflowValue&gt;::ValueContext</a>(DataflowValue BI, DataflowValue Top) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    this-&gt;BI = BI;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;Top = Top;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this-&gt;C = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">   52</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">ValueContext&lt;DataflowValue&gt;::getBI</a>() {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> BI;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">   57</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">ValueContext&lt;DataflowValue&gt;::getTop</a>() {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> Top;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;std::vector&lt;std::pair&lt;Context, llvm::Instruction*&gt;&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">   63</a></span>&#160;<a class="code" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">ValueContext&lt;DataflowValue&gt;::getContextChild</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> ContextGraph[Src];</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">   68</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">ValueContext&lt;DataflowValue&gt;::getSavedContext</a>(llvm::Function* Func,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                 DataflowValue BI) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (this-&gt;DataFlowToContext.find(std::make_pair(Func, BI)) !=</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;DataFlowToContext.end()) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> this-&gt;DataFlowToContext[std::make_pair(Func, BI)];</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">   78</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">ValueContext&lt;DataflowValue&gt;::initializeContext</a>(llvm::Function* Func,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                   DataflowValue BI) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    DataFlowToContext[std::make_pair(Func, BI)] = this-&gt;C;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    this-&gt;Result[this-&gt;C] = this-&gt;getTop();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">int</span> temp = this-&gt;C;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    FunctionToContexts[Func].push_back(temp);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    this-&gt;C += 1;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> temp;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">   89</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">ValueContext&lt;DataflowValue&gt;::setResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C, DataflowValue Value) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    this-&gt;Result[C] = Value;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">   94</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">ValueContext&lt;DataflowValue&gt;::getResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> this-&gt;Result[C];</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">   99</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">ValueContext&lt;DataflowValue&gt;::updateContextGraph</a>(</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Dest, llvm::Instruction* CallSite) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    this-&gt;ContextGraph[Dest].push_back(std::make_pair(Src, CallSite));</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">  105</a></span>&#160;std::vector&lt;Context&gt; <a class="code" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">ValueContext&lt;DataflowValue&gt;::getContexts</a>(</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    llvm::Function* Func) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> FunctionToContexts[Func];</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}  <span class="comment">// namespace spatial</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html"><div class="ttname"><a href="classspatial_1_1ValueContext.html">spatial::ValueContext</a></div><div class="ttdef"><b>Definition:</b> ValueContext.h:14</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_a1c1ba84be02d95e7c9ca7b91e86110f3"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">spatial::ValueContext::getSavedContext</a></div><div class="ttdeci">int getSavedContext(llvm::Function *Func, DataflowValue BI)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:68</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_a523d11d21d1b6ef14767163b38abd261"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">spatial::ValueContext::getResult</a></div><div class="ttdeci">DataflowValue getResult(Context C)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:94</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html">   13</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt; <span class="keyword">class </span><a class="code" href="classspatial_1_1ValueContext.html">ValueContext</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  DataflowValue BI;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  DataflowValue Top;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  std::map&lt;std::pair&lt;llvm::Function *, DataflowValue&gt;, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a>&gt;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      DataFlowToContext;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  std::map&lt;Context, DataflowValue&gt; Result;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::map&lt;llvm::Function *, std::vector&lt;Context&gt;&gt; FunctionToContexts;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  std::map&lt;Context, std::vector&lt;std::pair&lt;Context, llvm::Instruction *&gt;&gt;&gt;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      ContextGraph;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a47b6a12bffdb38445bdb83796c34ff4d">   26</a></span>&#160;  std::map&lt;Context, std::map&lt;llvm::Instruction *, DataflowValue&gt;&gt; <a class="code" href="classspatial_1_1ValueContext.html#a47b6a12bffdb38445bdb83796c34ff4d">getDataFlowIn</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#adf2e5295a905038f0ae4444580a3537b">   27</a></span>&#160;      <a class="code" href="classspatial_1_1ValueContext.html#adf2e5295a905038f0ae4444580a3537b">getDataFlowOut</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">ValueContext</a>(DataflowValue BI, DataflowValue Top);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">getBI</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">getTop</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::vector&lt;std::pair&lt;Context, llvm::Instruction *&gt;&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">getContextChild</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">getSavedContext</a>(llvm::Function *Func, DataflowValue BI);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">initializeContext</a>(llvm::Function *Func, DataflowValue BI);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">setResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C, DataflowValue Value);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">getResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">updateContextGraph</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Dest,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                          llvm::Instruction *CallSite);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::vector&lt;Context&gt; <a class="code" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">getContexts</a>(llvm::Function *Func);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">   44</a></span>&#160;<a class="code" href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">ValueContext&lt;DataflowValue&gt;::ValueContext</a>(DataflowValue BI, DataflowValue Top) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  this-&gt;BI = BI;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  this-&gt;Top = Top;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  this-&gt;C = 0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">   51</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">ValueContext&lt;DataflowValue&gt;::getBI</a>() {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> BI;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">   56</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">ValueContext&lt;DataflowValue&gt;::getTop</a>() {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">return</span> Top;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;std::vector&lt;std::pair&lt;Context, llvm::Instruction *&gt;&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">   62</a></span>&#160;<a class="code" href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">ValueContext&lt;DataflowValue&gt;::getContextChild</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> ContextGraph[Src];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">   67</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">ValueContext&lt;DataflowValue&gt;::getSavedContext</a>(llvm::Function *Func,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                 DataflowValue BI) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">if</span> (this-&gt;DataFlowToContext.find(std::make_pair(Func, BI)) !=</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      this-&gt;DataFlowToContext.end()) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> this-&gt;DataFlowToContext[std::make_pair(Func, BI)];</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">   77</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">ValueContext&lt;DataflowValue&gt;::initializeContext</a>(llvm::Function *Func,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                   DataflowValue BI) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  DataFlowToContext[std::make_pair(Func, BI)] = this-&gt;C;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  this-&gt;Result[this-&gt;C] = this-&gt;getTop();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">int</span> temp = this-&gt;C;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  FunctionToContexts[Func].push_back(temp);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  this-&gt;C += 1;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> temp;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">ValueContext&lt;DataflowValue&gt;::setResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C, DataflowValue Value) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  this-&gt;Result[C] = Value;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">   93</a></span>&#160;DataflowValue <a class="code" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">ValueContext&lt;DataflowValue&gt;::getResult</a>(<a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> C) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> this-&gt;Result[C];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">   98</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">ValueContext&lt;DataflowValue&gt;::updateContextGraph</a>(</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Src, <a class="code" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> Dest, llvm::Instruction *CallSite) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  this-&gt;ContextGraph[Dest].push_back(std::make_pair(Src, CallSite));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> DataflowValue&gt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;std::vector&lt;Context&gt;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">  105</a></span>&#160;<a class="code" href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">ValueContext&lt;DataflowValue&gt;::getContexts</a>(llvm::Function *Func) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> FunctionToContexts[Func];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace spatial</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html"><div class="ttname"><a href="classspatial_1_1ValueContext.html">spatial::ValueContext</a></div><div class="ttdef"><b>Definition:</b> ValueContext.h:13</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a1c1ba84be02d95e7c9ca7b91e86110f3"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">spatial::ValueContext::getSavedContext</a></div><div class="ttdeci">int getSavedContext(llvm::Function *Func, DataflowValue BI)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:67</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a47b6a12bffdb38445bdb83796c34ff4d"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a47b6a12bffdb38445bdb83796c34ff4d">spatial::ValueContext::getDataFlowIn</a></div><div class="ttdeci">std::map&lt; Context, std::map&lt; llvm::Instruction *, DataflowValue &gt; &gt; getDataFlowIn</div><div class="ttdef"><b>Definition:</b> ValueContext.h:26</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a523d11d21d1b6ef14767163b38abd261"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">spatial::ValueContext::getResult</a></div><div class="ttdeci">DataflowValue getResult(Context C)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:93</div></div>
 <div class="ttc" id="aclassspatial_1_1ValueContext_html_a56d00040a0b587a6c28b1e3e2ff2ec9e"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e">spatial::ValueContext::getContexts</a></div><div class="ttdeci">std::vector&lt; Context &gt; getContexts(llvm::Function *Func)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:105</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_a78b120e991d8b0546bbb82b9110a8141"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">spatial::ValueContext::updateContextGraph</a></div><div class="ttdeci">void updateContextGraph(Context Src, Context Dest, llvm::Instruction *CallSite)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:99</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_a81eb8fb6d67a60236e4da54dbd2d6b90"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">spatial::ValueContext::getTop</a></div><div class="ttdeci">DataflowValue getTop()</div><div class="ttdef"><b>Definition:</b> ValueContext.h:57</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_a90b4fea9af4085a703542ad9711fc4b5"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">spatial::ValueContext::setResult</a></div><div class="ttdeci">void setResult(Context C, DataflowValue Value)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:89</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_ab9ff6ce804d770856f57840bdf31fe7d"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">spatial::ValueContext::getBI</a></div><div class="ttdeci">DataflowValue getBI()</div><div class="ttdef"><b>Definition:</b> ValueContext.h:52</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_ac71323c98f1522e601a76710e5912fe8"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">spatial::ValueContext::getContextChild</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; Context, llvm::Instruction * &gt; &gt; getContextChild(Context Src)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:63</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_acd8231dd79d95b9848f439d79f7935e2"><div class="ttname"><a href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">spatial::ValueContext::ValueContext</a></div><div class="ttdeci">ValueContext(DataflowValue BI, DataflowValue Top)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:45</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_ae30e73c0c0fbec8a2733664edb72f335"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">spatial::ValueContext::initializeContext</a></div><div class="ttdeci">int initializeContext(llvm::Function *Func, DataflowValue BI)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:78</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_ae64c9e8be8894a1105e3f097e74d8039"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ae64c9e8be8894a1105e3f097e74d8039">spatial::ValueContext::getDataFlowOut</a></div><div class="ttdeci">std::map&lt; Context, std::map&lt; llvm::Instruction *, DataflowValue &gt; &gt; getDataFlowOut</div><div class="ttdef"><b>Definition:</b> ValueContext.h:28</div></div>
-<div class="ttc" id="aclassspatial_1_1ValueContext_html_aeadd388ba46e4dc879dba893fa787b1b"><div class="ttname"><a href="classspatial_1_1ValueContext.html#aeadd388ba46e4dc879dba893fa787b1b">spatial::ValueContext::getDataFlowIn</a></div><div class="ttdeci">std::map&lt; Context, std::map&lt; llvm::Instruction *, DataflowValue &gt; &gt; getDataFlowIn</div><div class="ttdef"><b>Definition:</b> ValueContext.h:28</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a78b120e991d8b0546bbb82b9110a8141"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141">spatial::ValueContext::updateContextGraph</a></div><div class="ttdeci">void updateContextGraph(Context Src, Context Dest, llvm::Instruction *CallSite)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:98</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a81eb8fb6d67a60236e4da54dbd2d6b90"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">spatial::ValueContext::getTop</a></div><div class="ttdeci">DataflowValue getTop()</div><div class="ttdef"><b>Definition:</b> ValueContext.h:56</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_a90b4fea9af4085a703542ad9711fc4b5"><div class="ttname"><a href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">spatial::ValueContext::setResult</a></div><div class="ttdeci">void setResult(Context C, DataflowValue Value)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:88</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_ab9ff6ce804d770856f57840bdf31fe7d"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d">spatial::ValueContext::getBI</a></div><div class="ttdeci">DataflowValue getBI()</div><div class="ttdef"><b>Definition:</b> ValueContext.h:51</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_ac71323c98f1522e601a76710e5912fe8"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8">spatial::ValueContext::getContextChild</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; Context, llvm::Instruction * &gt; &gt; getContextChild(Context Src)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:62</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_acd8231dd79d95b9848f439d79f7935e2"><div class="ttname"><a href="classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2">spatial::ValueContext::ValueContext</a></div><div class="ttdeci">ValueContext(DataflowValue BI, DataflowValue Top)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:44</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_adf2e5295a905038f0ae4444580a3537b"><div class="ttname"><a href="classspatial_1_1ValueContext.html#adf2e5295a905038f0ae4444580a3537b">spatial::ValueContext::getDataFlowOut</a></div><div class="ttdeci">std::map&lt; Context, std::map&lt; llvm::Instruction *, DataflowValue &gt; &gt; getDataFlowOut</div><div class="ttdef"><b>Definition:</b> ValueContext.h:27</div></div>
+<div class="ttc" id="aclassspatial_1_1ValueContext_html_ae30e73c0c0fbec8a2733664edb72f335"><div class="ttname"><a href="classspatial_1_1ValueContext.html#ae30e73c0c0fbec8a2733664edb72f335">spatial::ValueContext::initializeContext</a></div><div class="ttdeci">int initializeContext(llvm::Function *Func, DataflowValue BI)</div><div class="ttdef"><b>Definition:</b> ValueContext.h:77</div></div>
 <div class="ttc" id="anamespacespatial_html"><div class="ttname"><a href="namespacespatial.html">spatial</a></div><div class="ttdef"><b>Definition:</b> Benchmark.cpp:11</div></div>
 <div class="ttc" id="anamespacespatial_html_ab4ad64b23b2c519620a49644e76e933a"><div class="ttname"><a href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">spatial::Context</a></div><div class="ttdeci">int Context</div><div class="ttdef"><b>Definition:</b> ValueContext.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
