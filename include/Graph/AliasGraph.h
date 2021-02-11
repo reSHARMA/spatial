@@ -114,16 +114,16 @@ AliasNode *AliasGraph<AliasNode>::getUniquePointee(AliasNode *Node) {
 }
 
 template <typename AliasNode>
-bool AliasGraph<AliasNode>::
-operator==(const AliasGraph<AliasNode> &TheAliasGraph) const {
+bool AliasGraph<AliasNode>::operator==(
+    const AliasGraph<AliasNode> &TheAliasGraph) const {
   return this->Graph.size() == TheAliasGraph.Graph.size() &&
          std::equal(this->Graph.begin(), this->Graph.end(),
                     TheAliasGraph.Graph.begin());
 }
 
 template <typename AliasNode>
-bool AliasGraph<AliasNode>::
-operator<(const AliasGraph<AliasNode> &TheAliasGraph) const {
+bool AliasGraph<AliasNode>::operator<(
+    const AliasGraph<AliasNode> &TheAliasGraph) const {
   return this->Graph.size() < TheAliasGraph.Graph.size();
 }
 
