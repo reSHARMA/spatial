@@ -90,6 +90,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af59bf1a7f29b45f56d68ae127dbb07a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0316b4fe95f94d7554534a970dbe398"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classspatial_1_1Alias.html">Alias</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasTokens.html#af0316b4fe95f94d7554534a970dbe398">getAliasToken</a> (std::string, llvm::Function *)</td></tr>
 <tr class="separator:af0316b4fe95f94d7554534a970dbe398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99fe4c369931ad71031e1b50ba1344f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classspatial_1_1Alias.html">Alias</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasTokens.html#a99fe4c369931ad71031e1b50ba1344f3">getAliasToken</a> (llvm::GEPOperator *, llvm::Function *)</td></tr>
+<tr class="separator:a99fe4c369931ad71031e1b50ba1344f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71c6718e8fb4630f1291a9bdc0a8011f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classspatial_1_1Alias.html">Alias</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasTokens.html#a71c6718e8fb4630f1291a9bdc0a8011f">getAliasTokenWithoutIndex</a> (<a class="el" href="classspatial_1_1Alias.html">Alias</a> *)</td></tr>
+<tr class="separator:a71c6718e8fb4630f1291a9bdc0a8011f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8248618cd18a96ca16f6ac901a8a6c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classspatial_1_1Alias.html">Alias</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasTokens.html#ad8248618cd18a96ca16f6ac901a8a6c8">extractAliasToken</a> (llvm::Instruction *)</td></tr>
 <tr class="separator:ad8248618cd18a96ca16f6ac901a8a6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac61e0d8ed5f36b6f49cfa06ed6deda70"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classspatial_1_1Alias.html">Alias</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasTokens.html#ac61e0d8ed5f36b6f49cfa06ed6deda70">extractAliasToken</a> (llvm::StoreInst *)</td></tr>
@@ -361,7 +365,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="af59bf1a7f29b45f56d68ae127dbb07a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af59bf1a7f29b45f56d68ae127dbb07a2">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af59bf1a7f29b45f56d68ae127dbb07a2">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[1/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -380,7 +384,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="a63ace310128227262f0360a0da8b8dd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63ace310128227262f0360a0da8b8dd4">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[2/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ace310128227262f0360a0da8b8dd4">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[2/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,8 +402,37 @@ template&lt;typename Ty &gt; </div>
 
 </div>
 </div>
+<a id="a99fe4c369931ad71031e1b50ba1344f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99fe4c369931ad71031e1b50ba1344f3">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classspatial_1_1Alias.html">Alias</a> * spatial::AliasTokens::getAliasToken </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>GOP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">llvm::Function *&#160;</td>
+          <td class="paramname"><em>Func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>getAliasToken - Returns <a class="el" href="classspatial_1_1Alias.html">Alias</a> object for Value <code>GEPOperator</code> and Function <code>Func</code>, returns the object from cache if it already exists </p>
+
+</div>
+</div>
 <a id="a4b456877e2bcf80217284fa98b851456"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b456877e2bcf80217284fa98b851456">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[3/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b456877e2bcf80217284fa98b851456">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[4/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +451,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="aa893b36fb483bb60d241046934f292a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa893b36fb483bb60d241046934f292a9">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[4/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa893b36fb483bb60d241046934f292a9">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[5/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -437,7 +470,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="accb11db6748396c0ae8541c5afdfd928"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accb11db6748396c0ae8541c5afdfd928">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#accb11db6748396c0ae8541c5afdfd928">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[6/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,7 +489,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="af0316b4fe95f94d7554534a970dbe398"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0316b4fe95f94d7554534a970dbe398">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af0316b4fe95f94d7554534a970dbe398">&#9670;&nbsp;</a></span>getAliasToken() <span class="overload">[7/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -482,6 +515,25 @@ template&lt;typename Ty &gt; </div>
 </div><div class="memdoc">
 <p>getAliasToken - Returns <a class="el" href="classspatial_1_1Alias.html">Alias</a> object for String <code>S</code>, returns the object from cache if it already exists.</p>
 <p>\S is the name of dummy alias \Func is the function associated with the alias object, pass nullptr if the dummy oject at a global scope </p>
+
+</div>
+</div>
+<a id="a71c6718e8fb4630f1291a9bdc0a8011f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71c6718e8fb4630f1291a9bdc0a8011f">&#9670;&nbsp;</a></span>getAliasTokenWithoutIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classspatial_1_1Alias.html">Alias</a> * spatial::AliasTokens::getAliasTokenWithoutIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Alias.html">Alias</a> *&#160;</td>
+          <td class="paramname"><em>A</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>getAliasToken - Returns <a class="el" href="classspatial_1_1Alias.html">Alias</a> object from another alias object <code>A</code>, returns the object from cache if it already exists </p>
 
 </div>
 </div>

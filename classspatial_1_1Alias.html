@@ -85,8 +85,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a609252e9dcc4fe2bb4c380c336214888"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#a609252e9dcc4fe2bb4c380c336214888">setIndex</a> (llvm::GEPOperator *GEPOp)</td></tr>
 <tr class="memdesc:a609252e9dcc4fe2bb4c380c336214888"><td class="mdescLeft">&#160;</td><td class="mdescRight">setIndex - For a GEP Operator find the offset and store it  <a href="classspatial_1_1Alias.html#a609252e9dcc4fe2bb4c380c336214888">More...</a><br /></td></tr>
 <tr class="separator:a609252e9dcc4fe2bb4c380c336214888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9faab1e1100c437bf965a73b1cfa5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#a3a9faab1e1100c437bf965a73b1cfa5a">resetIndex</a> ()</td></tr>
+<tr class="memdesc:a3a9faab1e1100c437bf965a73b1cfa5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">resetIndex - Resets the index back to an empty string  <a href="classspatial_1_1Alias.html#a3a9faab1e1100c437bf965a73b1cfa5a">More...</a><br /></td></tr>
+<tr class="separator:a3a9faab1e1100c437bf965a73b1cfa5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dde6e352c96c3201a6f86ad74c1fb30"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#a2dde6e352c96c3201a6f86ad74c1fb30">getIndex</a> (llvm::GEPOperator *GEPOp)</td></tr>
+<tr class="memdesc:a2dde6e352c96c3201a6f86ad74c1fb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">getIndex - For a GEP Operator find the offset  <a href="classspatial_1_1Alias.html#a2dde6e352c96c3201a6f86ad74c1fb30">More...</a><br /></td></tr>
+<tr class="separator:a2dde6e352c96c3201a6f86ad74c1fb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe5b6e8c6411d45cfb2b3be7537b7ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#adfe5b6e8c6411d45cfb2b3be7537b7ce">Alias</a> (llvm::Value *Val, std::string Index=&quot;&quot;)</td></tr>
 <tr class="separator:adfe5b6e8c6411d45cfb2b3be7537b7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c58362fe2664fabf986c63d712029eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#a7c58362fe2664fabf986c63d712029eb">Alias</a> (llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index=&quot;&quot;)</td></tr>
+<tr class="separator:a7c58362fe2664fabf986c63d712029eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb4357b995829460829e5fa9bfc5afac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#abb4357b995829460829e5fa9bfc5afac">Alias</a> (llvm::Argument *Arg, std::string Index=&quot;&quot;)</td></tr>
 <tr class="separator:abb4357b995829460829e5fa9bfc5afac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9371f3e17f869077b7e30369097e24ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html#a9371f3e17f869077b7e30369097e24ff">Alias</a> (llvm::Type *Ty, std::string Index=&quot;&quot;)</td></tr>
@@ -142,7 +150,7 @@ Friends</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adfe5b6e8c6411d45cfb2b3be7537b7ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfe5b6e8c6411d45cfb2b3be7537b7ce">&#9670;&nbsp;</a></span>Alias() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe5b6e8c6411d45cfb2b3be7537b7ce">&#9670;&nbsp;</a></span>Alias() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,8 +177,42 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a7c58362fe2664fabf986c63d712029eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c58362fe2664fabf986c63d712029eb">&#9670;&nbsp;</a></span>Alias() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">spatial::Alias::Alias </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>GOP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">llvm::Function *&#160;</td>
+          <td class="paramname"><em>Func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>Index</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abb4357b995829460829e5fa9bfc5afac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb4357b995829460829e5fa9bfc5afac">&#9670;&nbsp;</a></span>Alias() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abb4357b995829460829e5fa9bfc5afac">&#9670;&nbsp;</a></span>Alias() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +240,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a9371f3e17f869077b7e30369097e24ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9371f3e17f869077b7e30369097e24ff">&#9670;&nbsp;</a></span>Alias() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9371f3e17f869077b7e30369097e24ff">&#9670;&nbsp;</a></span>Alias() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +268,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a9e348859d544198367240ef8b61d5ea2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e348859d544198367240ef8b61d5ea2">&#9670;&nbsp;</a></span>Alias() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e348859d544198367240ef8b61d5ea2">&#9670;&nbsp;</a></span>Alias() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,7 +302,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="ac74893439c5e4b7c431a29180069988c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac74893439c5e4b7c431a29180069988c">&#9670;&nbsp;</a></span>Alias() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac74893439c5e4b7c431a29180069988c">&#9670;&nbsp;</a></span>Alias() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,6 +373,26 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>getHash - Calculates the hash for alias to avoid multiple enteries of same alias </p>
+
+</div>
+</div>
+<a id="a2dde6e352c96c3201a6f86ad74c1fb30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dde6e352c96c3201a6f86ad74c1fb30">&#9670;&nbsp;</a></span>getIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string spatial::Alias::getIndex </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>GEPOp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getIndex - For a GEP Operator find the offset </p>
 
 </div>
 </div>
@@ -535,6 +597,25 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a9faab1e1100c437bf965a73b1cfa5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9faab1e1100c437bf965a73b1cfa5a">&#9670;&nbsp;</a></span>resetIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spatial::Alias::resetIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>resetIndex - Resets the index back to an empty string </p>
 
 </div>
 </div>
