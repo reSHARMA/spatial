@@ -221,8 +221,8 @@ std::vector<Alias *> AliasTokens::extractAliasToken(llvm::BitCastInst *Inst) {
 /// \Inst operands.
 std::vector<Alias *>
 AliasTokens::extractAliasToken(llvm::GetElementPtrInst *Inst) {
-  // Only provides partial support and returns {op1, op2} for op1 = GEP op2
-  // idx1 idx2
+  // Only provides partial support and returns {op1, op2[idx1]} for op1 = GEP
+  // op2 0 idx1
   std::vector<Alias *> AliasVec;
   llvm::Function *Func = Inst->getParent()->getParent();
   AliasVec.push_back(this->getAliasToken(Inst));
