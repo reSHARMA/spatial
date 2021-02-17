@@ -45,6 +45,14 @@ Alias::Alias(llvm::Value *Val, std::string Index) {
   if (llvm::Argument *Arg = llvm::dyn_cast<llvm::Argument>(Val)) {
     set(Arg, /* Kind = */ 2, Index, Arg->getParent());
   } else {
+    // If Val is GEPOperator, it must be coming from load/store
+    if (llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Val)) {
+      // We handle GEPInst separately
+      if (!llvm::isa<llvm::Instruction>(GOP)) {
+        Val = GOP->getPointerOperand();
+        Index = this->getIndex(GOP);
+      }
+    }
     llvm::Function *func = nullptr;
     if (llvm::Instruction *Inst = llvm::dyn_cast<llvm::Instruction>(Val))
       func = Inst->getParent()->getParent();
@@ -53,6 +61,12 @@ Alias::Alias(llvm::Value *Val, std::string Index) {
     else
       set(Val, /* Kind = */ 0, Index, func);
   }
+}
+
+Alias::Alias(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
+  llvm::Value *Val = GOP->getPointerOperand();
+  Index = this->getIndex(GOP);
+  set(Val, /* Kind = */ 0, Index, Func);
 }
 
 Alias::Alias(llvm::Argument *Arg, std::string Index) {
@@ -82,21 +96,21 @@ Alias::Alias(Alias *A) {
 
 /// setIndex - For a GEP Instruction find the offset and store it
 void Alias::setIndex(llvm::GetElementPtrInst *GEPInst) {
-  auto IterRange = GEPInst->indices();
-  auto Iter = IterRange.begin();
-  std::string Index = "[";
-  while (Iter != IterRange.end()) {
-    llvm::Value *temp = &(*Iter->get());
-    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) {
-      Index += CI->getValue().toString(10, true) + "][";
-    }
-    Iter++;
+  if (llvm::GEPOperator *GEPOp = llvm::dyn_cast<llvm::GEPOperator>(GEPInst)) {
+    this->Index = getIndex(GEPOp);
   }
-  this->Index = Index.substr(3, Index.size() - 4);
 }
 
 /// setIndex - For a GEP Operator find the offset and store it
 void Alias::setIndex(llvm::GEPOperator *GEPOp) {
+  this->Index = getIndex(GEPOp);
+}
+
+/// resetIndex - Resets the index back to an empty string
+void Alias::resetIndex() { this->Index = ""; }
+
+/// getIndex - For a GEP Operator find the offset
+std::string Alias::getIndex(llvm::GEPOperator *GEPOp) {
   auto Iter = GEPOp->idx_begin();
   std::string Index = "[";
   while (Iter != GEPOp->idx_end()) {
@@ -106,9 +120,8 @@ void Alias::setIndex(llvm::GEPOperator *GEPOp) {
     }
     Iter++;
   }
-  this->Index = Index.substr(3, Index.size() - 4);
+  return Index.substr(3, Index.size() - 4);
 }
-
 /// getValue - Returns the underlying Value* for the alias
 llvm::Value *Alias::getValue() const {
   if (this->Kind == 0) {

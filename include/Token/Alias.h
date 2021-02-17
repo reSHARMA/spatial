@@ -39,8 +39,11 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
+  void resetIndex();
+  std::string getIndex(llvm::GEPOperator *GEPOp);
 
   Alias(llvm::Value *Val, std::string Index = "");
+  Alias(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
   Alias(llvm::Argument *Arg, std::string Index = "");
   Alias(llvm::Type *Ty, std::string Index = "");
   Alias(std::string S, llvm::Function *Func, std::string Index = "");

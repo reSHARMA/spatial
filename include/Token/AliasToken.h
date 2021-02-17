@@ -9,6 +9,7 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/GlobalVariable.h"
 #include "llvm/IR/Instructions.h"
+#include "llvm/IR/Operator.h"
 #include "llvm/IR/Type.h"
 #include "llvm/IR/Value.h"
 
@@ -27,6 +28,9 @@ public:
   Alias *getAliasToken(llvm::Instruction *);
   Alias *getAliasToken(Alias *);
   Alias *getAliasToken(std::string, llvm::Function *);
+  Alias *getAliasToken(llvm::GEPOperator *, llvm::Function *);
+
+  Alias *getAliasTokenWithoutIndex(Alias *);
 
   std::vector<Alias *> extractAliasToken(llvm::Instruction *);
   std::vector<Alias *> extractAliasToken(llvm::StoreInst *);

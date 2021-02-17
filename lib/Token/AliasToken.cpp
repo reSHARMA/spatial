@@ -31,6 +31,17 @@ Alias *AliasTokens::getAliasToken(llvm::Value *Val) {
   return AliasBank[hash];
 }
 
+/// getAliasToken - Returns Alias object for Value \p GEPOperator and Function
+/// \p Func, returns the object from cache if it already exists
+Alias *AliasTokens::getAliasToken(llvm::GEPOperator *GOP,
+                                  llvm::Function *Func) {
+  Alias *A = new Alias(GOP, Func);
+  std::string hash = A->getHash();
+  if (insert(A))
+    return A;
+  return AliasBank[hash];
+}
+
 /// getAliasToken - Returns Alias object for Argument \p Arg, returns the object
 /// from cache if it already exists
 Alias *AliasTokens::getAliasToken(llvm::Argument *Arg) {
@@ -67,6 +78,17 @@ Alias *AliasTokens::getAliasToken(Alias *A) {
   std::string hash = A->getHash();
   if (insert(A))
     return A;
+  return AliasBank[hash];
+}
+
+/// getAliasToken - Returns Alias object from another alias object \p A, returns
+/// the object from cache if it already exists
+Alias *AliasTokens::getAliasTokenWithoutIndex(Alias *A) {
+  Alias *Tok = new Alias(A);
+  Tok->resetIndex();
+  std::string hash = Tok->getHash();
+  if (insert(Tok))
+    return Tok;
   return AliasBank[hash];
 }
 
@@ -202,8 +224,10 @@ AliasTokens::extractAliasToken(llvm::GetElementPtrInst *Inst) {
   // Only provides partial support and returns {op1, op2} for op1 = GEP op2
   // idx1 idx2
   std::vector<Alias *> AliasVec;
+  llvm::Function *Func = Inst->getParent()->getParent();
   AliasVec.push_back(this->getAliasToken(Inst));
-  AliasVec.push_back(this->getAliasToken(Inst->getPointerOperand()));
+  AliasVec.push_back(
+      this->getAliasToken(llvm::cast<llvm::GEPOperator>(Inst), Func));
   return AliasVec;
 }
 
