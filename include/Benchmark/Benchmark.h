@@ -12,30 +12,14 @@
 namespace spatial {
 
 class BenchmarkRunner {
-private:
+protected:
   std::string Key;
-  std::map<llvm::Instruction *, std::string> Result;
-  void evaluateUtil(llvm::CallInst *, int, int, int);
 
 public:
-  BenchmarkRunner() { Key = "ALIAS"; }
-  std::vector<llvm::Value *> extract(llvm::Instruction *Inst);
-  friend std::ostream &operator<<(std::ostream &OS, const BenchmarkRunner &B);
-  template <class Ty>
-  void evaluate(llvm::Instruction *Inst, std::set<Ty *>, std::set<Ty *>);
+  BenchmarkRunner(std::string Key) { this->Key = Key; }
+  virtual std::vector<llvm::Value *> extract(llvm::Instruction *Inst) = 0;    
 };
 
-template <class Ty>
-void BenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,
-                               std::set<Ty *> B) {
-  llvm::CallInst *Inst = llvm::cast<llvm::CallInst>(I);
-  std::set<Ty> Result;
-  for (auto a : A)
-    Result.insert(*a);
-  for (auto b : B)
-    Result.insert(*b);
-  evaluateUtil(Inst, A.size(), B.size(), Result.size());
-}
 } // namespace spatial
 
 #endif

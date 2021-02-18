@@ -1,4 +1,5 @@
 #include "Benchmark/Benchmark.h"
+#include "Benchmark/PTABenchmark.h"
 #include "set"
 #include "string"
 #include "llvm/IR/Argument.h"
@@ -10,13 +11,13 @@
 
 namespace spatial {
 
-std::ostream &operator<<(std::ostream &OS, const BenchmarkRunner &B) {
+std::ostream &operator<<(std::ostream &OS, const PTABenchmarkRunner &B) {
   for (auto R : B.Result) {
     OS << R.second << "\n";
   }
 }
 
-void BenchmarkRunner::evaluateUtil(llvm::CallInst *Inst, int A, int B,
+void PTABenchmarkRunner::evaluateUtil(llvm::CallInst *Inst, int A, int B,
                                    int Result) {
   std::string Status, Expected, Got;
   llvm::StringRef FunctionName = Inst->getCalledFunction()->getName();
@@ -40,7 +41,7 @@ void BenchmarkRunner::evaluateUtil(llvm::CallInst *Inst, int A, int B,
       "[" + Status + "] Expected: " + Expected + " Got: " + Got;
 }
 
-std::vector<llvm::Value *> BenchmarkRunner::extract(llvm::Instruction *Inst) {
+std::vector<llvm::Value *> PTABenchmarkRunner::extract(llvm::Instruction *Inst) {
   std::vector<llvm::Value *> Tokens;
   if (llvm::CallInst *CI = llvm::dyn_cast<llvm::CallInst>(Inst)) {
     llvm::Function *CalledFunction = CI->getCalledFunction();
