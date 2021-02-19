@@ -4,6 +4,7 @@ add_library (Spatial SHARED
     Benchmark/Benchmark.cpp
     Worklist/Worklist.cpp
     Utils/CFGUtils.cpp
+    Utils/TempToVar.cpp
 )
 
 set_target_properties(Spatial PROPERTIES

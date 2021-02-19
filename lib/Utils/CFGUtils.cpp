@@ -1,4 +1,5 @@
 #include "Utils/CFGUtils.h"
+#include "Utils/TempToVar.h"
 #include "string"
 #include "vector"
 #include "llvm/IR/BasicBlock.h"
@@ -23,6 +24,8 @@ void InstNamer(llvm::Function &F) {
         I.setName("i");
     }
   }
+  TempToVar TV;
+  TV.replace(F);
 }
 
 bool SkipFunction(llvm::Function &F) {
