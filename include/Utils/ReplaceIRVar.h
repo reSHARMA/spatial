@@ -12,8 +12,8 @@ private:
 	std::string NewName;
 	std::map<std::string,std::string> HashMap;
 	void init(llvm::Function& F);
-	void init(llvm::BasicBlock& F);
-	void init(llvm::Module& F);
+	void init(llvm::BasicBlock& BB);
+	void init(llvm::Module& M);
 public:
 	ReplaceIRVar();
 	void runOnFunction(llvm::Function& F);
