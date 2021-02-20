@@ -17,7 +17,7 @@ protected:
 
 public:
   BenchmarkRunner(std::string Key) { this->Key = Key; }
-  virtual std::vector<llvm::Value *> extract(llvm::Instruction *Inst) = 0;    
+  virtual std::vector<llvm::Value *> extract(llvm::Instruction *Inst) = 0;
 };
 
 } // namespace spatial

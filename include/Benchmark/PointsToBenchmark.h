@@ -1,8 +1,8 @@
 #ifndef POINTS_TO_BENCHMARK_H_
 #define POINTS_TO_BENCHMARK_H_
 #include "Benchmark.h"
-#include "llvm/IR/Metadata.h"
 #include "llvm/IR/DebugInfoMetadata.h"
+#include "llvm/IR/Metadata.h"
 
 namespace spatial {
 
@@ -12,11 +12,10 @@ class PointsToBenchmarkRunner : public BenchmarkRunner {
   std::map<llvm::BasicBlock *, std::vector<int>> PrecisionResult;
 
 public:
-  PointsToBenchmarkRunner() : BenchmarkRunner("PointsTo"){    
-    isSound = 1;
-  }
+  PointsToBenchmarkRunner() : BenchmarkRunner("PointsTo") { isSound = 1; }
   std::vector<llvm::Value *> extract(llvm::Instruction *Inst);
-  friend std::ostream &operator<<(std::ostream &OS, const PointsToBenchmarkRunner &B);
+  friend std::ostream &operator<<(std::ostream &OS,
+                                  const PointsToBenchmarkRunner &B);
   template <class Ty>
   void evaluate(llvm::Instruction *Inst, std::set<Ty *>, Ty *);
   bool CheckSoundness();
@@ -24,21 +23,24 @@ public:
 };
 
 /**
- * @brief This Function evaluates the predicates defined in testcases for pointer analysis.
- * 
- * @param I CallInst which defines either one of the predicates : MayPointsTo(x,y), MustPointsTo(x,y) or DoesNotPointsTo(x,y)
+ * @brief This Function evaluates the predicates defined in testcases for
+ * pointer analysis.
+ *
+ * @param I CallInst which defines either one of the predicates :
+ * MayPointsTo(x,y), MustPointsTo(x,y) or DoesNotPointsTo(x,y)
  * @param A Pointee Set of the first argument of the call to function.
- * @param B Pointee which we have to check if is present in the Pointee set of A or not. 
+ * @param B Pointee which we have to check if is present in the Pointee set of A
+ * or not.
  */
 template <class Ty>
-void PointsToBenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,Ty *B) {
+void PointsToBenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,
+                                       Ty *B) {
   llvm::CallInst *Inst = llvm::cast<llvm::CallInst>(I);
   std::string Status, Expected;
   llvm::StringRef FunctionName = Inst->getCalledFunction()->getName();
 
   llvm::MDNode *MD = I->getMetadata("dbg");
   int LineNo = llvm::cast<llvm::DILocation>(MD)->getLine();
-  
 
   if (FunctionName.contains("May"))
     Expected = "MayPointsTo";
