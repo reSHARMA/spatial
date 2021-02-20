@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valuecontext_160',['ValueContext',['../classspatial_1_1ValueContext.html#acd8231dd79d95b9848f439d79f7935e2',1,'spatial::ValueContext']]]
+  ['updatecontextgraph_183',['updateContextGraph',['../classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141',1,'spatial::ValueContext']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['merge_60',['merge',['../classspatial_1_1AliasGraph.html#affb7ac9181a8436799cc657cb4958556',1,'spatial::AliasGraph']]]
+  ['key_63',['Key',['../classspatial_1_1BenchmarkRunner.html#adbe7dcf6432bfaae336477e656ae2a27',1,'spatial::BenchmarkRunner']]]
 ];

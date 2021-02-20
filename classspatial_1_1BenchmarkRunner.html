@@ -68,33 +68,40 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classspatial_1_1BenchmarkRunner-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">spatial::BenchmarkRunner Class Reference</div>  </div>
+<div class="title">spatial::BenchmarkRunner Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="Benchmark_8h_source.html">Benchmark.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for spatial::BenchmarkRunner:</div>
+<div class="dyncontent">
+<div class="center"><img src="classspatial_1_1BenchmarkRunner__inherit__graph.png" border="0" usemap="#aspatial_1_1BenchmarkRunner_inherit__map" alt="Inheritance graph"/></div>
+<map name="aspatial_1_1BenchmarkRunner_inherit__map" id="aspatial_1_1BenchmarkRunner_inherit__map">
+<area shape="rect" title=" " alt="" coords="126,5,299,32"/>
+<area shape="rect" href="classspatial_1_1PTABenchmarkRunner.html" title=" " alt="" coords="5,87,204,114"/>
+<area shape="rect" href="classspatial_1_1PointsToBenchmarkRunner.html" title=" " alt="" coords="229,80,413,121"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dc23b1f156baeb1e0bc69725405e1dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#a9dc23b1f156baeb1e0bc69725405e1dc">BenchmarkRunner</a> ()</td></tr>
-<tr class="separator:a9dc23b1f156baeb1e0bc69725405e1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a708f9b24a7986fd0d913d1a377793275"><td class="memItemLeft" align="right" valign="top">std::vector&lt; llvm::Value * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#a708f9b24a7986fd0d913d1a377793275">extract</a> (llvm::Instruction *Inst)</td></tr>
-<tr class="separator:a708f9b24a7986fd0d913d1a377793275"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af33c35c780eb295d0f05e3c5257fc22e"><td class="memTemplParams" colspan="2">template&lt;class Ty &gt; </td></tr>
-<tr class="memitem:af33c35c780eb295d0f05e3c5257fc22e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#af33c35c780eb295d0f05e3c5257fc22e">evaluate</a> (llvm::Instruction *Inst, std::set&lt; Ty * &gt;, std::set&lt; Ty * &gt;)</td></tr>
-<tr class="separator:af33c35c780eb295d0f05e3c5257fc22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a978c3898211cf00f4e35da53828b8afd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#a978c3898211cf00f4e35da53828b8afd">BenchmarkRunner</a> (std::string <a class="el" href="classspatial_1_1BenchmarkRunner.html#adbe7dcf6432bfaae336477e656ae2a27">Key</a>)</td></tr>
+<tr class="separator:a978c3898211cf00f4e35da53828b8afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b146460c93114c2d9a7e6c990ac178"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; llvm::Value * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#ab7b146460c93114c2d9a7e6c990ac178">extract</a> (llvm::Instruction *Inst)=0</td></tr>
+<tr class="separator:ab7b146460c93114c2d9a7e6c990ac178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a43697c97971eaaec8de133dbcc0eac58"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#a43697c97971eaaec8de133dbcc0eac58">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> &amp;B)</td></tr>
-<tr class="separator:a43697c97971eaaec8de133dbcc0eac58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:adbe7dcf6432bfaae336477e656ae2a27"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html#adbe7dcf6432bfaae336477e656ae2a27">Key</a></td></tr>
+<tr class="separator:adbe7dcf6432bfaae336477e656ae2a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9dc23b1f156baeb1e0bc69725405e1dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc23b1f156baeb1e0bc69725405e1dc">&#9670;&nbsp;</a></span>BenchmarkRunner()</h2>
+<a id="a978c3898211cf00f4e35da53828b8afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a978c3898211cf00f4e35da53828b8afd">&#9670;&nbsp;</a></span>BenchmarkRunner()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -105,7 +112,8 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">spatial::BenchmarkRunner::BenchmarkRunner </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>Key</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -119,63 +127,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af33c35c780eb295d0f05e3c5257fc22e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af33c35c780eb295d0f05e3c5257fc22e">&#9670;&nbsp;</a></span>evaluate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Ty &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void spatial::BenchmarkRunner::evaluate </td>
-          <td>(</td>
-          <td class="paramtype">llvm::Instruction *&#160;</td>
-          <td class="paramname"><em>Inst</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::set&lt; Ty * &gt;&#160;</td>
-          <td class="paramname"><em>A</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::set&lt; Ty * &gt;&#160;</td>
-          <td class="paramname"><em>B</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a708f9b24a7986fd0d913d1a377793275"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a708f9b24a7986fd0d913d1a377793275">&#9670;&nbsp;</a></span>extract()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; llvm::Value * &gt; spatial::BenchmarkRunner::extract </td>
-          <td>(</td>
-          <td class="paramtype">llvm::Instruction *&#160;</td>
-          <td class="paramname"><em>Inst</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a43697c97971eaaec8de133dbcc0eac58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43697c97971eaaec8de133dbcc0eac58">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+<a id="ab7b146460c93114c2d9a7e6c990ac178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b146460c93114c2d9a7e6c990ac178">&#9670;&nbsp;</a></span>extract()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,35 +137,49 @@ template&lt;class Ty &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td class="memname">virtual std::vector&lt;llvm::Value *&gt; spatial::BenchmarkRunner::extract </td>
           <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>OS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">llvm::Instruction *&#160;</td>
+          <td class="paramname"><em>Inst</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> &amp;&#160;</td>
-          <td class="paramname"><em>B</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classspatial_1_1PTABenchmarkRunner.html#a821df62bc5d06797d6eaa88c8bcf91d1">spatial::PTABenchmarkRunner</a>, and <a class="el" href="classspatial_1_1PointsToBenchmarkRunner.html#ab26dec190bcb464cccd157c3fe7dfe50">spatial::PointsToBenchmarkRunner</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adbe7dcf6432bfaae336477e656ae2a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe7dcf6432bfaae336477e656ae2a27">&#9670;&nbsp;</a></span>Key</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string spatial::BenchmarkRunner::Key</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/Benchmark/<a class="el" href="Benchmark_8h_source.html">Benchmark.h</a></li>
-<li>lib/Benchmark/<a class="el" href="Benchmark_8cpp.html">Benchmark.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

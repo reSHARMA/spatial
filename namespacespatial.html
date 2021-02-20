@@ -75,6 +75,10 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1PointsToBenchmarkRunner.html">PointsToBenchmarkRunner</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1PTABenchmarkRunner.html">PTABenchmarkRunner</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1AliasGraph.html">AliasGraph</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Alias.html">Alias</a></td></tr>
@@ -93,8 +97,12 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab1d9b1df8ebd17558d35d01749dfaeba"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ab1d9b1df8ebd17558d35d01749dfaeba">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> &amp;B)</td></tr>
-<tr class="separator:ab1d9b1df8ebd17558d35d01749dfaeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b25028810d6a384817f85188bdc0cf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a12b25028810d6a384817f85188bdc0cf">print_args</a> (llvm::CallInst *CI)</td></tr>
+<tr class="separator:a12b25028810d6a384817f85188bdc0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10411b959af96941e384aee5818b641b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a10411b959af96941e384aee5818b641b">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1PointsToBenchmarkRunner.html">PointsToBenchmarkRunner</a> &amp;B)</td></tr>
+<tr class="separator:a10411b959af96941e384aee5818b641b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45295bef82099972685bafc61089a02b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a45295bef82099972685bafc61089a02b">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1PTABenchmarkRunner.html">PTABenchmarkRunner</a> &amp;B)</td></tr>
+<tr class="separator:a45295bef82099972685bafc61089a02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac18c312c64297e3dc7bdc6128087219f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ac18c312c64297e3dc7bdc6128087219f">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1Alias.html">Alias</a> &amp;A)</td></tr>
 <tr class="separator:ac18c312c64297e3dc7bdc6128087219f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8340c464cc72aa6f4a42b41e2db78932"><td class="memItemLeft" align="right" valign="top">template std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a8340c464cc72aa6f4a42b41e2db78932">AliasTokens::extractStatementType&lt; llvm::Instruction &gt;</a> (llvm::Instruction *)</td></tr>
@@ -303,7 +311,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac18c312c64297e3dc7bdc6128087219f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac18c312c64297e3dc7bdc6128087219f">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac18c312c64297e3dc7bdc6128087219f">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +339,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="aa4a168e651e585de24ea78d7598a1bf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4a168e651e585de24ea78d7598a1bf9">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4a168e651e585de24ea78d7598a1bf9">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,8 +368,8 @@ template&lt;typename AliasNode &gt; </div>
 
 </div>
 </div>
-<a id="ab1d9b1df8ebd17558d35d01749dfaeba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1d9b1df8ebd17558d35d01749dfaeba">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
+<a id="a10411b959af96941e384aee5818b641b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10411b959af96941e384aee5818b641b">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -375,13 +383,59 @@ template&lt;typename AliasNode &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classspatial_1_1BenchmarkRunner.html">BenchmarkRunner</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classspatial_1_1PointsToBenchmarkRunner.html">PointsToBenchmarkRunner</a> &amp;&#160;</td>
           <td class="paramname"><em>B</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45295bef82099972685bafc61089a02b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45295bef82099972685bafc61089a02b">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; spatial::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>OS</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classspatial_1_1PTABenchmarkRunner.html">PTABenchmarkRunner</a> &amp;&#160;</td>
+          <td class="paramname"><em>B</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12b25028810d6a384817f85188bdc0cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b25028810d6a384817f85188bdc0cf">&#9670;&nbsp;</a></span>print_args()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string spatial::print_args </td>
+          <td>(</td>
+          <td class="paramtype">llvm::CallInst *&#160;</td>
+          <td class="paramname"><em>CI</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
