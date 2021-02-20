@@ -1,7 +1,7 @@
 add_library (Spatial SHARED
     Token/Alias.cpp
     Token/AliasToken.cpp
-    Benchmark/Benchmark.cpp
+    Benchmark/PointsToBenchmark.cpp
     Benchmark/PTABenchmark.cpp
     Worklist/Worklist.cpp
     Utils/CFGUtils.cpp
