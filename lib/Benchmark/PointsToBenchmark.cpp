@@ -18,30 +18,30 @@
 
 namespace spatial {
 
-std::string print_args(llvm::CallInst* ci){    
+std::string print_args(llvm::CallInst* CI){    
     std::string TCResult;
     int i=0;
-	while(i<ci->getNumArgOperands())
+	while(i < CI->getNumArgOperands())
 	{
-		std::string arg = llvm::dyn_cast<llvm::Instruction>(ci->getArgOperand(i))->getOperand(0)->getName().str();		
+		std::string arg = llvm::dyn_cast<llvm::Instruction>(CI->getArgOperand(i))->getOperand(0)->getName().str();		
 		TCResult += arg;			
 		i++;
-		if(i!=ci->getNumArgOperands()) TCResult += ", " ;		
+		if(i!=CI->getNumArgOperands()) TCResult += ", " ;		
 	}
     return TCResult;
 }
 
-spatial::Soundness PointsToBenchmarkRunner::CheckSoundness(){
+bool PointsToBenchmarkRunner::CheckSoundness(){
     for(auto i : TCResult){
         if(i.second[0] == "Fail" && (i.second[1] == "MayPointsTo")){
-            SoundOrUnsound = Soundness::Unsound;
+            isSound = 0;
             break;
         }
         else{
-            SoundOrUnsound = Soundness::Sound;
+            isSound = 1;
         }
     }
-    return SoundOrUnsound;
+    return isSound;
 }
 
 std::ostream& operator<<(std::ostream& OS, const PointsToBenchmarkRunner& B) {
@@ -54,10 +54,10 @@ std::ostream& operator<<(std::ostream& OS, const PointsToBenchmarkRunner& B) {
         if(R == B.TCResult.begin()){
             OS << "\t\t=================================================================================\n";
         }
-        llvm::CallInst* ci = llvm::dyn_cast<llvm::CallInst>((*R).first); 
+        llvm::CallInst* CI = llvm::dyn_cast<llvm::CallInst>((*R).first); 
         OS << std::setw(15) << "\t\t|  TestCase " << i << ":\t|\t" 
         << std::setw(10) << "Line:" << (*R).second[2] << "   " << (*R).second[1] <<"(" 
-        << print_args(ci) << ")\t" << std::setw(5) << "|\t" ;
+        << print_args(CI) << ")\t" << std::setw(5) << "|\t" ;
         res = (((*R).second[0] == "Pass") ? (GREENT + (*R).second[0] + RST ): (REDT + (*R).second[0] + RST)); 
         OS << res;
         OS <<  "\t|\n";        
@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& OS, const PointsToBenchmarkRunner& B) {
         i++;
     }
     OS << "\n---------------------------------------------------------------------------------\n";
-    if(B.SoundOrUnsound == Soundness::Sound){
+    if(B.isSound == 1){
         OS << "\nSoundness Check : Analysis is \033[1;92mSound\033[0;m\n";
     }
     else{
@@ -107,12 +107,12 @@ void PointsToBenchmarkRunner::evaluatePrecision(llvm::Function& F){
         std::map<llvm::Value*, bool> visited;
         PrecisionResult[&BB] = std::vector<int>(2,0);
         for(llvm::Instruction& I : BB){
-            if(llvm::CallInst* ci = llvm::dyn_cast<llvm::CallInst>(&I)){
-                if(ci->getCalledFunction()->getName().contains("DoesNotPointsTo")){
+            if(llvm::CallInst* CI = llvm::dyn_cast<llvm::CallInst>(&I)){
+                if(CI->getCalledFunction()->getName().contains("DoesNotPointsTo")){
                     std::vector<std::string> res = TCResult[&I];
                     if(res[0] == "Fail"){
                         // Format -- Pointer Count for which it fails, Total predicates it fails;
-                        llvm::Value* arg1 = llvm::dyn_cast<llvm::Instruction>(ci->getArgOperand(0))->getOperand(0);                    
+                        llvm::Value* arg1 = llvm::dyn_cast<llvm::Instruction>(CI->getArgOperand(0))->getOperand(0);                    
                         if(!visited[arg1]){
                             PrecisionResult[&BB][0]++;    
                             visited[arg1] = true;

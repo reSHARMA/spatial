@@ -26,8 +26,7 @@ public:
 };
 
 template <class Ty>
-void PTABenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,
-                               std::set<Ty *> B) {
+void PTABenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,std::set<Ty *> B) {
   llvm::CallInst *Inst = llvm::cast<llvm::CallInst>(I);
   std::set<Ty> Result;
   for (auto a : A)

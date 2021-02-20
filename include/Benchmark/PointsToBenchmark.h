@@ -6,38 +6,39 @@
 
 namespace spatial {
 
-enum Soundness {
-  Sound,
-  Unsound,
-};
 class PointsToBenchmarkRunner : public BenchmarkRunner {
-  Soundness SoundOrUnsound;
+  bool isSound;
   std::map<llvm::Instruction *, std::vector<std::string>> TCResult;
   std::map<llvm::BasicBlock *, std::vector<int>> PrecisionResult;
 
 public:
   PointsToBenchmarkRunner() : BenchmarkRunner("PointsTo"){    
-    SoundOrUnsound = Sound;
+    isSound = 1;
   }
   std::vector<llvm::Value *> extract(llvm::Instruction *Inst);
   friend std::ostream &operator<<(std::ostream &OS, const PointsToBenchmarkRunner &B);
   template <class Ty>
   void evaluate(llvm::Instruction *Inst, std::set<Ty *>, Ty *);
-  spatial::Soundness CheckSoundness();
+  bool CheckSoundness();
   void evaluatePrecision(llvm::Function &);
 };
 
+/**
+ * @brief This Function evaluates the predicates defined in testcases for pointer analysis.
+ * 
+ * @param I CallInst which defines either one of the predicates : MayPointsTo(x,y), MustPointsTo(x,y) or DoesNotPointsTo(x,y)
+ * @param A Pointee Set of the first argument of the call to function.
+ * @param B Pointee which we have to check if is present in the Pointee set of A or not. 
+ */
 template <class Ty>
-void PointsToBenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,
-                                     Ty *B) {
+void PointsToBenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,Ty *B) {
   llvm::CallInst *Inst = llvm::cast<llvm::CallInst>(I);
   std::string Status, Expected;
   llvm::StringRef FunctionName = Inst->getCalledFunction()->getName();
 
-  llvm::MDNode *md = I->getMetadata("dbg");
-  int lineno = llvm::cast<llvm::DILocation>(md)->getLine();
-
-  // std::cout << lineno << "\n";
+  llvm::MDNode *MD = I->getMetadata("dbg");
+  int LineNo = llvm::cast<llvm::DILocation>(MD)->getLine();
+  
 
   if (FunctionName.contains("May"))
     Expected = "MayPointsTo";
@@ -77,7 +78,7 @@ void PointsToBenchmarkRunner::evaluate(llvm::Instruction *I, std::set<Ty *> A,
   }
   TCResult[Inst].push_back(Status);
   TCResult[Inst].push_back(Expected);
-  TCResult[Inst].push_back(std::to_string(lineno));
+  TCResult[Inst].push_back(std::to_string(LineNo));
 }
 
 } // namespace spatial
