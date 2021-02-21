@@ -48,7 +48,7 @@ $ git clone this_repository.git
 $ cd this_repository
 $ mkdir build; cd build
 $ cmake .. && make
-$ sudo make install
+$ make install
 ```
 
 ### Using with opt

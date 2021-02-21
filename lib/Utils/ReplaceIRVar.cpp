@@ -1,19 +1,13 @@
-#include <iostream>
-#include <map>
 #include "Utils/ReplaceIRVar.h"
-#include "llvm/IR/BasicBlock.h"
-#include "llvm/IR/Instruction.h"
-#include "llvm/IR/Instructions.h"
-#include "llvm/IR/Function.h"
-#include "llvm/IR/IntrinsicInst.h"
-#include "llvm/IR/Module.h"
-#include "llvm/IR/DebugInfo.h"
-#include "llvm/IR/DebugInfoMetadata.h"
 
 /// Constructor of ReplaceIRVar class
 ReplaceIRVar::ReplaceIRVar(){
-	this->NewName="\0";
+	this->NewName = "\0";
 	this->HashMap.clear();
+}
+
+void ReplaceIRVar::format(std::string First, std::string Second){
+	this->NewName = "( " + First + " : " + Second + ")"; 
 }
 
 /// replace IR variable to Temporary Variable for the Function passed as parameter
@@ -58,17 +52,17 @@ void ReplaceIRVar::runOnBasicBlock(llvm::BasicBlock& BB){
 	this->init(BB);
 	for(llvm::Instruction& I : BB){
 		if(const llvm::DbgDeclareInst *DbgDeclare = llvm::dyn_cast<llvm::DbgDeclareInst>(&I)){
-			NewName = "( "+ std::to_string(DbgDeclare->getVariable()->getLine()) + " : " + (DbgDeclare->getVariable()->getName()).str() + " )";
+			this->format(std::to_string(DbgDeclare->getVariable()->getLine()) , (DbgDeclare->getVariable()->getName()).str());
 			if(llvm::Instruction *I = llvm::dyn_cast<llvm::Instruction>(DbgDeclare->getAddress())){
-				llvm::StringRef strref(NewName);
-				HashMap.insert(std::pair<std::string,std::string>(I->getName().str(),NewName));
+				llvm::StringRef strref(this->NewName);
+				HashMap.insert(std::pair<std::string,std::string>(I->getName().str(),this->NewName));
 			}
 		}
 	}
 	for(llvm::Instruction& I : BB){
-    	std::string name = I.getName().str();
-        if(HashMap.find(name)!=HashMap.end()){
-            I.setName(HashMap[name]);
+    	std::string Name = I.getName().str();
+        if(HashMap.find(Name)!=HashMap.end()){
+            I.setName(HashMap[Name]);
         }
     }
 }
