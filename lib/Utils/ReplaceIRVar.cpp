@@ -7,7 +7,7 @@ ReplaceIRVar::ReplaceIRVar() {
 }
 
 void ReplaceIRVar::format(std::string First, std::string Second) {
-  this->NewName = "( " + First + " : " + Second + ")";
+  this->NewName = "(" + First + ") " + Second;
 }
 
 /// replace IR variable to Temporary Variable for the Function passed as
