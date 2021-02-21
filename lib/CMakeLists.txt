@@ -5,6 +5,7 @@ add_library (Spatial SHARED
     Benchmark/PTABenchmark.cpp
     Worklist/Worklist.cpp
     Utils/CFGUtils.cpp
+    Utils/ReplaceIRVar.cpp
 )
 
 set_target_properties(Spatial PROPERTIES

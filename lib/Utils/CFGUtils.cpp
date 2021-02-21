@@ -1,4 +1,5 @@
 #include "Utils/CFGUtils.h"
+#include "Utils/ReplaceIRVar.h"
 #include "string"
 #include "vector"
 #include "llvm/IR/BasicBlock.h"
@@ -11,18 +12,8 @@ namespace spatial {
 
 /// InstNamer - sets name to the SSA temporaries
 void InstNamer(llvm::Function &F) {
-  for (auto &Arg : F.args()) {
-    if (!Arg.hasName())
-      Arg.setName("arg");
-  }
-  for (llvm::BasicBlock &BB : F) {
-    if (!BB.hasName())
-      BB.setName("bb");
-    for (llvm::Instruction &I : BB) {
-      if (!I.hasName() && !I.getType()->isVoidTy())
-        I.setName("i");
-    }
-  }
+  ReplaceIRVar Replace;
+  Replace.runOnFunction(F);
 }
 
 bool SkipFunction(llvm::Function &F) {
