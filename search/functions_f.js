@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ealiastokens_199',['~AliasTokens',['../classspatial_1_1AliasTokens.html#a7bf7c51e6563d5741a4dbac66c9cf6b5',1,'spatial::AliasTokens']]]
+  ['_7etokenwrapper_199',['~TokenWrapper',['../classspatial_1_1TokenWrapper.html#a3a1566015d66dfc53af3ab77897c0e14',1,'spatial::TokenWrapper']]]
 ];

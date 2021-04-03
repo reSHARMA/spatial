@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Spatial: lib/Token/Alias.cpp File Reference</title>
+<title>Spatial: lib/Token/TokenWrapper.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,26 +70,30 @@ $(function() {
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Alias.cpp File Reference</div>  </div>
+<div class="title">TokenWrapper.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="Alias_8h_source.html">Token/Alias.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="TokenWrapper_8h_source.html">Token/TokenWrapper.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for Alias.cpp:</div>
+Include dependency graph for TokenWrapper.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="Alias_8cpp__incl.png" border="0" usemap="#alib_2Token_2Alias_8cpp" alt=""/></div>
-<map name="alib_2Token_2Alias_8cpp" id="alib_2Token_2Alias_8cpp">
-<area shape="rect" title=" " alt="" coords="568,5,700,32"/>
-<area shape="rect" href="Alias_8h.html" title=" " alt="" coords="583,80,685,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,60,181"/>
-<area shape="rect" title=" " alt="" coords="85,155,229,181"/>
-<area shape="rect" title=" " alt="" coords="253,155,386,181"/>
-<area shape="rect" title=" " alt="" coords="411,155,537,181"/>
-<area shape="rect" title=" " alt="" coords="561,155,707,181"/>
-<area shape="rect" title=" " alt="" coords="731,155,857,181"/>
-<area shape="rect" title=" " alt="" coords="881,155,987,181"/>
-<area shape="rect" title=" " alt="" coords="1011,155,1121,181"/>
-<area shape="rect" title=" " alt="" coords="1146,155,1330,181"/>
+<div class="center"><img src="TokenWrapper_8cpp__incl.png" border="0" usemap="#alib_2Token_2TokenWrapper_8cpp" alt=""/></div>
+<map name="alib_2Token_2TokenWrapper_8cpp" id="alib_2Token_2TokenWrapper_8cpp">
+<area shape="rect" title=" " alt="" coords="775,5,962,32"/>
+<area shape="rect" href="TokenWrapper_8h.html" title=" " alt="" coords="791,80,947,107"/>
+<area shape="rect" href="Token_8h.html" title=" " alt="" coords="664,155,732,181"/>
+<area shape="rect" title=" " alt="" coords="5,229,60,256"/>
+<area shape="rect" title=" " alt="" coords="85,229,218,256"/>
+<area shape="rect" title=" " alt="" coords="243,229,369,256"/>
+<area shape="rect" title=" " alt="" coords="771,229,916,256"/>
+<area shape="rect" title=" " alt="" coords="940,229,1067,256"/>
+<area shape="rect" title=" " alt="" coords="1091,229,1196,256"/>
+<area shape="rect" title=" " alt="" coords="1220,229,1331,256"/>
+<area shape="rect" title=" " alt="" coords="1007,155,1047,181"/>
+<area shape="rect" title=" " alt="" coords="1071,155,1207,181"/>
+<area shape="rect" title=" " alt="" coords="1232,155,1393,181"/>
+<area shape="rect" title=" " alt="" coords="602,229,746,256"/>
+<area shape="rect" title=" " alt="" coords="394,229,578,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -100,8 +104,14 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac18c312c64297e3dc7bdc6128087219f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ac18c312c64297e3dc7bdc6128087219f">spatial::operator&lt;&lt;</a> (std::ostream &amp;OS, const Alias &amp;A)</td></tr>
-<tr class="separator:ac18c312c64297e3dc7bdc6128087219f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e56b0ebcf1a38eef8c573f389a1f7c"><td class="memItemLeft" align="right" valign="top">template std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ae1e56b0ebcf1a38eef8c573f389a1f7c">spatial::TokenWrapper::extractStatementType&lt; llvm::Instruction &gt;</a> (llvm::Instruction *)</td></tr>
+<tr class="separator:ae1e56b0ebcf1a38eef8c573f389a1f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2374b57cb06d8bd9cd7acbdd6cad734b"><td class="memItemLeft" align="right" valign="top">template std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a2374b57cb06d8bd9cd7acbdd6cad734b">spatial::TokenWrapper::extractStatementType&lt; llvm::GlobalVariable &gt;</a> (llvm::GlobalVariable *)</td></tr>
+<tr class="separator:a2374b57cb06d8bd9cd7acbdd6cad734b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6372e69899fa0e5d7c6589a64bc0199"><td class="memItemLeft" align="right" valign="top">template Token *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ad6372e69899fa0e5d7c6589a64bc0199">spatial::TokenWrapper::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;</a> (llvm::GetElementPtrInst *G, Token *Ptr)</td></tr>
+<tr class="separator:ad6372e69899fa0e5d7c6589a64bc0199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97043d8a4b2032f91a431ffe13530e3d"><td class="memItemLeft" align="right" valign="top">template Token *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a97043d8a4b2032f91a431ffe13530e3d">spatial::TokenWrapper::handleGEPUtil&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G, Token *Ptr)</td></tr>
+<tr class="separator:a97043d8a4b2032f91a431ffe13530e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

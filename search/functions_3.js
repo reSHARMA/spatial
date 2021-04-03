@@ -1,11 +1,23 @@
 var searchData=
 [
-  ['empty_138',['empty',['../classspatial_1_1Worklist.html#ae03218150739a49f2c314d3f9e1ffac9',1,'spatial::Worklist']]],
-  ['end_139',['end',['../classspatial_1_1AliasGraph.html#a41cf7a6f744fffb73b43a0c40cf3c16d',1,'spatial::AliasGraph']]],
-  ['erase_140',['erase',['../classspatial_1_1AliasGraph.html#ae40d7c9789dd26cdd1b9bb785adc300a',1,'spatial::AliasGraph']]],
-  ['evaluate_141',['evaluate',['../classspatial_1_1PointsToBenchmarkRunner.html#a8045e4d20c2417c39f5448f04c4d119f',1,'spatial::PointsToBenchmarkRunner::evaluate()'],['../classspatial_1_1PTABenchmarkRunner.html#ab354d8a93e7408e0da5d9a699ef02011',1,'spatial::PTABenchmarkRunner::evaluate()']]],
-  ['evaluateprecision_142',['evaluatePrecision',['../classspatial_1_1PointsToBenchmarkRunner.html#a78ea686bbb7f646d199e4b82c9f6dd59',1,'spatial::PointsToBenchmarkRunner']]],
-  ['extract_143',['extract',['../classspatial_1_1BenchmarkRunner.html#ab7b146460c93114c2d9a7e6c990ac178',1,'spatial::BenchmarkRunner::extract()'],['../classspatial_1_1PointsToBenchmarkRunner.html#ab26dec190bcb464cccd157c3fe7dfe50',1,'spatial::PointsToBenchmarkRunner::extract()'],['../classspatial_1_1PTABenchmarkRunner.html#a821df62bc5d06797d6eaa88c8bcf91d1',1,'spatial::PTABenchmarkRunner::extract()']]],
-  ['extractaliastoken_144',['extractAliasToken',['../classspatial_1_1AliasTokens.html#ac61e0d8ed5f36b6f49cfa06ed6deda70',1,'spatial::AliasTokens::extractAliasToken(llvm::StoreInst *)'],['../classspatial_1_1AliasTokens.html#ac7c4758126d5c11125f1b44932587205',1,'spatial::AliasTokens::extractAliasToken(llvm::Argument *, llvm::Function *)'],['../classspatial_1_1AliasTokens.html#aff6671f345ca9218241002fc340077ac',1,'spatial::AliasTokens::extractAliasToken(llvm::CallInst *)'],['../classspatial_1_1AliasTokens.html#ad4d1e4edb387d424c0a2d5b9a15ba28d',1,'spatial::AliasTokens::extractAliasToken(llvm::GlobalVariable *)'],['../classspatial_1_1AliasTokens.html#a9c7d0b22c417ec79283264c8477e1823',1,'spatial::AliasTokens::extractAliasToken(llvm::GetElementPtrInst *)'],['../classspatial_1_1AliasTokens.html#a42d5d100d3dc6c118b70efaa11750ad4',1,'spatial::AliasTokens::extractAliasToken(llvm::ReturnInst *)'],['../classspatial_1_1AliasTokens.html#aed02cdd915d3c16be7ce089c1c4f539b',1,'spatial::AliasTokens::extractAliasToken(llvm::BitCastInst *)'],['../classspatial_1_1AliasTokens.html#abc97e3b6c67961ab54156e5b5d50c097',1,'spatial::AliasTokens::extractAliasToken(llvm::AllocaInst *)'],['../classspatial_1_1AliasTokens.html#a768f916dd2ab8ae07a605e8afbf53ccc',1,'spatial::AliasTokens::extractAliasToken(llvm::LoadInst *)'],['../classspatial_1_1AliasTokens.html#ad8248618cd18a96ca16f6ac901a8a6c8',1,'spatial::AliasTokens::extractAliasToken(llvm::Instruction *)']]],
-  ['extractstatementtype_145',['extractStatementType',['../classspatial_1_1AliasTokens.html#a6031c8862815d147ecba971f63690ec9',1,'spatial::AliasTokens']]]
+  ['getbi_141',['getBI',['../classspatial_1_1ValueContext.html#ab9ff6ce804d770856f57840bdf31fe7d',1,'spatial::ValueContext']]],
+  ['getcontextchild_142',['getContextChild',['../classspatial_1_1ValueContext.html#ac71323c98f1522e601a76710e5912fe8',1,'spatial::ValueContext']]],
+  ['getcontexts_143',['getContexts',['../classspatial_1_1ValueContext.html#a56d00040a0b587a6c28b1e3e2ff2ec9e',1,'spatial::ValueContext']]],
+  ['getfieldindex_144',['getFieldIndex',['../classspatial_1_1Token.html#a81b49886df62864ae224be09f9dbf832',1,'spatial::Token']]],
+  ['getfunctionname_145',['getFunctionName',['../classspatial_1_1Token.html#a59d6e3e41c2dd7135dcb13addd3bca7b',1,'spatial::Token']]],
+  ['gethash_146',['getHash',['../classspatial_1_1Token.html#a935f28d14f81121d7b4a047e36ea1f00',1,'spatial::Token']]],
+  ['getindex_147',['getIndex',['../classspatial_1_1Token.html#ae2706fb24b12ae6781e44617fed35727',1,'spatial::Token']]],
+  ['getmemtypename_148',['getMemTypeName',['../classspatial_1_1Token.html#af6235138f953c7880cb82c633a9cabdd',1,'spatial::Token']]],
+  ['getname_149',['getName',['../classspatial_1_1Token.html#a7f490955041f90c3d8e2ffe6cf235be3',1,'spatial::Token']]],
+  ['getpointee_150',['getPointee',['../classspatial_1_1AliasGraph.html#ac28d2a4f86fab8aceb142de7c50a3d0f',1,'spatial::AliasGraph']]],
+  ['getpointeroperandindex_151',['getPointerOperandIndex',['../namespacespatial.html#a4fe8bc02c3a95c9b71249819b48852c4',1,'spatial']]],
+  ['getpred_152',['GetPred',['../namespacespatial.html#afe0b261e835418c8428b64cacdea1776',1,'spatial']]],
+  ['getresult_153',['getResult',['../classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261',1,'spatial::ValueContext']]],
+  ['getsavedcontext_154',['getSavedContext',['../classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3',1,'spatial::ValueContext']]],
+  ['getsucc_155',['GetSucc',['../namespacespatial.html#aed2671a5712d91510e7712d9e6a1b566',1,'spatial']]],
+  ['gettoken_156',['getToken',['../classspatial_1_1TokenWrapper.html#a328b750d84081df343843d2dc7df5026',1,'spatial::TokenWrapper::getToken(llvm::Instruction *)'],['../classspatial_1_1TokenWrapper.html#ad942a3b1498eab989e478e8361d39560',1,'spatial::TokenWrapper::getToken(Token *)'],['../classspatial_1_1TokenWrapper.html#ac827d9d3087f6cc21c273b2925dfa71e',1,'spatial::TokenWrapper::getToken(std::string, llvm::Function *)'],['../classspatial_1_1TokenWrapper.html#a3e96e05dde241cc162cfe54c3b8322d4',1,'spatial::TokenWrapper::getToken(llvm::GEPOperator *, llvm::Function *)'],['../classspatial_1_1TokenWrapper.html#ab1a24f48c30f0b3adafbaf6a4ca814e6',1,'spatial::TokenWrapper::getToken(llvm::Type *)'],['../classspatial_1_1TokenWrapper.html#a4d4fcd4dd5a1497d51c8c9984c68b8b0',1,'spatial::TokenWrapper::getToken(llvm::Argument *)'],['../classspatial_1_1TokenWrapper.html#a32c76e8df0be269fd958d6d64066d989',1,'spatial::TokenWrapper::getToken(llvm::Value *)']]],
+  ['gettokenwithoutindex_157',['getTokenWithoutIndex',['../classspatial_1_1TokenWrapper.html#a8697a1f4a9676fbce28150362a19570d',1,'spatial::TokenWrapper']]],
+  ['gettop_158',['getTop',['../classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90',1,'spatial::ValueContext']]],
+  ['getuniquepointee_159',['getUniquePointee',['../classspatial_1_1AliasGraph.html#a7e3bc6f74ad562e48037e473ca28d72e',1,'spatial::AliasGraph']]],
+  ['getvalue_160',['getValue',['../classspatial_1_1Token.html#af65391c1f089ddc9259ffe286c5337d0',1,'spatial::Token']]]
 ];

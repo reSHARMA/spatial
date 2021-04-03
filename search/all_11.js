@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ealiastokens_101',['~AliasTokens',['../classspatial_1_1AliasTokens.html#a7bf7c51e6563d5741a4dbac66c9cf6b5',1,'spatial::AliasTokens']]]
+  ['yellowt_100',['YELLOWT',['../PointsToBenchmark_8cpp.html#a29d67e590a26e58784e40a6192abc51c',1,'PointsToBenchmark.cpp']]]
 ];

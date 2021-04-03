@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['pointstobenchmarkrunner_181',['PointsToBenchmarkRunner',['../classspatial_1_1PointsToBenchmarkRunner.html#aa6645ab68ab153fc5ce30a8a4dc45cee',1,'spatial::PointsToBenchmarkRunner']]],
-  ['pop_182',['pop',['../classspatial_1_1Worklist.html#a8b7e520a70b13bf132e7782f1b5ce5e8',1,'spatial::Worklist']]],
-  ['print_5fargs_183',['print_args',['../namespacespatial.html#a12b25028810d6a384817f85188bdc0cf',1,'spatial']]],
-  ['ptabenchmarkrunner_184',['PTABenchmarkRunner',['../classspatial_1_1PTABenchmarkRunner.html#a662ad94367c430c6e4ee61d77d5f96f5',1,'spatial::PTABenchmarkRunner']]],
-  ['push_185',['push',['../classspatial_1_1Worklist.html#a720df36e2b33442d6b876864d9cfff82',1,'spatial::Worklist::push(llvm::Instruction *)'],['../classspatial_1_1Worklist.html#a672a8ae3a11d469c109969a86bb68e4e',1,'spatial::Worklist::push(llvm::BasicBlock *)'],['../classspatial_1_1Worklist.html#a39e6699aee66b461d52389235ae0e1cd',1,'spatial::Worklist::push(llvm::Function *)']]]
+  ['replaceirvar_181',['ReplaceIRVar',['../classReplaceIRVar.html#a9c68da708bbda4be6b5cb55ff05b54fe',1,'ReplaceIRVar']]],
+  ['resetindex_182',['resetIndex',['../classspatial_1_1Token.html#a1eacab6b650995074f57f4dab0962855',1,'spatial::Token']]],
+  ['runonbasicblock_183',['runOnBasicBlock',['../classReplaceIRVar.html#a41d9ba6225a4efa62c8b123d08676573',1,'ReplaceIRVar']]],
+  ['runonfunction_184',['runOnFunction',['../classReplaceIRVar.html#a404cf892ebdcabe03bb016dc7367aa65',1,'ReplaceIRVar']]],
+  ['runonmodule_185',['runOnModule',['../classReplaceIRVar.html#ac6dc1c852a768e2d25b39570a29cc46e',1,'ReplaceIRVar']]]
 ];
