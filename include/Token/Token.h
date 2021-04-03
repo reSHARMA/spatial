@@ -1,5 +1,5 @@
-#ifndef ALIAS_H
-#define ALIAS_H
+#ifndef TOKEN_H
+#define TOKEN_H
 
 #include "string"
 #include "llvm/ADT/StringRef.h"
@@ -13,7 +13,7 @@
 
 namespace spatial {
 
-class Alias {
+class Token {
 private:
   llvm::Value *Val;
   llvm::Type *Ty;
@@ -42,19 +42,19 @@ public:
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
 
-  Alias(llvm::Value *Val, std::string Index = "");
-  Alias(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
-  Alias(llvm::Argument *Arg, std::string Index = "");
-  Alias(llvm::Type *Ty, std::string Index = "");
-  Alias(std::string S, llvm::Function *Func, std::string Index = "");
-  Alias(Alias *A);
+  Token(llvm::Value *Val, std::string Index = "");
+  Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
+  Token(llvm::Argument *Arg, std::string Index = "");
+  Token(llvm::Type *Ty, std::string Index = "");
+  Token(std::string S, llvm::Function *Func, std::string Index = "");
+  Token(Token *A);
 
   llvm::Value *getValue() const;
   llvm::StringRef getName() const;
   std::string getMemTypeName() const;
   std::string getFunctionName() const;
   std::string getFieldIndex() const;
-  friend std::ostream &operator<<(std::ostream &OS, const Alias &A);
+  friend std::ostream &operator<<(std::ostream &OS, const Token &A);
 
   bool isMem() const;
   bool isArg() const;
@@ -64,9 +64,9 @@ public:
   bool sameFunc(llvm::Function *Func) const;
   std::string getHash() const;
 
-  bool operator<(const Alias &TheAlias) const;
-  bool operator==(const Alias &TheAlias) const;
-  void operator=(const Alias &TheAlias);
+  bool operator<(const Token &TheToken) const;
+  bool operator==(const Token &TheToken) const;
+  void operator=(const Token &TheToken);
 };
 } // namespace spatial
 

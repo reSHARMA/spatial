@@ -1,6 +1,6 @@
 add_library (Spatial SHARED
-    Token/Alias.cpp
-    Token/AliasToken.cpp
+    Token/Token.cpp
+    Token/TokenWrapper.cpp
     Benchmark/PointsToBenchmark.cpp
     Benchmark/PTABenchmark.cpp
     Worklist/Worklist.cpp

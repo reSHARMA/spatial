@@ -1,8 +1,8 @@
-#include "Token/Alias.h"
+#include "Token/Token.h"
 
 namespace spatial {
 
-void Alias::set(llvm::Value *Val, unsigned int Kind, std::string Index,
+void Token::set(llvm::Value *Val, unsigned int Kind, std::string Index,
                 llvm::Function *Func, bool Global) {
   this->Val = Val;
   this->Kind = Kind;
@@ -13,14 +13,14 @@ void Alias::set(llvm::Value *Val, unsigned int Kind, std::string Index,
     this->IsGlobal = true;
 }
 
-void Alias::set(llvm::Type *Ty, unsigned int Kind, std::string Index) {
+void Token::set(llvm::Type *Ty, unsigned int Kind, std::string Index) {
   this->Ty = Ty;
   this->Kind = Kind;
   this->Index = Index;
   this->IsGlobal = false;
 }
 
-void Alias::set(llvm::Argument *Arg, unsigned int Kind, std::string Index,
+void Token::set(llvm::Argument *Arg, unsigned int Kind, std::string Index,
                 llvm::Function *Func) {
   this->Arg = Arg;
   this->Kind = Kind;
@@ -29,7 +29,7 @@ void Alias::set(llvm::Argument *Arg, unsigned int Kind, std::string Index,
   this->IsGlobal = false;
 }
 
-void Alias::set(std::string S, unsigned int Kind, std::string Index,
+void Token::set(std::string S, unsigned int Kind, std::string Index,
                 llvm::Function *Func) {
   this->Val = nullptr;
   this->name = S;
@@ -41,7 +41,7 @@ void Alias::set(std::string S, unsigned int Kind, std::string Index,
   this->Func = Func;
 }
 
-Alias::Alias(llvm::Value *Val, std::string Index) {
+Token::Token(llvm::Value *Val, std::string Index) {
   if (llvm::Argument *Arg = llvm::dyn_cast<llvm::Argument>(Val)) {
     set(Arg, /* Kind = */ 2, Index, Arg->getParent());
   } else {
@@ -63,25 +63,25 @@ Alias::Alias(llvm::Value *Val, std::string Index) {
   }
 }
 
-Alias::Alias(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
+Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
   llvm::Value *Val = GOP->getPointerOperand();
   Index = this->getIndex(GOP);
   set(Val, /* Kind = */ 0, Index, Func);
 }
 
-Alias::Alias(llvm::Argument *Arg, std::string Index) {
+Token::Token(llvm::Argument *Arg, std::string Index) {
   set(Arg, /* Kind = */ 2, Index, Arg->getParent());
 }
 
-Alias::Alias(llvm::Type *Ty, std::string Index) {
+Token::Token(llvm::Type *Ty, std::string Index) {
   set(Ty, /* Kind = */ 1, Index);
 }
 
-Alias::Alias(std::string S, llvm::Function *Func, std::string Index) {
+Token::Token(std::string S, llvm::Function *Func, std::string Index) {
   set(S, /* Kind = */ 3, Index, Func);
 }
 
-Alias::Alias(Alias *A) {
+Token::Token(Token *A) {
   unsigned int Kind = A->Kind;
   if (Kind == 0) {
     set(A->Val, A->Kind, A->Index, A->Func);
@@ -95,22 +95,22 @@ Alias::Alias(Alias *A) {
 }
 
 /// setIndex - For a GEP Instruction find the offset and store it
-void Alias::setIndex(llvm::GetElementPtrInst *GEPInst) {
+void Token::setIndex(llvm::GetElementPtrInst *GEPInst) {
   if (llvm::GEPOperator *GEPOp = llvm::dyn_cast<llvm::GEPOperator>(GEPInst)) {
     this->Index = getIndex(GEPOp);
   }
 }
 
 /// setIndex - For a GEP Operator find the offset and store it
-void Alias::setIndex(llvm::GEPOperator *GEPOp) {
+void Token::setIndex(llvm::GEPOperator *GEPOp) {
   this->Index = getIndex(GEPOp);
 }
 
 /// resetIndex - Resets the index back to an empty string
-void Alias::resetIndex() { this->Index = ""; }
+void Token::resetIndex() { this->Index = ""; }
 
 /// getIndex - For a GEP Operator find the offset
-std::string Alias::getIndex(llvm::GEPOperator *GEPOp) {
+std::string Token::getIndex(llvm::GEPOperator *GEPOp) {
   auto Iter = GEPOp->idx_begin();
   std::string Index = "[";
   while (Iter != GEPOp->idx_end()) {
@@ -123,14 +123,14 @@ std::string Alias::getIndex(llvm::GEPOperator *GEPOp) {
   return Index.substr(3, Index.size() - 4);
 }
 /// getValue - Returns the underlying Value* for the alias
-llvm::Value *Alias::getValue() const {
+llvm::Value *Token::getValue() const {
   if (this->Kind == 0) {
     return this->Val;
   }
   return nullptr;
 }
 
-std::ostream &operator<<(std::ostream &OS, const Alias &A) {
+std::ostream &operator<<(std::ostream &OS, const Token &A) {
   if (!A.isGlobalVar() && (A.Kind == 0 || A.Kind == 2 || A.Kind == 3)) {
     OS << "[" << A.Func->getName().str() << "]"
        << " ";
@@ -152,7 +152,7 @@ std::ostream &operator<<(std::ostream &OS, const Alias &A) {
 
 /// getName - Returns the name of alias with other informations like parent
 /// function etc
-llvm::StringRef Alias::getName() const {
+llvm::StringRef Token::getName() const {
   if (this->Kind == 0) {
     return this->Val->getName();
   } else if (this->Kind == 2) {
@@ -164,7 +164,7 @@ llvm::StringRef Alias::getName() const {
 }
 
 /// getMemTypeName - Returns the memory type name
-std::string Alias::getMemTypeName() const {
+std::string Token::getMemTypeName() const {
   std::string MemTyName = "";
   if (!this->isMem())
     return MemTyName;
@@ -174,7 +174,7 @@ std::string Alias::getMemTypeName() const {
 }
 
 /// getFunctionName - Returns the name of the parent function
-std::string Alias::getFunctionName() const {
+std::string Token::getFunctionName() const {
   if (this->isMem() || this->isGlobalVar())
     return "";
   assert(Func != nullptr && "Function can not be null");
@@ -182,28 +182,28 @@ std::string Alias::getFunctionName() const {
 }
 
 /// getFieldIndex - Returns index of the field
-std::string Alias::getFieldIndex() const { return this->Index; }
+std::string Token::getFieldIndex() const { return this->Index; }
 
 /// isMem - Returns true if the alias denotes a location in heap
-bool Alias::isMem() const { return this->Kind == 1; }
+bool Token::isMem() const { return this->Kind == 1; }
 
 /// isGlobalVar - Returns true if the alias is global
-bool Alias::isGlobalVar() const { return this->IsGlobal; }
+bool Token::isGlobalVar() const { return this->IsGlobal; }
 
 /// isArg - Returns true if alias is a function argument
-bool Alias::isArg() const { return this->Kind == 2; }
+bool Token::isArg() const { return this->Kind == 2; }
 
 /// isField - Returns true if alias is a field
-bool Alias::isField() const { return this->Index != ""; }
+bool Token::isField() const { return this->Index != ""; }
 
 /// isAllocaOrArgOrGlobal - Returns true if the alias is global, an argument or
 /// alloca
-bool Alias::isAllocaOrArgOrGlobal() const {
+bool Token::isAllocaOrArgOrGlobal() const {
   return this->isMem() || this->isGlobalVar() || this->isArg();
 }
 
 /// sameFunc = Returns true if the parent function of alias is same as /p Func
-bool Alias::sameFunc(llvm::Function *Func) const {
+bool Token::sameFunc(llvm::Function *Func) const {
   if (this->Func)
     return this->Func == Func;
   return false;
@@ -211,7 +211,7 @@ bool Alias::sameFunc(llvm::Function *Func) const {
 
 ///  getHash - Calculates the hash for alias to avoid multiple enteries of same
 ///  alias
-std::string Alias::getHash() const {
+std::string Token::getHash() const {
   std::string hash = "";
   if (this->isGlobalVar())
     hash += "G";
@@ -222,24 +222,24 @@ std::string Alias::getHash() const {
   return hash;
 }
 
-bool Alias::operator<(const Alias &TheAlias) const {
-  return (this->getHash() < TheAlias.getHash());
+bool Token::operator<(const Token &TheToken) const {
+  return (this->getHash() < TheToken.getHash());
 }
 
-bool Alias::operator==(const Alias &TheAlias) const {
-  return (this->getHash() == TheAlias.getHash());
+bool Token::operator==(const Token &TheToken) const {
+  return (this->getHash() == TheToken.getHash());
 }
 
-void Alias::operator=(const Alias &TheAlias) {
-  unsigned int Kind = TheAlias.Kind;
+void Token::operator=(const Token &TheToken) {
+  unsigned int Kind = TheToken.Kind;
   if (Kind == 0) {
-    set(TheAlias.Val, TheAlias.Kind, TheAlias.Index, TheAlias.Func);
+    set(TheToken.Val, TheToken.Kind, TheToken.Index, TheToken.Func);
   } else if (Kind == 1) {
-    set(TheAlias.Ty, TheAlias.Kind, TheAlias.Index);
+    set(TheToken.Ty, TheToken.Kind, TheToken.Index);
   } else if (Kind == 2) {
-    set(TheAlias.Arg, TheAlias.Kind, TheAlias.Index, TheAlias.Func);
+    set(TheToken.Arg, TheToken.Kind, TheToken.Index, TheToken.Func);
   } else if (Kind == 3) {
-    set(TheAlias.name, TheAlias.Kind, TheAlias.Index, TheAlias.Func);
+    set(TheToken.name, TheToken.Kind, TheToken.Index, TheToken.Func);
   }
 }
 
