@@ -33,8 +33,7 @@ Token *TokenWrapper::getToken(llvm::Value *Val) {
 
 /// getToken - Returns Token object for Value \p GEPOperator and Function
 /// \p Func, returns the object from cache if it already exists
-Token *TokenWrapper::getToken(llvm::GEPOperator *GOP,
-                                  llvm::Function *Func) {
+Token *TokenWrapper::getToken(llvm::GEPOperator *GOP, llvm::Function *Func) {
   Token *A = new Token(GOP, Func);
   std::string hash = A->getHash();
   if (insert(A))
@@ -135,8 +134,7 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::Instruction *Inst) {
 
 /// extractToken - Returns a vector of alias objects derived from
 /// Global variable \Global operands
-std::vector<Token *>
-TokenWrapper::extractToken(llvm::GlobalVariable *Global) {
+std::vector<Token *> TokenWrapper::extractToken(llvm::GlobalVariable *Global) {
   std::vector<Token *> TokenVec;
   if (Global->hasName() && !Global->getName().startswith("_")) {
     TokenVec.push_back(this->getToken(Global));
@@ -179,7 +177,7 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::AllocaInst *Inst) {
   Token *Alloca = this->getToken(Inst);
   TokenVec.push_back(Alloca);
   TokenVec.push_back(this->getToken(Alloca->getName().str() + "-orig",
-                                         Inst->getParent()->getParent()));
+                                    Inst->getParent()->getParent()));
   return TokenVec;
 }
 
@@ -219,22 +217,20 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::BitCastInst *Inst) {
 
 /// extractToken - Returns a vector of alias objects for GetElementPointer
 /// \Inst operands.
-std::vector<Token *>
-TokenWrapper::extractToken(llvm::GetElementPtrInst *Inst) {
+std::vector<Token *> TokenWrapper::extractToken(llvm::GetElementPtrInst *Inst) {
   // Only provides partial support and returns {op1, op2[idx1]} for op1 = GEP
   // op2 0 idx1
   std::vector<Token *> TokenVec;
   llvm::Function *Func = Inst->getParent()->getParent();
   TokenVec.push_back(this->getToken(Inst));
-  TokenVec.push_back(
-      this->getToken(llvm::cast<llvm::GEPOperator>(Inst), Func));
+  TokenVec.push_back(this->getToken(llvm::cast<llvm::GEPOperator>(Inst), Func));
   return TokenVec;
 }
 
 /// extractToken - Returns a vector of alias objects for Argument \Arg of
 /// Function \Func
 std::vector<Token *> TokenWrapper::extractToken(llvm::Argument *Arg,
-                                                    llvm::Function *Func) {
+                                                llvm::Function *Func) {
   std::vector<Token *> TokenVec;
   Token *ArgToken = this->getToken(Arg);
   TokenVec.push_back(ArgToken);
@@ -269,7 +265,8 @@ std::pair<int, int> TokenWrapper::extractStatementType(Ty *Inst) {
 template std::pair<int, int>
 TokenWrapper::extractStatementType<llvm::Instruction>(llvm::Instruction *);
 template std::pair<int, int>
-TokenWrapper::extractStatementType<llvm::GlobalVariable>(llvm::GlobalVariable *);
+TokenWrapper::extractStatementType<llvm::GlobalVariable>(
+    llvm::GlobalVariable *);
 
 /// handleGEPUtil - Returns the extended field value for a GEP
 template <typename GEP> Token *TokenWrapper::handleGEPUtil(GEP *G, Token *Ptr) {
@@ -282,9 +279,10 @@ template <typename GEP> Token *TokenWrapper::handleGEPUtil(GEP *G, Token *Ptr) {
 }
 template Token *
 TokenWrapper::handleGEPUtil<llvm::GetElementPtrInst>(llvm::GetElementPtrInst *G,
-                                                    Token *Ptr);
+                                                     Token *Ptr);
 template Token *
-TokenWrapper::handleGEPUtil<llvm::GEPOperator>(llvm::GEPOperator *G, Token *Ptr);
+TokenWrapper::handleGEPUtil<llvm::GEPOperator>(llvm::GEPOperator *G,
+                                               Token *Ptr);
 
 TokenWrapper::~TokenWrapper() {
   for (auto X : TokenBank) {
