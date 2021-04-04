@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iterator_205',['iterator',['../classspatial_1_1AliasGraph.html#aa3602ea03c7e744b595e826aa1d9440b',1,'spatial::AliasGraph']]]
+  ['iterator_205',['iterator',['../classspatial_1_1Graph.html#a3195fb2870bf0032110b3782d65f4075',1,'spatial::Graph']]]
 ];

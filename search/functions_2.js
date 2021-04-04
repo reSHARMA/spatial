@@ -1,8 +1,8 @@
 var searchData=
 [
   ['empty_133',['empty',['../classspatial_1_1Worklist.html#ae03218150739a49f2c314d3f9e1ffac9',1,'spatial::Worklist']]],
-  ['end_134',['end',['../classspatial_1_1AliasGraph.html#a41cf7a6f744fffb73b43a0c40cf3c16d',1,'spatial::AliasGraph']]],
-  ['erase_135',['erase',['../classspatial_1_1AliasGraph.html#ae40d7c9789dd26cdd1b9bb785adc300a',1,'spatial::AliasGraph']]],
+  ['end_134',['end',['../classspatial_1_1Graph.html#ab92b0e4f2c252baaee9740fa9fdb781c',1,'spatial::Graph']]],
+  ['erase_135',['erase',['../classspatial_1_1Graph.html#a5132c85df9b3a73ebfaf3ad8944e6cd2',1,'spatial::Graph']]],
   ['evaluate_136',['evaluate',['../classspatial_1_1PointsToBenchmarkRunner.html#a8045e4d20c2417c39f5448f04c4d119f',1,'spatial::PointsToBenchmarkRunner::evaluate()'],['../classspatial_1_1PTABenchmarkRunner.html#ab354d8a93e7408e0da5d9a699ef02011',1,'spatial::PTABenchmarkRunner::evaluate()']]],
   ['evaluateprecision_137',['evaluatePrecision',['../classspatial_1_1PointsToBenchmarkRunner.html#a78ea686bbb7f646d199e4b82c9f6dd59',1,'spatial::PointsToBenchmarkRunner']]],
   ['extract_138',['extract',['../classspatial_1_1BenchmarkRunner.html#ab7b146460c93114c2d9a7e6c990ac178',1,'spatial::BenchmarkRunner::extract()'],['../classspatial_1_1PointsToBenchmarkRunner.html#ab26dec190bcb464cccd157c3fe7dfe50',1,'spatial::PointsToBenchmarkRunner::extract()'],['../classspatial_1_1PTABenchmarkRunner.html#a821df62bc5d06797d6eaa88c8bcf91d1',1,'spatial::PTABenchmarkRunner::extract()']]],

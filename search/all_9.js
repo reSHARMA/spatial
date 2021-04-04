@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['operator_3c_55',['operator&lt;',['../classspatial_1_1AliasGraph.html#a20509c6ea3f1712a0efd34d499eebdb4',1,'spatial::AliasGraph::operator&lt;()'],['../classspatial_1_1Token.html#a5d5a9b5540a519c7e25191d3d167950a',1,'spatial::Token::operator&lt;()']]],
-  ['operator_3c_3c_56',['operator&lt;&lt;',['../classspatial_1_1PointsToBenchmarkRunner.html#a8d79054ee9e995702979c9bf5f00bc8c',1,'spatial::PointsToBenchmarkRunner::operator&lt;&lt;()'],['../classspatial_1_1PTABenchmarkRunner.html#a73cb67488a94da0cbfe3ca93ad59873f',1,'spatial::PTABenchmarkRunner::operator&lt;&lt;()'],['../classspatial_1_1AliasGraph.html#a8b5b22b436bc7b6395881bd446b2b1b5',1,'spatial::AliasGraph::operator&lt;&lt;()'],['../classspatial_1_1Token.html#afc2c4d1f1d068ef01d8133b81e2f4b22',1,'spatial::Token::operator&lt;&lt;()'],['../namespacespatial.html#a10411b959af96941e384aee5818b641b',1,'spatial::operator&lt;&lt;(std::ostream &amp;OS, const PointsToBenchmarkRunner &amp;B)'],['../namespacespatial.html#a45295bef82099972685bafc61089a02b',1,'spatial::operator&lt;&lt;(std::ostream &amp;OS, const PTABenchmarkRunner &amp;B)'],['../namespacespatial.html#aa53f579b1f0fbd58f343eeb1cd8cb74d',1,'spatial::operator&lt;&lt;(std::ostream &amp;OS, const Token &amp;A)'],['../namespacespatial.html#aa4a168e651e585de24ea78d7598a1bf9',1,'spatial::operator&lt;&lt;(std::ostream &amp;OS, const AliasGraph&lt; AliasNode &gt; &amp;G)']]],
-  ['operator_3d_57',['operator=',['../classspatial_1_1Token.html#a131c1420ce5d7e46465720e7b3f069c9',1,'spatial::Token']]],
-  ['operator_3d_3d_58',['operator==',['../classspatial_1_1AliasGraph.html#ae0e228a39b93c67e517d95b20b8c60e1',1,'spatial::AliasGraph::operator==()'],['../classspatial_1_1Token.html#a634c4499699b02330c1901b05d499f3e',1,'spatial::Token::operator==()']]]
+  ['pointstobenchmark_2ecpp_59',['PointsToBenchmark.cpp',['../PointsToBenchmark_8cpp.html',1,'']]],
+  ['pointstobenchmark_2eh_60',['PointsToBenchmark.h',['../PointsToBenchmark_8h.html',1,'']]],
+  ['pointstobenchmarkrunner_61',['PointsToBenchmarkRunner',['../classspatial_1_1PointsToBenchmarkRunner.html#aa6645ab68ab153fc5ce30a8a4dc45cee',1,'spatial::PointsToBenchmarkRunner::PointsToBenchmarkRunner()'],['../classspatial_1_1PointsToBenchmarkRunner.html',1,'spatial::PointsToBenchmarkRunner']]],
+  ['pop_62',['pop',['../classspatial_1_1Worklist.html#a8b7e520a70b13bf132e7782f1b5ce5e8',1,'spatial::Worklist']]],
+  ['print_5fargs_63',['print_args',['../namespacespatial.html#a12b25028810d6a384817f85188bdc0cf',1,'spatial']]],
+  ['ptabenchmark_2ecpp_64',['PTABenchmark.cpp',['../PTABenchmark_8cpp.html',1,'']]],
+  ['ptabenchmark_2eh_65',['PTABenchmark.h',['../PTABenchmark_8h.html',1,'']]],
+  ['ptabenchmarkrunner_66',['PTABenchmarkRunner',['../classspatial_1_1PTABenchmarkRunner.html#a662ad94367c430c6e4ee61d77d5f96f5',1,'spatial::PTABenchmarkRunner::PTABenchmarkRunner()'],['../classspatial_1_1PTABenchmarkRunner.html',1,'spatial::PTABenchmarkRunner']]],
+  ['push_67',['push',['../classspatial_1_1Worklist.html#a720df36e2b33442d6b876864d9cfff82',1,'spatial::Worklist::push(llvm::Instruction *)'],['../classspatial_1_1Worklist.html#a672a8ae3a11d469c109969a86bb68e4e',1,'spatial::Worklist::push(llvm::BasicBlock *)'],['../classspatial_1_1Worklist.html#a39e6699aee66b461d52389235ae0e1cd',1,'spatial::Worklist::push(llvm::Function *)']]]
 ];

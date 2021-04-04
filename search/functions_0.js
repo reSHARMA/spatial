@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['begin_130',['begin',['../classspatial_1_1AliasGraph.html#afe14eab2eb2d3c28b3a890de368d1b62',1,'spatial::AliasGraph']]],
+  ['begin_130',['begin',['../classspatial_1_1Graph.html#ad341620cc54dae5b3c64a40fec3c1437',1,'spatial::Graph']]],
   ['benchmarkrunner_131',['BenchmarkRunner',['../classspatial_1_1BenchmarkRunner.html#a978c3898211cf00f4e35da53828b8afd',1,'spatial::BenchmarkRunner']]]
 ];

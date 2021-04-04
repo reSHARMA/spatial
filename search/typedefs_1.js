@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['graphtype_204',['GraphType',['../classspatial_1_1AliasGraph.html#ae1d78dd52fc755e3d3f426b85a9370f7',1,'spatial::AliasGraph']]]
+  ['graphtype_204',['GraphType',['../classspatial_1_1Graph.html#ad645fa5ce6537e353e49f81c1390253d',1,'spatial::Graph']]]
 ];

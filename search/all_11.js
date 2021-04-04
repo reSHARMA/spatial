@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yellowt_100',['YELLOWT',['../PointsToBenchmark_8cpp.html#a29d67e590a26e58784e40a6192abc51c',1,'PointsToBenchmark.cpp']]]
+  ['_7etokenwrapper_101',['~TokenWrapper',['../classspatial_1_1TokenWrapper.html#a3a1566015d66dfc53af3ab77897c0e14',1,'spatial::TokenWrapper']]]
 ];
