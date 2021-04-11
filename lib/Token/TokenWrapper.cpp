@@ -123,7 +123,9 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::Instruction *Inst) {
     return extractToken(GEP);
   } else if (llvm::CallInst *CI = llvm::dyn_cast<llvm::CallInst>(Inst)) {
     return extractToken(CI);
-  } else {
+  } else if(llvm::isa<llvm::PHINode>(Inst)){
+  	return extractPHINodeToken(Inst);
+  }else {
     // Direct support to some instructions may not be useful example
     // CallInst, as it is more useful to generate alias object for call
     // arguments on the fly
@@ -248,25 +250,28 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::CallInst *CI) {
   return TokenVec;
 }
 
-/// extractStatementType - Returns the relative level of redirection based of
-/// LHS and RHS on the statement
-template <typename Ty>
-std::pair<int, int> TokenWrapper::extractStatementType(Ty *Inst) {
-  if (llvm::isa<llvm::AllocaInst>(Inst) ||
-      llvm::isa<llvm::GlobalVariable>(Inst) ||
-      llvm::isa<llvm::GetElementPtrInst>(Inst))
-    return {1, 0};
-  if (llvm::isa<llvm::StoreInst>(Inst))
-    return {2, 1};
-  if (llvm::isa<llvm::LoadInst>(Inst))
-    return {1, 2};
-  return {1, 1};
+/// extractPHINodeToken - Returns aliases for the PHINode instruction
+std::vector<Token *> TokenWrapper::extractPHINodeToken(llvm::Instruction *Inst){
+	std::vector<Token *> TokenVec;
+	Token *PhiNode = this->getToken(Inst);
+	TokenVec.push_back(PhiNode);
+	if(Inst->getOperand(0)->hasName()){
+		TokenVec.push_back(this->getToken(Inst->getOperand(0)));
+	}
+	if(Inst->getOperand(1)->hasName()){
+		TokenVec.push_back(this->getToken(Inst->getOperand(1)));
+	}
+	return TokenVec;
 }
-template std::pair<int, int>
-TokenWrapper::extractStatementType<llvm::Instruction>(llvm::Instruction *);
-template std::pair<int, int>
-TokenWrapper::extractStatementType<llvm::GlobalVariable>(
-    llvm::GlobalVariable *);
+
+/// extractPHINodeStetementType - Returns relative level of redirection based on LHS and RHS
+/// for PHINode instruction.
+std::vector<int> TokenWrapper::extractPHINodeStatementType(llvm::Instruction *Inst){
+	if(llvm::isa<llvm::PHINode>(Inst)){
+		return {1,1,1};
+	}
+	return {};
+}
 
 /// handleGEPUtil - Returns the extended field value for a GEP
 template <typename GEP> Token *TokenWrapper::handleGEPUtil(GEP *G, Token *Ptr) {
