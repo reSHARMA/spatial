@@ -60,9 +60,14 @@ void ReplaceIRVar::runOnBasicBlock(llvm::BasicBlock &BB) {
                    (DbgDeclare->getVariable()->getName()).str());
       if (llvm::Instruction *I =
               llvm::dyn_cast<llvm::Instruction>(DbgDeclare->getAddress())) {
-        llvm::StringRef strref(this->NewName);
-        HashMap.insert(std::pair<std::string, std::string>(I->getName().str(),
+    std::string Name = I->getName().str();
+    if(HashMap.find(Name) != HashMap.end()){
+    	HashMap[Name] = this->NewName;
+    }
+    else{
+    	HashMap.insert(std::pair<std::string, std::string>(I->getName().str(),
                                                            this->NewName));
+    }
       }
     }
   }
