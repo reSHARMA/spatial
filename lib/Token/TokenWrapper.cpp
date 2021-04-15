@@ -154,8 +154,15 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::StoreInst *Inst) {
   std::vector<Token *> TokenVec;
   TokenVec.push_back(this->getToken(Inst->getPointerOperand()));
   llvm::Value *ValOp = Inst->getValueOperand();
-  if (!llvm::isa<llvm::ConstantInt>(ValOp))
-    TokenVec.push_back(this->getToken(ValOp));
+  // if (!llvm::isa<llvm::ConstantInt>(ValOp))
+  //   TokenVec.push_back(this->getToken(ValOp));
+	if(llvm::ConstantPointerNull *Constant = llvm::dyn_cast<llvm::ConstantPointerNull>(ValOp)){
+		std::string s("NULL");
+		TokenVec.push_back(this->getToken(s,Inst->getParent()->getParent()));
+	}
+	else if(!llvm::isa<llvm::ConstantInt>(ValOp)){
+		TokenVec.push_back(this->getToken(ValOp));
+	}
   return TokenVec;
 }
 

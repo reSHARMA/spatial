@@ -55,8 +55,13 @@ void Graph<Node>::insert(Node *Src, Node *Dest, int Left, int Right) {
     }
   } else if (Left == 2 && Right == 1) {
     for (auto Src : this->getPointee(Src)) {
-      for (auto Dest : this->getPointee(Dest)) {
-        this->insert(Src, Dest);
+      if(Dest->isNull()){
+      	this->insert(Src,Dest);
+      }
+      else if(!Src->isNull()){	
+	      	for (auto Dest : this->getPointee(Dest)) {
+	        this->insert(Src, Dest);
+	      }
       }
     }
   } else if (Left == 1 && Right == 0) {
