@@ -198,14 +198,7 @@ bool Token::isArg() const { return this->Kind == 2; }
 /// isField - Returns true if alias is a field
 bool Token::isField() const { return this->Index != ""; }
 
-bool Token::isNull(){
-	if(this->Kind == 3 && this->name == "NULL"){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
+bool Token::isNull() { return this->Kind == 3 && this->name == "NULL"; }
 
 /// isAllocaOrArgOrGlobal - Returns true if the alias is global, an argument or
 /// alloca

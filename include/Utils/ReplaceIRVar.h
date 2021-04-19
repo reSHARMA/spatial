@@ -23,6 +23,7 @@ private:
   void init(llvm::BasicBlock &BB);
   void init(llvm::Module &M);
   void format(std::string First, std::string Second);
+  void insert(std::string);
 
 public:
   ReplaceIRVar();
