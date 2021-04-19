@@ -156,9 +156,10 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::StoreInst *Inst) {
   llvm::Value *ValOp = Inst->getValueOperand();
   // if (!llvm::isa<llvm::ConstantInt>(ValOp))
   //   TokenVec.push_back(this->getToken(ValOp));
-	if(llvm::ConstantPointerNull *Constant = llvm::dyn_cast<llvm::ConstantPointerNull>(ValOp)){
+  // llvm::ConstantPointerNull *Constant = llvm::dyn_cast<llvm::ConstantPointerNull>(ValOp)
+	if(llvm::isa<llvm::ConstantPointerNull>(ValOp)){
 		std::string s("NULL");
-		TokenVec.push_back(this->getToken(s,Inst->getParent()->getParent()));
+		TokenVec.push_back(this->getToken(s,nullptr));
 	}
 	else if(!llvm::isa<llvm::ConstantInt>(ValOp)){
 		TokenVec.push_back(this->getToken(ValOp));
@@ -260,8 +261,7 @@ std::vector<Token *> TokenWrapper::extractToken(llvm::CallInst *CI) {
 /// extractPHINodeToken - Returns aliases for the PHINode instruction
 std::vector<Token *> TokenWrapper::extractPHINodeToken(llvm::Instruction *Inst){
 	std::vector<Token *> TokenVec;
-	Token *PhiNode = this->getToken(Inst);
-	TokenVec.push_back(PhiNode);
+	TokenVec.push_back(this->getToken(Inst));
 	if(Inst->getOperand(0)->hasName()){
 		TokenVec.push_back(this->getToken(Inst->getOperand(0)));
 	}
