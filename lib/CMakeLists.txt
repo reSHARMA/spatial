@@ -6,6 +6,7 @@ add_library (Spatial SHARED
     Worklist/Worklist.cpp
     Utils/CFGUtils.cpp
     Utils/ReplaceIRVar.cpp
+    InstInfo/InstInfo.cpp
 )
 
 set_target_properties(Spatial PROPERTIES
