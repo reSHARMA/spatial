@@ -32,21 +32,6 @@ public:
 
   Token *getTokenWithoutIndex(Token *);
 
-  std::vector<Token *> extractToken(llvm::Instruction *);
-  std::vector<Token *> extractToken(llvm::StoreInst *);
-  std::vector<Token *> extractToken(llvm::LoadInst *);
-  std::vector<Token *> extractToken(llvm::AllocaInst *);
-  std::vector<Token *> extractToken(llvm::BitCastInst *);
-  std::vector<Token *> extractToken(llvm::ReturnInst *);
-  std::vector<Token *> extractToken(llvm::GetElementPtrInst *);
-  std::vector<Token *> extractToken(llvm::GlobalVariable *);
-  std::vector<Token *> extractToken(llvm::CallInst *);
-  std::vector<Token *> extractToken(llvm::Argument *, llvm::Function *);
-
-  template <typename Ty> std::pair<int, int> extractStatementType(Ty *);
-
-  template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-
   ~TokenWrapper();
 };
 

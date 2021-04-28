@@ -1,17 +1,15 @@
-add_library (Spatial SHARED
-    Token/Token.cpp
-    Token/TokenWrapper.cpp
-    Benchmark/PointsToBenchmark.cpp
-    Benchmark/PTABenchmark.cpp
-    Worklist/Worklist.cpp
-    Utils/CFGUtils.cpp
-    Utils/ReplaceIRVar.cpp
-    InstInfo/InstInfo.cpp
-)
+add_subdirectory(Token)
+add_subdirectory(Benchmark)
+add_subdirectory(Worklist)
+add_subdirectory(Utils)
+add_subdirectory(InstInfo)
+add_subdirectory(InstModel)
+
+# TODO: Write this in multiple lines
+add_library (Spatial SHARED $<TARGET_OBJECTS:Token>  $<TARGET_OBJECTS:Benchmark> $<TARGET_OBJECTS:Worklist> $<TARGET_OBJECTS:Utils> $<TARGET_OBJECTS:InstInfo> $<TARGET_OBJECTS:InstModel> $<TARGET_OBJECTS:GenericInstModel>)
 
 set_target_properties(Spatial PROPERTIES
     SOVERSION 0
-    COMPILE_FLAGS "-g -std=c++14 -fno-rtti"
 )
 
 include(GNUInstallDirs)
