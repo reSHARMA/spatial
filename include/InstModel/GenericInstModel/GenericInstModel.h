@@ -1,9 +1,9 @@
 #ifndef GENERICINSTMODEL_GENERICINSTMODEL_H
 #define GENERICINSTMODEL_GENERICINSTMODEL_H
 
-#include "Token/Token.h"
 #include "InstInfo/InstInfo.h"
 #include "InstModel/InstModel.h"
+#include "Token/Token.h"
 #include "vector"
 #include "llvm/IR/Argument.h"
 #include "llvm/IR/Function.h"

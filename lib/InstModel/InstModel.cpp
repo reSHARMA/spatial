@@ -4,6 +4,6 @@ namespace spatial {
 
 InstModel::InstModel(TokenWrapper *TW) { this->TW = TW; }
 InstModel::~InstModel(){};
-TokenWrapper* InstModel::getTokenWrapper() { return this->TW; }
+TokenWrapper *InstModel::getTokenWrapper() { return this->TW; }
 
 } // namespace spatial
