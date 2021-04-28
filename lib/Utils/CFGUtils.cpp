@@ -13,7 +13,7 @@ namespace spatial {
 /// InstNamer - sets name to the SSA temporaries
 void InstNamer(llvm::Function &F) {
   ReplaceIRVar Replace;
-  Replace.runOnFunction(F);
+  Replace.run(F);
 }
 
 bool SkipFunction(llvm::Function &F) {
