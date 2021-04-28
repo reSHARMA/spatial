@@ -103,11 +103,17 @@ $(function() {
 , <a class="el" href="classspatial_1_1PointsToBenchmarkRunner.html#ab26dec190bcb464cccd157c3fe7dfe50">spatial::PointsToBenchmarkRunner</a>
 , <a class="el" href="classspatial_1_1PTABenchmarkRunner.html#a821df62bc5d06797d6eaa88c8bcf91d1">spatial::PTABenchmarkRunner</a>
 </li>
-<li>extractStatementType()
-: <a class="el" href="classspatial_1_1TokenWrapper.html#a93f88b13ac50cd5a20013c059a68aaac">spatial::TokenWrapper</a>
+<li>extractInstInfo()
+: <a class="el" href="classspatial_1_1GenericInstModel.html#abce7b7bcc534f87aa5e1ee52c36145ea">spatial::GenericInstModel</a>
+, <a class="el" href="classspatial_1_1InstModel.html#ad838f86d697b26aadd5fc8e321f55918">spatial::InstModel</a>
+</li>
+<li>extractRedirections()
+: <a class="el" href="classspatial_1_1GenericInstModel.html#a79b529587fc49d4670a3d091f9722afe">spatial::GenericInstModel</a>
+, <a class="el" href="classspatial_1_1InstModel.html#a13f741763a17234be0173e20211fb84e">spatial::InstModel</a>
 </li>
 <li>extractToken()
-: <a class="el" href="classspatial_1_1TokenWrapper.html#a4306fcdff3039773fd2a05c0ee017dbf">spatial::TokenWrapper</a>
+: <a class="el" href="classspatial_1_1GenericInstModel.html#a348d3c9d62ed7feafbe207310ced44d1">spatial::GenericInstModel</a>
+, <a class="el" href="classspatial_1_1InstModel.html#a713b7deea31f6e56f906593adbcb4aa8">spatial::InstModel</a>
 </li>
 </ul>
 
@@ -161,6 +167,9 @@ $(function() {
 <li>getTokenWithoutIndex()
 : <a class="el" href="classspatial_1_1TokenWrapper.html#a8697a1f4a9676fbce28150362a19570d">spatial::TokenWrapper</a>
 </li>
+<li>getTokenWrapper()
+: <a class="el" href="classspatial_1_1InstModel.html#a0af15bd2e9fc1109fa4f32f2e5b550d5">spatial::InstModel</a>
+</li>
 <li>getTop()
 : <a class="el" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">spatial::ValueContext&lt; DataflowValue &gt;</a>
 </li>
@@ -178,7 +187,7 @@ $(function() {
 
 <h3><a id="index_h"></a>- h -</h3><ul>
 <li>handleGEPUtil()
-: <a class="el" href="classspatial_1_1TokenWrapper.html#aeb15e0e3bb572b7d6ebddf05fb796d46">spatial::TokenWrapper</a>
+: <a class="el" href="classspatial_1_1GenericInstModel.html#aba63f3833a73facde9e8ca806812e9dc">spatial::GenericInstModel</a>
 </li>
 <li>hasEdgeBetween()
 : <a class="el" href="classspatial_1_1Graph.html#ae0f9fe98b05d32c862f013f48680db27">spatial::Graph&lt; Node &gt;</a>
@@ -193,6 +202,13 @@ $(function() {
 <li>insert()
 : <a class="el" href="classspatial_1_1Graph.html#ab32d4c6fc9aed2aeff0d64a3688ad1a6">spatial::Graph&lt; Node &gt;</a>
 </li>
+<li>InstInfo()
+: <a class="el" href="classspatial_1_1InstInfo.html#ab01fae948aef7eae7da08aeeba9ce545">spatial::InstInfo</a>
+</li>
+<li>InstModel()
+: <a class="el" href="classspatial_1_1GenericInstModel.html#a83528f533acf5475ccbc735a552a6755">spatial::GenericInstModel</a>
+, <a class="el" href="classspatial_1_1InstModel.html#a83528f533acf5475ccbc735a552a6755">spatial::InstModel</a>
+</li>
 <li>isAllocaOrArgOrGlobal()
 : <a class="el" href="classspatial_1_1Token.html#aedb3de71a3480085da0288549c353f16">spatial::Token</a>
 </li>
@@ -202,6 +218,9 @@ $(function() {
 <li>isBasePointerType()
 : <a class="el" href="classspatial_1_1Token.html#a9848dd5a56e06f1e3bf2548f7f2807fa">spatial::Token</a>
 </li>
+<li>isCallInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#aae5b7615836d3159ec2e28a3780550db">spatial::InstInfo</a>
+</li>
 <li>isField()
 : <a class="el" href="classspatial_1_1Token.html#a11870500b0cbd5cb234f0c307f09e677">spatial::Token</a>
 </li>
@@ -210,6 +229,15 @@ $(function() {
 </li>
 <li>isMem()
 : <a class="el" href="classspatial_1_1Token.html#aa8c4a33c4fe5a850e22d2e568c5b85d5">spatial::Token</a>
+</li>
+<li>isPhiInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#a623301fa39f6aac49fe8f8edb803c598">spatial::InstInfo</a>
+</li>
+<li>isRWMem()
+: <a class="el" href="classspatial_1_1InstInfo.html#a6c6da1c602eb4dc8b7ef6b7911bbd793">spatial::InstInfo</a>
+</li>
+<li>isSkipInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#a3a5d3ad455ee85ebc56e60dfc1620931">spatial::InstInfo</a>
 </li>
 <li>iterator
 : <a class="el" href="classspatial_1_1Graph.html#a3195fb2870bf0032110b3782d65f4075">spatial::Graph&lt; Node &gt;</a>
@@ -291,11 +319,23 @@ $(function() {
 <li>sameFunc()
 : <a class="el" href="classspatial_1_1Token.html#a303c960ceab6f099888f2927bfd0ddda">spatial::Token</a>
 </li>
+<li>setCallInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#aa2046e0e0697e35d2e680b53eb2a52a5">spatial::InstInfo</a>
+</li>
 <li>setIndex()
 : <a class="el" href="classspatial_1_1Token.html#a2b17bde92ef93e7689740434b8f6ffa8">spatial::Token</a>
 </li>
+<li>setPhiInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#a5eee736f032ba64c7cffa4eaaf2eba32">spatial::InstInfo</a>
+</li>
 <li>setResult()
 : <a class="el" href="classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5">spatial::ValueContext&lt; DataflowValue &gt;</a>
+</li>
+<li>setRWMemInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#a4a143e23093fb0940ae7346eb124a992">spatial::InstInfo</a>
+</li>
+<li>setSkipInst()
+: <a class="el" href="classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9">spatial::InstInfo</a>
 </li>
 <li>size()
 : <a class="el" href="classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16">spatial::Worklist</a>
@@ -332,6 +372,12 @@ $(function() {
 
 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
+<li>~GenericInstModel()
+: <a class="el" href="classspatial_1_1GenericInstModel.html#ad57eccf6bbc57bb968b8a8a6c673aecf">spatial::GenericInstModel</a>
+</li>
+<li>~InstModel()
+: <a class="el" href="classspatial_1_1InstModel.html#a0bf97a6a466e002d77f1bfd5d36d865e">spatial::InstModel</a>
+</li>
 <li>~TokenWrapper()
 : <a class="el" href="classspatial_1_1TokenWrapper.html#a3a1566015d66dfc53af3ab77897c0e14">spatial::TokenWrapper</a>
 </li>

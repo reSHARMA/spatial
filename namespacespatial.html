@@ -65,6 +65,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">spatial Namespace Reference</div>  </div>
@@ -81,6 +82,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Graph.html">Graph</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1InstInfo.html">InstInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1GenericInstModel.html">GenericInstModel</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1InstModel.html">InstModel</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Token.html">Token</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1TokenWrapper.html">TokenWrapper</a></td></tr>
@@ -95,6 +102,15 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ab4ad64b23b2c519620a49644e76e933a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ab4ad64b23b2c519620a49644e76e933a">Context</a> = int</td></tr>
 <tr class="separator:ab4ad64b23b2c519620a49644e76e933a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aa6c0d0311681e6f27d464fe4fa78a6b1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1">InfoType</a> { <a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a88d25d80da4bcdc4bca3ffdc048dd046">Call</a>
+, <a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a8b6b0485d77cddffb6ea1af79b2d79e7">Phi</a>
+, <a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8">Skip</a>
+, <a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1aa0c108f66461113ebb3ca4d363b3fce0">RWMem</a>
+ }</td></tr>
+<tr class="separator:aa6c0d0311681e6f27d464fe4fa78a6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a12b25028810d6a384817f85188bdc0cf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a12b25028810d6a384817f85188bdc0cf">print_args</a> (llvm::CallInst *CI)</td></tr>
@@ -103,16 +119,12 @@ Functions</h2></td></tr>
 <tr class="separator:a10411b959af96941e384aee5818b641b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45295bef82099972685bafc61089a02b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a45295bef82099972685bafc61089a02b">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1PTABenchmarkRunner.html">PTABenchmarkRunner</a> &amp;B)</td></tr>
 <tr class="separator:a45295bef82099972685bafc61089a02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf6408d4fdbb2e17adbead632afbf20"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#aebf6408d4fdbb2e17adbead632afbf20">GenericInstModel::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;</a> (llvm::GetElementPtrInst *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
+<tr class="separator:aebf6408d4fdbb2e17adbead632afbf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9987ae302a176a703fa9961b0da39f5"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ad9987ae302a176a703fa9961b0da39f5">GenericInstModel::handleGEPUtil&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
+<tr class="separator:ad9987ae302a176a703fa9961b0da39f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa53f579b1f0fbd58f343eeb1cd8cb74d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#aa53f579b1f0fbd58f343eeb1cd8cb74d">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1Token.html">Token</a> &amp;A)</td></tr>
 <tr class="separator:aa53f579b1f0fbd58f343eeb1cd8cb74d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1e56b0ebcf1a38eef8c573f389a1f7c"><td class="memItemLeft" align="right" valign="top">template std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ae1e56b0ebcf1a38eef8c573f389a1f7c">TokenWrapper::extractStatementType&lt; llvm::Instruction &gt;</a> (llvm::Instruction *)</td></tr>
-<tr class="separator:ae1e56b0ebcf1a38eef8c573f389a1f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2374b57cb06d8bd9cd7acbdd6cad734b"><td class="memItemLeft" align="right" valign="top">template std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a2374b57cb06d8bd9cd7acbdd6cad734b">TokenWrapper::extractStatementType&lt; llvm::GlobalVariable &gt;</a> (llvm::GlobalVariable *)</td></tr>
-<tr class="separator:a2374b57cb06d8bd9cd7acbdd6cad734b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6372e69899fa0e5d7c6589a64bc0199"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ad6372e69899fa0e5d7c6589a64bc0199">TokenWrapper::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;</a> (llvm::GetElementPtrInst *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
-<tr class="separator:ad6372e69899fa0e5d7c6589a64bc0199"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97043d8a4b2032f91a431ffe13530e3d"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a97043d8a4b2032f91a431ffe13530e3d">TokenWrapper::handleGEPUtil&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
-<tr class="separator:a97043d8a4b2032f91a431ffe13530e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a34be2bbf1888aff83b5951b908255"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a29a34be2bbf1888aff83b5951b908255">InstNamer</a> (llvm::Function &amp;F)</td></tr>
 <tr class="memdesc:a29a34be2bbf1888aff83b5951b908255"><td class="mdescLeft">&#160;</td><td class="mdescRight">InstNamer - sets name to the SSA temporaries.  <a href="namespacespatial.html#a29a34be2bbf1888aff83b5951b908255">More...</a><br /></td></tr>
 <tr class="separator:a29a34be2bbf1888aff83b5951b908255"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +155,84 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aa6c0d0311681e6f27d464fe4fa78a6b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c0d0311681e6f27d464fe4fa78a6b1">&#9670;&nbsp;</a></span>InfoType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1">spatial::InfoType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa6c0d0311681e6f27d464fe4fa78a6b1a88d25d80da4bcdc4bca3ffdc048dd046"></a>Call&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c0d0311681e6f27d464fe4fa78a6b1a8b6b0485d77cddffb6ea1af79b2d79e7"></a>Phi&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8"></a>Skip&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c0d0311681e6f27d464fe4fa78a6b1aa0c108f66461113ebb3ca4d363b3fce0"></a>RWMem&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ad9987ae302a176a703fa9961b0da39f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9987ae302a176a703fa9961b0da39f5">&#9670;&nbsp;</a></span>GenericInstModel::handleGEPUtil&lt; llvm::GEPOperator &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1GenericInstModel.html#aba63f3833a73facde9e8ca806812e9dc">spatial::GenericInstModel::handleGEPUtil</a>&lt; llvm::GEPOperator &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
+          <td class="paramname"><em>Ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebf6408d4fdbb2e17adbead632afbf20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf6408d4fdbb2e17adbead632afbf20">&#9670;&nbsp;</a></span>GenericInstModel::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1GenericInstModel.html#aba63f3833a73facde9e8ca806812e9dc">spatial::GenericInstModel::handleGEPUtil</a>&lt; llvm::GetElementPtrInst &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GetElementPtrInst *&#160;</td>
+          <td class="paramname"><em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
+          <td class="paramname"><em>Ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4fe8bc02c3a95c9b71249819b48852c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fe8bc02c3a95c9b71249819b48852c4">&#9670;&nbsp;</a></span>getPointerOperandIndex()</h2>
 
@@ -362,98 +451,6 @@ template&lt;typename Node &gt; </div>
           <td class="paramtype">llvm::Function &amp;&#160;</td>
           <td class="paramname"><em>F</em></td><td>)</td>
           <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2374b57cb06d8bd9cd7acbdd6cad734b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2374b57cb06d8bd9cd7acbdd6cad734b">&#9670;&nbsp;</a></span>TokenWrapper::extractStatementType&lt; llvm::GlobalVariable &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">template std::pair&lt;int, int&gt; <a class="el" href="classspatial_1_1TokenWrapper.html#a93f88b13ac50cd5a20013c059a68aaac">spatial::TokenWrapper::extractStatementType</a>&lt; llvm::GlobalVariable &gt; </td>
-          <td>(</td>
-          <td class="paramtype">llvm::GlobalVariable *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae1e56b0ebcf1a38eef8c573f389a1f7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1e56b0ebcf1a38eef8c573f389a1f7c">&#9670;&nbsp;</a></span>TokenWrapper::extractStatementType&lt; llvm::Instruction &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">template std::pair&lt;int, int&gt; <a class="el" href="classspatial_1_1TokenWrapper.html#a93f88b13ac50cd5a20013c059a68aaac">spatial::TokenWrapper::extractStatementType</a>&lt; llvm::Instruction &gt; </td>
-          <td>(</td>
-          <td class="paramtype">llvm::Instruction *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a97043d8a4b2032f91a431ffe13530e3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97043d8a4b2032f91a431ffe13530e3d">&#9670;&nbsp;</a></span>TokenWrapper::handleGEPUtil&lt; llvm::GEPOperator &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1TokenWrapper.html#aeb15e0e3bb572b7d6ebddf05fb796d46">spatial::TokenWrapper::handleGEPUtil</a>&lt; llvm::GEPOperator &gt; </td>
-          <td>(</td>
-          <td class="paramtype">llvm::GEPOperator *&#160;</td>
-          <td class="paramname"><em>G</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
-          <td class="paramname"><em>Ptr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad6372e69899fa0e5d7c6589a64bc0199"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6372e69899fa0e5d7c6589a64bc0199">&#9670;&nbsp;</a></span>TokenWrapper::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1TokenWrapper.html#aeb15e0e3bb572b7d6ebddf05fb796d46">spatial::TokenWrapper::handleGEPUtil</a>&lt; llvm::GetElementPtrInst &gt; </td>
-          <td>(</td>
-          <td class="paramtype">llvm::GetElementPtrInst *&#160;</td>
-          <td class="paramname"><em>G</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
-          <td class="paramname"><em>Ptr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

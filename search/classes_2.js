@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pointstobenchmarkrunner_105',['PointsToBenchmarkRunner',['../classspatial_1_1PointsToBenchmarkRunner.html',1,'spatial']]],
-  ['ptabenchmarkrunner_106',['PTABenchmarkRunner',['../classspatial_1_1PTABenchmarkRunner.html',1,'spatial']]]
+  ['instinfo_130',['InstInfo',['../classspatial_1_1InstInfo.html',1,'spatial']]],
+  ['instmodel_131',['InstModel',['../classspatial_1_1InstModel.html',1,'spatial']]]
 ];

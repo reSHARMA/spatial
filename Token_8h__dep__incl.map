@@ -1,6 +1,10 @@
 <map id="include/Token/Token.h" name="include/Token/Token.h">
-<area shape="rect" id="node1" title=" " alt="" coords="95,5,249,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="130,5,283,32"/>
 <area shape="rect" id="node2" href="$Token_8cpp.html" title=" " alt="" coords="5,80,144,107"/>
-<area shape="rect" id="node3" href="$TokenWrapper_8h.html" title=" " alt="" coords="169,80,370,107"/>
-<area shape="rect" id="node4" href="$TokenWrapper_8cpp.html" title=" " alt="" coords="176,155,363,181"/>
+<area shape="rect" id="node3" href="$GenericInstModel_8h.html" title=" " alt="" coords="84,229,279,271"/>
+<area shape="rect" id="node5" href="$InstModel_8h.html" title=" " alt="" coords="219,155,413,181"/>
+<area shape="rect" id="node7" href="$TokenWrapper_8h.html" title=" " alt="" coords="270,80,471,107"/>
+<area shape="rect" id="node4" href="$GenericInstModel_8cpp.html" title=" " alt="" coords="88,319,275,360"/>
+<area shape="rect" id="node6" href="$InstModel_8cpp.html" title=" " alt="" coords="303,237,484,263"/>
+<area shape="rect" id="node8" href="$TokenWrapper_8cpp.html" title=" " alt="" coords="437,155,624,181"/>
 </map>
