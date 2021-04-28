@@ -27,8 +27,8 @@ private:
 
 public:
   ReplaceIRVar();
-  void runOnFunction(llvm::Function &F);
-  void runOnBasicBlock(llvm::BasicBlock &BB);
-  void runOnModule(llvm::Module &M);
+  void run(llvm::Function &F);
+  void run(llvm::BasicBlock &BB);
+  void run(llvm::Module &M);
 };
 #endif
