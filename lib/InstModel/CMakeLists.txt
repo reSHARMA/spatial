@@ -7,3 +7,4 @@ set_target_properties(InstModel PROPERTIES
 )
 
 add_subdirectory(GenericInstModel)
+add_subdirectory(LFCPAInstModel)
