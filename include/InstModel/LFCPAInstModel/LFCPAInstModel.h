@@ -37,9 +37,8 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-  spatial::InstInfo* getInstInfo(llvm::Instruction *);
+  Token * handleGEPUtil_1(llvm::GEPOperator *, Token *);
   bool isInstSkip (llvm::Instruction *);
-  void printInstInfoMap();
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
   Token* extractDummy(std::string);
 };
