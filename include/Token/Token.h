@@ -39,6 +39,7 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
+  void setIndex(std::string); //Added on 31.5.21
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
 
@@ -54,6 +55,7 @@ public:
   std::string getMemTypeName() const;
   std::string getFunctionName() const;
   std::string getFieldIndex() const;
+  
   friend std::ostream &operator<<(std::ostream &OS, const Token &A);
 
   bool isMem() const;
@@ -63,11 +65,16 @@ public:
   bool isAllocaOrArgOrGlobal() const;
   bool sameFunc(llvm::Function *Func) const;
   bool isBasePointerType() const;
+  bool isFieldPointerType() const;
   std::string getHash() const;
+  std::string getHashNoFieldIdx() const;
+  bool isPointerType() const;
 
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
   void operator=(const Token &TheToken);
+
+  
 };
 } // namespace spatial
 
