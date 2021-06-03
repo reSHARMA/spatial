@@ -1,9 +1,10 @@
 #ifndef LFCPAINSTMODEL_LFCPAINSTMODEL_H
 #define LFCPAINSTMODEL_LFCPAINSTMODEL_H
 
-#include "spatial/InstInfo/InstInfo.h"
-#include "spatial/InstModel/InstModel.h"
-#include "spatial/Token/Token.h"
+#include "Token/Token.h"
+#include "InstModel/InstModel.h"
+#include "InstInfo/InstInfo.h"
+
 #include "vector"
 #include "llvm/IR/Argument.h"
 #include "llvm/IR/Function.h"
