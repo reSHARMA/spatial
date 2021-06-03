@@ -39,7 +39,7 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-  void setIndex(Token*);
+  void setIndex(Token*); //Added on 31.5.21
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
   
