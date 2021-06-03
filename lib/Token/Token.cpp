@@ -108,10 +108,9 @@ void Token::setIndex(llvm::GEPOperator *GEPOp) {
   this->Index = getIndex(GEPOp);
 }
 
-
-/// setIndex - For a GEP Operator find the offset and store it
-void Token::setIndex(std::string Indx) {
-  this->Index = Indx;
+/// setIndex - For a Token 
+void Token::setIndex(Token *T) {
+  this->Index = T->Index;
 }
 
 /// resetIndex - Resets the index back to an empty string
@@ -229,7 +228,7 @@ bool Token::isBasePointerType() const {
   return false;
 }
 
-bool Token::isFieldPointerType() const {
+bool Token::isValPointerType() const {
  if (this->Ty->isPointerTy())
 	return true;
  return false;
@@ -245,16 +244,6 @@ std::string Token::getHash() const {
   hash += this->getFunctionName();
   hash += this->getMemTypeName();
 //  hash += this->getFieldIndex();   
-  return hash;
-}
-
-std::string Token::getHashNoFieldIdx() const {
-  std::string hash = "";
-  if (this->isGlobalVar())
-    hash += "G";
-  hash += this->getName().str();
-  hash += this->getFunctionName();
-  hash += this->getMemTypeName();
   return hash;
 }
 
@@ -278,8 +267,4 @@ void Token::operator=(const Token &TheToken) {
     set(TheToken.name, TheToken.Kind, TheToken.Index, TheToken.Func);
   }
 }
-
-
-
-
 } // namespace spatial

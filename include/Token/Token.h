@@ -39,10 +39,10 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-  void setIndex(std::string); //Added on 31.5.21
+  void setIndex(Token*);
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
-
+  
   Token(llvm::Value *Val, std::string Index = "");
   Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
   Token(llvm::Argument *Arg, std::string Index = "");
@@ -65,9 +65,8 @@ public:
   bool isAllocaOrArgOrGlobal() const;
   bool sameFunc(llvm::Function *Func) const;
   bool isBasePointerType() const;
-  bool isFieldPointerType() const;
+  bool isValPointerType() const;
   std::string getHash() const;
-  std::string getHashNoFieldIdx() const;
   bool isPointerType() const;
 
   bool operator<(const Token &TheToken) const;
