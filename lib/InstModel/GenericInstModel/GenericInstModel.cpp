@@ -168,7 +168,7 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::CallInst *CI) {
   }
   return TokenVec;
 }
-
+/// extractPHINodeToken - Returns the alias objects for PHInode instruction
 std::vector<Token *> GenericInstModel::extractPHINodeToken(llvm::Instruction *Inst){
 	std::vector<Token *> TokenVec;
 	TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
