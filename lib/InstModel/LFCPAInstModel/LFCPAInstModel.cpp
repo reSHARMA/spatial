@@ -67,7 +67,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
     llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
   
     if (isStructFieldPointerTy(GOP)) {
-  	Token* opLhs = handleGEPUtil_1(GOP, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
+  	Token* opLhs = handleGEPUtil(GOP, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
 	TokenVec.push_back(opLhs);
         llvm::Value *ValOp = Inst->getValueOperand();
 	if (!llvm::isa<llvm::ConstantInt>(ValOp))
@@ -388,21 +388,12 @@ Token *LFCPAInstModel::handleGEPUtil(GEP *G, Token *Ptr) {
   return FieldVal;
 }
 
-Token *LFCPAInstModel::handleGEPUtil_1(llvm::GEPOperator *G, Token *Ptr) {
-  if (!Ptr)
-    return Ptr;
-  Token *FieldVal = new Token(Ptr);
-  //FieldVal->setIndex(G);
-  FieldVal = this->getTokenWrapper()->getToken(FieldVal);  
-  return FieldVal;
-}
-
 template Token *LFCPAInstModel::handleGEPUtil<llvm::GetElementPtrInst>(
     llvm::GetElementPtrInst *G, Token *Ptr);
-/*template Token *
+template Token *
 LFCPAInstModel::handleGEPUtil<llvm::GEPOperator>(llvm::GEPOperator *G,
                                                    Token *Ptr);
-*/
+
 template <typename GOP>
 bool LFCPAInstModel::isStructFieldPointerTy(GOP *G) {
 	long int cntOp = G->getNumOperands();
