@@ -29,6 +29,8 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::Instruction *Inst) {
     return extractToken(GEP);
   } else if (llvm::CallInst *CI = llvm::dyn_cast<llvm::CallInst>(Inst)) {
     return extractToken(CI);
+  } else if(llvm::isa<llvm::PHINode>(Inst)){
+  	return extractPHINodeToken(Inst);
   } else {
     // Direct support to some instructions may not be useful example
     // CallInst, as it is more useful to generate alias object for call
@@ -60,8 +62,15 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::StoreInst *Inst) {
   TokenVec.push_back(
       this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
   llvm::Value *ValOp = Inst->getValueOperand();
-  if (!llvm::isa<llvm::ConstantInt>(ValOp))
-    TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
+  if (!llvm::isa<llvm::ConstantInt>(ValOp)){
+    if(llvm::isa<llvm::ConstantPointerNull>(ValOp)){
+      std::string s("NULL");
+      TokenVec.push_back(this->getTokenWrapper()->getToken(s,nullptr));
+    }
+    else{
+      TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
+    }
+  }
   return TokenVec;
 }
 
@@ -159,12 +168,24 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::CallInst *CI) {
   }
   return TokenVec;
 }
+/// extractPHINodeToken - Returns the alias objects for PHInode instruction
+std::vector<Token *> GenericInstModel::extractPHINodeToken(llvm::Instruction *Inst){
+	std::vector<Token *> TokenVec;
+	TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
+	if(Inst->getOperand(0)->hasName()){
+		TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
+	}
+	if(Inst->getOperand(1)->hasName()){
+		TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(1)));
+	}
+	return TokenVec;
+}
 
 /// extractRedirections - Returns the relative level of redirection based of
 /// LHS and RHS on the statement
 std::vector<int>
 GenericInstModel::extractRedirections(llvm::Instruction *Inst) {
-  std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0};
+  std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0}, phiNode{1,1,1};
   if (llvm::isa<llvm::AllocaInst>(Inst) ||
       llvm::isa<llvm::GetElementPtrInst>(Inst))
     return assign;
@@ -172,6 +193,8 @@ GenericInstModel::extractRedirections(llvm::Instruction *Inst) {
     return store;
   if (llvm::isa<llvm::LoadInst>(Inst))
     return load;
+  if(llvm::isa<llvm::PHINode>(Inst))
+    return phiNode;
   return copy;
 }
 
