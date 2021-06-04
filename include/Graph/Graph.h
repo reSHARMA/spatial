@@ -67,6 +67,10 @@ void Graph<Node>::insert(Node *Src, Node *Dest, int Left, int Right) {
         this->insert(Src, DestDest);
       }
     }
+  } else if(Left == 2 && Right == 0){
+    for(auto S : this->getPointee(Src)){
+      this->insert(S,Dest);
+    }
   }
 }
 

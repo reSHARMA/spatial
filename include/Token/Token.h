@@ -63,6 +63,7 @@ public:
   bool isAllocaOrArgOrGlobal() const;
   bool sameFunc(llvm::Function *Func) const;
   bool isBasePointerType() const;
+  bool isNull() const;
   std::string getHash() const;
 
   bool operator<(const Token &TheToken) const;
