@@ -5,6 +5,7 @@ namespace spatial {
 void Token::set(llvm::Value *Val, unsigned int Kind, std::string Index,
                 llvm::Function *Func, bool Global) {
   this->Val = Val;
+  this->Ty = Val->getType();
   this->Kind = Kind;
   this->Index = Index;
   this->Func = Func;
@@ -23,6 +24,7 @@ void Token::set(llvm::Type *Ty, unsigned int Kind, std::string Index) {
 void Token::set(llvm::Argument *Arg, unsigned int Kind, std::string Index,
                 llvm::Function *Func) {
   this->Arg = Arg;
+  this->Ty = Arg->getType();
   this->Kind = Kind;
   this->Index = Index;
   this->Func = Func;
@@ -166,7 +168,7 @@ llvm::StringRef Token::getName() const {
 /// getMemTypeName - Returns the memory type name
 std::string Token::getMemTypeName() const {
   std::string MemTyName = "";
-  if (!this->isMem())
+  if (!this->isMem() || this->isNull())
     return MemTyName;
   llvm::raw_string_ostream RSO(MemTyName);
   this->Ty->print(RSO);
@@ -185,7 +187,7 @@ std::string Token::getFunctionName() const {
 std::string Token::getFieldIndex() const { return this->Index; }
 
 /// isMem - Returns true if the alias denotes a location in heap
-bool Token::isMem() const { return this->Kind == 1; }
+bool Token::isMem() const { return this->Kind == 1 || this->isNull(); }
 
 /// isGlobalVar - Returns true if the alias is global
 bool Token::isGlobalVar() const { return this->IsGlobal; }
@@ -209,6 +211,18 @@ bool Token::isAllocaOrArgOrGlobal() const {
 bool Token::sameFunc(llvm::Function *Func) const {
   if (this->Func)
     return this->Func == Func;
+  return false;
+}
+
+/// isBasePointerType - Returns true if the Token type's base type is a pointer
+bool Token::isBasePointerType() const {
+  if (this->Kind == 0 || this->Kind == 1 || this->Kind == 2) {
+    // check for no base types
+    if (Ty->getNumContainedTypes() == 0)
+      return false;
+    llvm::Type *BaseTy = Ty->getContainedType(0);
+    return BaseTy->isPointerTy();
+  }
   return false;
 }
 

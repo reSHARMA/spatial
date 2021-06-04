@@ -62,6 +62,7 @@ public:
   bool isGlobalVar() const;
   bool isAllocaOrArgOrGlobal() const;
   bool sameFunc(llvm::Function *Func) const;
+  bool isBasePointerType() const;
   bool isNull() const;
   std::string getHash() const;
 

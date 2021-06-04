@@ -32,44 +32,9 @@ public:
 
   Token *getTokenWithoutIndex(Token *);
 
-  std::vector<Token *> extractToken(llvm::Instruction *);
-  std::vector<Token *> extractToken(llvm::StoreInst *);
-  std::vector<Token *> extractToken(llvm::LoadInst *);
-  std::vector<Token *> extractToken(llvm::AllocaInst *);
-  std::vector<Token *> extractToken(llvm::BitCastInst *);
-  std::vector<Token *> extractToken(llvm::ReturnInst *);
-  std::vector<Token *> extractToken(llvm::GetElementPtrInst *);
-  std::vector<Token *> extractToken(llvm::GlobalVariable *);
-  std::vector<Token *> extractToken(llvm::CallInst *);
-  std::vector<Token *> extractToken(llvm::Argument *, llvm::Function *);
-  std::vector<Token *> extractPHINodeToken(llvm::Instruction *);
-
-  template <typename Ty> std::pair<int, int> extractStatementType(Ty *);
-  
-  std::vector<int> extractPHINodeStatementType(llvm::Instruction *);
-  template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-
   ~TokenWrapper();
 };
 
 } // namespace spatial
-
-namespace spatial{
-  /// extractStatementType - Returns the relative level of redirection based of
-  /// LHS and RHS on the statement
-	template <typename Ty>
-  std::pair<int, int> TokenWrapper::extractStatementType(Ty *Inst) {
-    if (llvm::isa<llvm::AllocaInst>(Inst) ||
-        llvm::isa<llvm::GlobalVariable>(Inst) ||
-        llvm::isa<llvm::GetElementPtrInst>(Inst))
-      return {1, 0};
-    if (llvm::isa<llvm::StoreInst>(Inst)){
-      return {2, 1};
-    }
-    if (llvm::isa<llvm::LoadInst>(Inst))
-      return {1, 2};
-    return {1, 1};
-  }
-}
 
 #endif

@@ -31,4 +31,4 @@ script:
   - pushd build
   - cmake .. && make
   - popd
-  - ./build/src/AADriver ./test/sample.ll -fs -cs  
+  - ./build/src/PTDriver ./test/sample.ll -fs -cs  
