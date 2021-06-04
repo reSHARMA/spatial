@@ -168,7 +168,7 @@ llvm::StringRef Token::getName() const {
 /// getMemTypeName - Returns the memory type name
 std::string Token::getMemTypeName() const {
   std::string MemTyName = "";
-  if (!this->isMem())
+  if (!this->isMem() || this->isNull())
     return MemTyName;
   llvm::raw_string_ostream RSO(MemTyName);
   this->Ty->print(RSO);
@@ -187,7 +187,7 @@ std::string Token::getFunctionName() const {
 std::string Token::getFieldIndex() const { return this->Index; }
 
 /// isMem - Returns true if the alias denotes a location in heap
-bool Token::isMem() const { return this->Kind == 1; }
+bool Token::isMem() const { return this->Kind == 1 || this->isNull(); }
 
 /// isGlobalVar - Returns true if the alias is global
 bool Token::isGlobalVar() const { return this->IsGlobal; }
@@ -197,6 +197,9 @@ bool Token::isArg() const { return this->Kind == 2; }
 
 /// isField - Returns true if alias is a field
 bool Token::isField() const { return this->Index != ""; }
+
+///isNull - Returns true if alias is NULL
+bool Token::isNull() const { return this->Kind == 3 && this->name == "NULL"; }
 
 /// isAllocaOrArgOrGlobal - Returns true if the alias is global, an argument or
 /// alloca

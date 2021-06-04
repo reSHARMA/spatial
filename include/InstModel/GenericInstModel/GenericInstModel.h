@@ -32,6 +32,7 @@ public:
   std::vector<Token *> extractToken(llvm::GlobalVariable *);
   std::vector<Token *> extractToken(llvm::CallInst *);
   std::vector<Token *> extractToken(llvm::Argument *, llvm::Function *);
+  std::vector<Token *> extractPHINodeToken(llvm::Instruction *);
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
