@@ -62,14 +62,12 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::StoreInst *Inst) {
   TokenVec.push_back(
       this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
   llvm::Value *ValOp = Inst->getValueOperand();
-  if (!llvm::isa<llvm::ConstantInt>(ValOp)){
-    if(llvm::isa<llvm::ConstantPointerNull>(ValOp)){
-      std::string s("NULL");
-      TokenVec.push_back(this->getTokenWrapper()->getToken(s,nullptr));
-    }
-    else{
-      TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
-    }
+  if(llvm::isa<llvm::ConstantPointerNull>(ValOp)){
+    std::string s("NULL");
+    TokenVec.push_back(this->getTokenWrapper()->getToken(s,nullptr));
+  }
+  else if(!llvm::isa<llvm::ConstantInt>(ValOp)){
+    TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
   }
   return TokenVec;
 }
@@ -172,10 +170,10 @@ std::vector<Token *> GenericInstModel::extractToken(llvm::CallInst *CI) {
 std::vector<Token *> GenericInstModel::extractPHINodeToken(llvm::Instruction *Inst){
 	std::vector<Token *> TokenVec;
 	TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
-	if(Inst->getOperand(0)->hasName()){
+	if(!llvm::isa<llvm::ConstantInt>(Inst->getOperand(0))){
 		TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
 	}
-	if(Inst->getOperand(1)->hasName()){
+	if(!llvm::isa<llvm::ConstantInt>(Inst->getOperand(1))){
 		TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(1)));
 	}
 	return TokenVec;
