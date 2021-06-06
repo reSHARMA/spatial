@@ -41,17 +41,28 @@ void ReplaceIRVar::init(llvm::Module &M) {
   }
 }
 
+/// insert IR Name and Source Name mapping
+void ReplaceIRVar::insert(std::string Name){
+  if(HashMap.find(Name) != HashMap.end()){
+    HashMap[Name] = this->NewName;
+  }
+  else{
+    HashMap.insert(std::pair<std::string, std::string>(Name,
+                                                         this->NewName));
+  }
+}
+
 /// replace IR variable to Actual Variable for the Function passed as parameter
-void ReplaceIRVar::runOnFunction(llvm::Function &F) {
+void ReplaceIRVar::run(llvm::Function &F) {
   this->init(F);
   for (llvm::BasicBlock &BB : F) {
-    this->runOnBasicBlock(BB);
+    this->run(BB);
   }
 }
 
 /// replace IR variable to Actual Variable for the Basic Block passed as
 /// parameter
-void ReplaceIRVar::runOnBasicBlock(llvm::BasicBlock &BB) {
+void ReplaceIRVar::run(llvm::BasicBlock &BB) {
   this->init(BB);
   for (llvm::Instruction &I : BB) {
     if (const llvm::DbgDeclareInst *DbgDeclare =
@@ -60,9 +71,7 @@ void ReplaceIRVar::runOnBasicBlock(llvm::BasicBlock &BB) {
                    (DbgDeclare->getVariable()->getName()).str());
       if (llvm::Instruction *I =
               llvm::dyn_cast<llvm::Instruction>(DbgDeclare->getAddress())) {
-        llvm::StringRef strref(this->NewName);
-        HashMap.insert(std::pair<std::string, std::string>(I->getName().str(),
-                                                           this->NewName));
+    this->insert(I->getName().str());
       }
     }
   }
@@ -75,9 +84,9 @@ void ReplaceIRVar::runOnBasicBlock(llvm::BasicBlock &BB) {
 }
 
 /// replace IR variable to Actual Variable for the Module passed as parameter
-void ReplaceIRVar::runOnModule(llvm::Module &M) {
+void ReplaceIRVar::run(llvm::Module &M) {
   this->init(M);
   for (llvm::Function &F : M) {
-    this->runOnFunction(F);
+    this->run(F);
   }
 }

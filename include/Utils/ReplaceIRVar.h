@@ -23,11 +23,12 @@ private:
   void init(llvm::BasicBlock &BB);
   void init(llvm::Module &M);
   void format(std::string First, std::string Second);
+  void insert(std::string);
 
 public:
   ReplaceIRVar();
-  void runOnFunction(llvm::Function &F);
-  void runOnBasicBlock(llvm::BasicBlock &BB);
-  void runOnModule(llvm::Module &M);
+  void run(llvm::Function &F);
+  void run(llvm::BasicBlock &BB);
+  void run(llvm::Module &M);
 };
 #endif
