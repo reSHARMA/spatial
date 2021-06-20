@@ -2,7 +2,9 @@
 <area shape="rect" id="node1" title=" " alt="" coords="105,5,306,32"/>
 <area shape="rect" id="node2" href="$TokenWrapper_8cpp.html" title=" " alt="" coords="5,80,192,107"/>
 <area shape="rect" id="node3" href="$InstModel_8h.html" title=" " alt="" coords="216,80,411,107"/>
-<area shape="rect" id="node4" href="$InstModel_8cpp.html" title=" " alt="" coords="116,162,297,189"/>
-<area shape="rect" id="node5" href="$GenericInstModel_8h.html" title=" " alt="" coords="321,155,516,196"/>
-<area shape="rect" id="node6" href="$GenericInstModel_8cpp.html" title=" " alt="" coords="325,244,512,285"/>
+<area shape="rect" id="node4" href="$InstModel_8cpp.html" title=" " alt="" coords="11,162,192,189"/>
+<area shape="rect" id="node5" href="$GenericInstModel_8h.html" title=" " alt="" coords="216,155,411,196"/>
+<area shape="rect" id="node7" href="$LFCPAInstModel_8h.html" title=" " alt="" coords="435,155,629,196"/>
+<area shape="rect" id="node6" href="$GenericInstModel_8cpp.html" title=" " alt="" coords="220,244,407,285"/>
+<area shape="rect" id="node8" href="$LFCPAInstModel_8cpp.html" title=" " alt="" coords="432,244,632,285"/>
 </map>

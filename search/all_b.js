@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['samefunc_100',['sameFunc',['../classspatial_1_1Token.html#a303c960ceab6f099888f2927bfd0ddda',1,'spatial::Token']]],
-  ['setcallinst_101',['setCallInst',['../classspatial_1_1InstInfo.html#aa2046e0e0697e35d2e680b53eb2a52a5',1,'spatial::InstInfo']]],
-  ['setindex_102',['setIndex',['../classspatial_1_1Token.html#a2b17bde92ef93e7689740434b8f6ffa8',1,'spatial::Token::setIndex(llvm::GetElementPtrInst *GEPInst)'],['../classspatial_1_1Token.html#a41219fede055ad6a3c2ed3b22dcbde2a',1,'spatial::Token::setIndex(llvm::GEPOperator *GEPOp)']]],
-  ['setphiinst_103',['setPhiInst',['../classspatial_1_1InstInfo.html#a5eee736f032ba64c7cffa4eaaf2eba32',1,'spatial::InstInfo']]],
-  ['setresult_104',['setResult',['../classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5',1,'spatial::ValueContext']]],
-  ['setrwmeminst_105',['setRWMemInst',['../classspatial_1_1InstInfo.html#a4a143e23093fb0940ae7346eb124a992',1,'spatial::InstInfo']]],
-  ['setskipinst_106',['setSkipInst',['../classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9',1,'spatial::InstInfo']]],
-  ['size_107',['size',['../classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16',1,'spatial::Worklist']]],
-  ['skip_108',['Skip',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8',1,'spatial']]],
-  ['skipfunction_109',['SkipFunction',['../namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb',1,'spatial']]],
-  ['spatial_110',['spatial',['../namespacespatial.html',1,'']]]
+  ['readme_2emd_101',['README.md',['../README_8md.html',1,'(Global Namespace)'],['../lib_2InstModel_2GenericInstModel_2README_8md.html',1,'(Global Namespace)'],['../lib_2InstModel_2README_8md.html',1,'(Global Namespace)']]],
+  ['redt_102',['REDT',['../PointsToBenchmark_8cpp.html#a870e07c60679166c975f8799e8638ed0',1,'PointsToBenchmark.cpp']]],
+  ['replaceirvar_103',['ReplaceIRVar',['../classReplaceIRVar.html',1,'ReplaceIRVar'],['../classReplaceIRVar.html#a9c68da708bbda4be6b5cb55ff05b54fe',1,'ReplaceIRVar::ReplaceIRVar()']]],
+  ['replaceirvar_2ecpp_104',['ReplaceIRVar.cpp',['../ReplaceIRVar_8cpp.html',1,'']]],
+  ['replaceirvar_2eh_105',['ReplaceIRVar.h',['../ReplaceIRVar_8h.html',1,'']]],
+  ['resetindex_106',['resetIndex',['../classspatial_1_1Token.html#a1eacab6b650995074f57f4dab0962855',1,'spatial::Token']]],
+  ['rst_107',['RST',['../PointsToBenchmark_8cpp.html#ac5d957e4fd3dc11cd97a54cf9ca057a4',1,'PointsToBenchmark.cpp']]],
+  ['runonbasicblock_108',['runOnBasicBlock',['../classReplaceIRVar.html#a41d9ba6225a4efa62c8b123d08676573',1,'ReplaceIRVar']]],
+  ['runonfunction_109',['runOnFunction',['../classReplaceIRVar.html#a404cf892ebdcabe03bb016dc7367aa65',1,'ReplaceIRVar']]],
+  ['runonmodule_110',['runOnModule',['../classReplaceIRVar.html#ac6dc1c852a768e2d25b39570a29cc46e',1,'ReplaceIRVar']]],
+  ['rwmem_111',['RWMem',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1aa0c108f66461113ebb3ca4d363b3fce0',1,'spatial']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['updatecontextgraph_241',['updateContextGraph',['../classspatial_1_1ValueContext.html#a78b120e991d8b0546bbb82b9110a8141',1,'spatial::ValueContext']]]
+  ['token_265',['Token',['../classspatial_1_1Token.html#ae8443058195814f21ef01b426fc28a8b',1,'spatial::Token::Token(llvm::Value *Val, std::string Index=&quot;&quot;)'],['../classspatial_1_1Token.html#a3f917d282625f5a3e9279b866b6168b3',1,'spatial::Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index=&quot;&quot;)'],['../classspatial_1_1Token.html#a1590bc2962e25cc85556c53ab03f21a9',1,'spatial::Token::Token(llvm::Argument *Arg, std::string Index=&quot;&quot;)'],['../classspatial_1_1Token.html#ab41457fd810e44e030cd06aabfe0cd20',1,'spatial::Token::Token(llvm::Type *Ty, std::string Index=&quot;&quot;)'],['../classspatial_1_1Token.html#a2878f8efb57303e328e5cfcfd7d383ef',1,'spatial::Token::Token(std::string S, llvm::Function *Func, std::string Index=&quot;&quot;)'],['../classspatial_1_1Token.html#a41a80d65ec711328f5c07a190174cb3d',1,'spatial::Token::Token(Token *A)']]]
 ];

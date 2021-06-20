@@ -88,6 +88,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1InstModel.html">InstModel</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1LFCPAInstModel.html">LFCPAInstModel</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Token.html">Token</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1TokenWrapper.html">TokenWrapper</a></td></tr>
@@ -123,6 +125,14 @@ Functions</h2></td></tr>
 <tr class="separator:aebf6408d4fdbb2e17adbead632afbf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9987ae302a176a703fa9961b0da39f5"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ad9987ae302a176a703fa9961b0da39f5">GenericInstModel::handleGEPUtil&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
 <tr class="separator:ad9987ae302a176a703fa9961b0da39f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f741c57b57d921808a7b83b08c75c51"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a2f741c57b57d921808a7b83b08c75c51">LFCPAInstModel::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;</a> (llvm::GetElementPtrInst *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
+<tr class="separator:a2f741c57b57d921808a7b83b08c75c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5776270815dbf2958f148ebb015b9df9"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a5776270815dbf2958f148ebb015b9df9">LFCPAInstModel::handleGEPUtil&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G, <a class="el" href="classspatial_1_1Token.html">Token</a> *Ptr)</td></tr>
+<tr class="separator:a5776270815dbf2958f148ebb015b9df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c2d7a668ce71a0b2202be864d81784b"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a5c2d7a668ce71a0b2202be864d81784b">LFCPAInstModel::isStructFieldPointerTy&lt; llvm::GetElementPtrInst &gt;</a> (llvm::GetElementPtrInst *G)</td></tr>
+<tr class="separator:a5c2d7a668ce71a0b2202be864d81784b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae501cf5e50c4148be8b63f9122ed926c"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#ae501cf5e50c4148be8b63f9122ed926c">LFCPAInstModel::isStructFieldPointerTy&lt; llvm::GEPOperator &gt;</a> (llvm::GEPOperator *G)</td></tr>
+<tr class="separator:ae501cf5e50c4148be8b63f9122ed926c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa53f579b1f0fbd58f343eeb1cd8cb74d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#aa53f579b1f0fbd58f343eeb1cd8cb74d">operator&lt;&lt;</a> (std::ostream &amp;OS, const <a class="el" href="classspatial_1_1Token.html">Token</a> &amp;A)</td></tr>
 <tr class="separator:aa53f579b1f0fbd58f343eeb1cd8cb74d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a34be2bbf1888aff83b5951b908255"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespatial.html#a29a34be2bbf1888aff83b5951b908255">InstNamer</a> (llvm::Function &amp;F)</td></tr>
@@ -304,6 +314,98 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>InstNamer - sets name to the SSA temporaries. </p>
+
+</div>
+</div>
+<a id="a5776270815dbf2958f148ebb015b9df9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5776270815dbf2958f148ebb015b9df9">&#9670;&nbsp;</a></span>LFCPAInstModel::handleGEPUtil&lt; llvm::GEPOperator &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1LFCPAInstModel.html#a29d6e290d4e946d1ab01fd20b30589a9">spatial::LFCPAInstModel::handleGEPUtil</a>&lt; llvm::GEPOperator &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
+          <td class="paramname"><em>Ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f741c57b57d921808a7b83b08c75c51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f741c57b57d921808a7b83b08c75c51">&#9670;&nbsp;</a></span>LFCPAInstModel::handleGEPUtil&lt; llvm::GetElementPtrInst &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="classspatial_1_1Token.html">Token</a>* <a class="el" href="classspatial_1_1LFCPAInstModel.html#a29d6e290d4e946d1ab01fd20b30589a9">spatial::LFCPAInstModel::handleGEPUtil</a>&lt; llvm::GetElementPtrInst &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GetElementPtrInst *&#160;</td>
+          <td class="paramname"><em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
+          <td class="paramname"><em>Ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae501cf5e50c4148be8b63f9122ed926c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae501cf5e50c4148be8b63f9122ed926c">&#9670;&nbsp;</a></span>LFCPAInstModel::isStructFieldPointerTy&lt; llvm::GEPOperator &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8">spatial::LFCPAInstModel::isStructFieldPointerTy</a>&lt; llvm::GEPOperator &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GEPOperator *&#160;</td>
+          <td class="paramname"><em>G</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c2d7a668ce71a0b2202be864d81784b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c2d7a668ce71a0b2202be864d81784b">&#9670;&nbsp;</a></span>LFCPAInstModel::isStructFieldPointerTy&lt; llvm::GetElementPtrInst &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8">spatial::LFCPAInstModel::isStructFieldPointerTy</a>&lt; llvm::GetElementPtrInst &gt; </td>
+          <td>(</td>
+          <td class="paramtype">llvm::GetElementPtrInst *&#160;</td>
+          <td class="paramname"><em>G</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
