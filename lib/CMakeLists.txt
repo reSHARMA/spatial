@@ -6,7 +6,7 @@ add_subdirectory(InstInfo)
 add_subdirectory(InstModel)
 
 # TODO: Write this in multiple lines
-add_library (Spatial SHARED $<TARGET_OBJECTS:Token>  $<TARGET_OBJECTS:Benchmark> $<TARGET_OBJECTS:Worklist> $<TARGET_OBJECTS:Utils> $<TARGET_OBJECTS:InstInfo> $<TARGET_OBJECTS:InstModel> $<TARGET_OBJECTS:GenericInstModel>)
+add_library (Spatial SHARED $<TARGET_OBJECTS:Token>  $<TARGET_OBJECTS:Benchmark> $<TARGET_OBJECTS:Worklist> $<TARGET_OBJECTS:Utils> $<TARGET_OBJECTS:InstInfo> $<TARGET_OBJECTS:InstModel> $<TARGET_OBJECTS:GenericInstModel> $<TARGET_OBJECTS:LFCPAInstModel>)
 
 set_target_properties(Spatial PROPERTIES
     SOVERSION 0
