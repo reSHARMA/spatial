@@ -39,7 +39,7 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-  void setIndex(Token*); //Added on 31.5.21
+  void setIndex(Token*);
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
   
@@ -71,9 +71,7 @@ public:
 
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
-  void operator=(const Token &TheToken);
-
-  
+  void operator=(const Token &TheToken); 
 };
 } // namespace spatial
 
