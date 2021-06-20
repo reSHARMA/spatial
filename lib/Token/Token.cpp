@@ -108,10 +108,8 @@ void Token::setIndex(llvm::GEPOperator *GEPOp) {
   this->Index = getIndex(GEPOp);
 }
 
-/// setIndex - For a Token 
-void Token::setIndex(Token *T) {
-  this->Index = T->Index;
-}
+/// setIndex - For a Token
+void Token::setIndex(Token *T) { this->Index = T->Index; }
 
 /// resetIndex - Resets the index back to an empty string
 void Token::resetIndex() { this->Index = ""; }
@@ -229,9 +227,9 @@ bool Token::isBasePointerType() const {
 }
 
 bool Token::isValPointerType() const {
- if (this->Ty->isPointerTy())
-	return true;
- return false;
+  if (this->Ty->isPointerTy())
+    return true;
+  return false;
 }
 
 ///  getHash - Calculates the hash for alias to avoid multiple enteries of same
@@ -243,16 +241,16 @@ std::string Token::getHash() const {
   hash += this->getName().str();
   hash += this->getFunctionName();
   hash += this->getMemTypeName();
-//  hash += this->getFieldIndex();   
+  //  hash += this->getFieldIndex();
   return hash;
 }
 
 bool Token::operator<(const Token &TheToken) const {
-   return (this->getHash() < TheToken.getHash());
+  return (this->getHash() < TheToken.getHash());
 }
 
 bool Token::operator==(const Token &TheToken) const {
-   return (this->getHash() == TheToken.getHash());
+  return (this->getHash() == TheToken.getHash());
 }
 
 void Token::operator=(const Token &TheToken) {
