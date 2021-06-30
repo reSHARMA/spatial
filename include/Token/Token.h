@@ -39,7 +39,8 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-  void setIndex(Token*); //Added on 31.5.21
+  void setIndex(Token*, std::string);
+  void setIndex(Token*);
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
   
@@ -68,6 +69,7 @@ public:
   bool isValPointerType() const;
   std::string getHash() const;
   bool isPointerType() const;
+  bool checkIsNull() const;
 
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
