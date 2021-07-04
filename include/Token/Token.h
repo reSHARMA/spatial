@@ -39,6 +39,7 @@ private:
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
+
   void setIndex(Token*, std::string);
   void setIndex(Token*);
   void resetIndex();
@@ -56,7 +57,6 @@ public:
   std::string getMemTypeName() const;
   std::string getFunctionName() const;
   std::string getFieldIndex() const;
-  
   friend std::ostream &operator<<(std::ostream &OS, const Token &A);
 
   bool isMem() const;

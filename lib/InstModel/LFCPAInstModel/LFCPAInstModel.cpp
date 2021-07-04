@@ -54,7 +54,6 @@ LFCPAInstModel::extractToken(llvm::GlobalVariable *Global) {
   return TokenVec;
 }
 
-
 /// extractToken - Returns a vector of alias objects for StoreInst \Inst
 /// operands.
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
@@ -62,6 +61,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
   // instruction example store op1 op2
 
   std::vector<Token *> TokenVec;
+
   //Check for store to non-pointers
   if (llvm::isa<llvm::GEPOperator>(Inst->getOperand(1))) {
     llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
@@ -99,6 +99,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::LoadInst *Inst) {
   // The operands are returned in the same order as they are present in the
   // instruction example x = load op1
 
+
 std::vector<Token *> TokenVec;
 //Check for load of non-pointers
 if (llvm::isa<llvm::GEPOperator>(Inst->getPointerOperand())) {
@@ -135,7 +136,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::AllocaInst *Inst) {
       Alloca->getName().str() + "-orig", Inst->getParent()->getParent()));
   return TokenVec;
 }
-
 
 /// extractToken - Returns a vector of Token objects for CmpInst \Inst
 /// operands.
@@ -217,7 +217,9 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CmpInst *Inst) {
 /// extractToken - Returns a vector of Token objects for ReturnInst \Inst
 /// operands.
 
-/* Return Instruction is not skipped but the Load instrs for loading the return value are skipped */ 
+/* Return Instruction is not skipped but the Load instrs for loading the return
+ * value are skipped */
+
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   // The original pointer operand is returned for the
   // instruction example return *op1
@@ -227,6 +229,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   llvm::Instruction *I, *Ins;
   std::vector<Token *> TokenVec;
   llvm::Value *RetVal = Inst->getReturnValue();
+
 //  auto undef = llvm::UndefValue::get(RetVal->getType()); 
 
   if (RetVal->getName() == "")  {
@@ -308,6 +311,7 @@ LFCPAInstModel::extractToken(llvm::GetElementPtrInst *Inst) {
 	Token* opRhs = handleGEPUtil(Inst, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
 	TokenVec.push_back(opRhs);
    }
+=
   return TokenVec;
 }
 
@@ -335,6 +339,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CallInst *CI) {
 
 /// extractRedirections - Returns the relative level of redirection based of
 /// LHS and RHS on the statement
+
 std::vector<int>
 LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
   std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0}, temp{2, 0}, gep{1, 0};
@@ -413,34 +418,15 @@ Token* LFCPAInstModel::extractDummy(std::string S) {
 
 
 //LFCPAInstModel::LFCPAInstModel(){};
+
 LFCPAInstModel::~LFCPAInstModel(){};
 
 bool LFCPAInstModel::isInstSkip(llvm::Instruction *I) {
-
- for (auto it : InstInfoMap) {
-     llvm::Instruction* Ins = it.first;
-     if (Ins == I)  
-	return  it.second->isSkipInst();
- }
+  for (auto it : InstInfoMap) {
+    llvm::Instruction *Ins = it.first;
+    if (Ins == I)
+      return it.second->isSkipInst();
+  }
   return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // namespace spatial
