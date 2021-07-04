@@ -108,8 +108,16 @@ void Token::setIndex(llvm::GEPOperator *GEPOp) {
   this->Index = getIndex(GEPOp);
 }
 
-/// setIndex - For a Token
-void Token::setIndex(Token *T) { this->Index = T->Index; }
+/// setIndex - For a Token. Required in case of nested structures
+/// wherein the token belongs to a chain of GEP instructions
+void Token::setIndex(Token *T, std::string indx) {
+  this->Index = indx + T->Index;
+}
+
+/// setIndex - For a Token 
+void Token::setIndex(Token *T) {
+  this->Index = T->Index;
+}
 
 /// resetIndex - Resets the index back to an empty string
 void Token::resetIndex() { this->Index = ""; }
@@ -227,7 +235,7 @@ bool Token::isBasePointerType() const {
 }
 
 bool Token::isValPointerType() const {
-  if (this->Ty->isPointerTy())
+ if (this->Ty->isPointerTy())
     return true;
   return false;
 }
@@ -241,7 +249,7 @@ std::string Token::getHash() const {
   hash += this->getName().str();
   hash += this->getFunctionName();
   hash += this->getMemTypeName();
-  //  hash += this->getFieldIndex();
+  hash += this->getFieldIndex();
   return hash;
 }
 
