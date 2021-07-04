@@ -85,6 +85,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a41219fede055ad6a3c2ed3b22dcbde2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Token.html#a41219fede055ad6a3c2ed3b22dcbde2a">setIndex</a> (llvm::GEPOperator *GEPOp)</td></tr>
 <tr class="memdesc:a41219fede055ad6a3c2ed3b22dcbde2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">setIndex - For a GEP Operator find the offset and store it  <a href="classspatial_1_1Token.html#a41219fede055ad6a3c2ed3b22dcbde2a">More...</a><br /></td></tr>
 <tr class="separator:a41219fede055ad6a3c2ed3b22dcbde2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82fa1af38aeb60577c551c507abf3af1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Token.html#a82fa1af38aeb60577c551c507abf3af1">setIndex</a> (<a class="el" href="classspatial_1_1Token.html">Token</a> *, std::string)</td></tr>
+<tr class="separator:a82fa1af38aeb60577c551c507abf3af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72fa470d51bbca29babc0b8b7d3bcd22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspatial_1_1Token.html#a72fa470d51bbca29babc0b8b7d3bcd22">setIndex</a> (<a class="el" href="classspatial_1_1Token.html">Token</a> *)</td></tr>
 <tr class="memdesc:a72fa470d51bbca29babc0b8b7d3bcd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">setIndex - For a <a class="el" href="classspatial_1_1Token.html">Token</a>  <a href="classspatial_1_1Token.html#a72fa470d51bbca29babc0b8b7d3bcd22">More...</a><br /></td></tr>
 <tr class="separator:a72fa470d51bbca29babc0b8b7d3bcd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -703,7 +705,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a41219fede055ad6a3c2ed3b22dcbde2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41219fede055ad6a3c2ed3b22dcbde2a">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a41219fede055ad6a3c2ed3b22dcbde2a">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -723,7 +725,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a2b17bde92ef93e7689740434b8f6ffa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b17bde92ef93e7689740434b8f6ffa8">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b17bde92ef93e7689740434b8f6ffa8">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +745,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a72fa470d51bbca29babc0b8b7d3bcd22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72fa470d51bbca29babc0b8b7d3bcd22">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a72fa470d51bbca29babc0b8b7d3bcd22">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -759,6 +761,35 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>setIndex - For a <a class="el" href="classspatial_1_1Token.html">Token</a> </p>
+
+</div>
+</div>
+<a id="a82fa1af38aeb60577c551c507abf3af1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82fa1af38aeb60577c551c507abf3af1">&#9670;&nbsp;</a></span>setIndex() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spatial::Token::setIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classspatial_1_1Token.html">Token</a> *&#160;</td>
+          <td class="paramname"><em>T</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>indx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>setIndex - For a <a class="el" href="classspatial_1_1Token.html">Token</a>. Required in case of nested structures wherein the token belongs to a chain of GEP instructions </p>
 
 </div>
 </div>
