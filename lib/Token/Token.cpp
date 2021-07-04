@@ -249,16 +249,16 @@ std::string Token::getHash() const {
   hash += this->getName().str();
   hash += this->getFunctionName();
   hash += this->getMemTypeName();
-  hash += this->getFieldIndex();   
+  hash += this->getFieldIndex();
   return hash;
 }
 
 bool Token::operator<(const Token &TheToken) const {
-   return (this->getHash() < TheToken.getHash());
+  return (this->getHash() < TheToken.getHash());
 }
 
 bool Token::operator==(const Token &TheToken) const {
-   return (this->getHash() == TheToken.getHash());
+  return (this->getHash() == TheToken.getHash());
 }
 
 void Token::operator=(const Token &TheToken) {
