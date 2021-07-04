@@ -40,8 +40,8 @@ public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
 
-  void setIndex(Token*, std::string);
-  void setIndex(Token*);
+  void setIndex(Token *, std::string);
+  void setIndex(Token *);
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
 
@@ -73,7 +73,6 @@ public:
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
   void operator=(const Token &TheToken);
- 
 };
 } // namespace spatial
 
