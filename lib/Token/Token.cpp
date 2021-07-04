@@ -242,13 +242,6 @@ bool Token::isValPointerType() const {
  return false;
 }
 
-bool Token::checkIsNull() const {
- llvm::errs() << "\n Inside checkIsNull";
- if (this == nullptr)
-	return true;
- return false;
-}
-
 ///  getHash - Calculates the hash for alias to avoid multiple enteries of same
 ///  alias
 std::string Token::getHash() const {

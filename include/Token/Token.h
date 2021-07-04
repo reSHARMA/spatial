@@ -69,7 +69,6 @@ public:
   bool isValPointerType() const;
   std::string getHash() const;
   bool isPointerType() const;
-  bool checkIsNull() const;
 
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
