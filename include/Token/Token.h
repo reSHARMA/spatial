@@ -44,7 +44,7 @@ public:
   void setIndex(Token*);
   void resetIndex();
   std::string getIndex(llvm::GEPOperator *GEPOp);
-  
+
   Token(llvm::Value *Val, std::string Index = "");
   Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
   Token(llvm::Argument *Arg, std::string Index = "");
@@ -73,8 +73,7 @@ public:
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
   void operator=(const Token &TheToken);
-
-  
+ 
 };
 } // namespace spatial
 
