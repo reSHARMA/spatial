@@ -311,7 +311,6 @@ LFCPAInstModel::extractToken(llvm::GetElementPtrInst *Inst) {
 	Token* opRhs = handleGEPUtil(Inst, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
 	TokenVec.push_back(opRhs);
    }
-=
   return TokenVec;
 }
 
