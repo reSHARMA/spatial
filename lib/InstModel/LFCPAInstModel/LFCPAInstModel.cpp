@@ -230,6 +230,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   std::vector<Token *> TokenVec;
   llvm::Value *RetVal = Inst->getReturnValue();
 
+
 //  auto undef = llvm::UndefValue::get(RetVal->getType()); 
 
   if (RetVal->getName() == "")  {
@@ -270,6 +271,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   }//end if
   else 
 	  InstInfoMap[Inst]= II;
+
   return TokenVec;
 }
 
@@ -339,9 +341,11 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CallInst *CI) {
 /// extractRedirections - Returns the relative level of redirection based of
 /// LHS and RHS on the statement
 
+
 std::vector<int>
 LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
   std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0}, temp{2, 0}, gep{1, 0};
+
   if (llvm::isa<llvm::AllocaInst>(Inst) ||
       llvm::isa<llvm::GetElementPtrInst>(Inst))
       return gep;
@@ -414,7 +418,6 @@ template bool LFCPAInstModel::isStructFieldPointerTy<llvm::GEPOperator>(llvm::GE
 Token* LFCPAInstModel::extractDummy(std::string S) {
 	return (this->getTokenWrapper()->getToken(S, nullptr));
 }
-
 
 //LFCPAInstModel::LFCPAInstModel(){};
 
