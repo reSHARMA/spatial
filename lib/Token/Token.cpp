@@ -114,10 +114,8 @@ void Token::setIndex(Token *T, std::string indx) {
   this->Index = indx + T->Index;
 }
 
-/// setIndex - For a Token 
-void Token::setIndex(Token *T) {
-  this->Index = T->Index;
-}
+/// setIndex - For a Token
+void Token::setIndex(Token *T) { this->Index = T->Index; }
 
 /// resetIndex - Resets the index back to an empty string
 void Token::resetIndex() { this->Index = ""; }
@@ -235,7 +233,7 @@ bool Token::isBasePointerType() const {
 }
 
 bool Token::isValPointerType() const {
- if (this->Ty->isPointerTy())
+  if (this->Ty->isPointerTy())
     return true;
   return false;
 }
