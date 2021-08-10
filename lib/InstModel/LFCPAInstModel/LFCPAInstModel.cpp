@@ -1,7 +1,7 @@
 #include "InstModel/LFCPAInstModel/LFCPAInstModel.h"
 #include "InstInfo/InstInfo.h"
-#include "vector"
 #include "queue"
+#include "vector"
 
 namespace spatial {
 
@@ -54,7 +54,6 @@ LFCPAInstModel::extractToken(llvm::GlobalVariable *Global) {
   return TokenVec;
 }
 
-
 /// extractToken - Returns a vector of alias objects for StoreInst \Inst
 /// operands.
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
@@ -62,6 +61,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
   // instruction example store op1 op2
 
   std::vector<Token *> TokenVec;
+
   //Check for store to non-pointers
   if (llvm::isa<llvm::GEPOperator>(Inst->getOperand(1))) {
     llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
@@ -90,8 +90,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
   }
   return TokenVec;	
 }
-
-
 
 /// extractToken - Returns a vector of alias objects for LoadInst \Inst
 /// operands.
@@ -135,7 +133,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::AllocaInst *Inst) {
       Alloca->getName().str() + "-orig", Inst->getParent()->getParent()));
   return TokenVec;
 }
-
 
 /// extractToken - Returns a vector of Token objects for CmpInst \Inst
 /// operands.
@@ -181,7 +178,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CmpInst *Inst) {
 
 	I = llvm::dyn_cast<llvm::Instruction>(v);
         q.push(I);
-
 	
 	while(!q.empty()) {
 	        llvm::Instruction *I = q.front();
@@ -216,7 +212,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CmpInst *Inst) {
 
 /// extractToken - Returns a vector of Token objects for ReturnInst \Inst
 /// operands.
-
 /* Return Instruction is not skipped but the Load instrs for loading the return value are skipped */ 
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   // The original pointer operand is returned for the
@@ -227,6 +222,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   llvm::Instruction *I, *Ins;
   std::vector<Token *> TokenVec;
   llvm::Value *RetVal = Inst->getReturnValue();
+
 //  auto undef = llvm::UndefValue::get(RetVal->getType()); 
 
   if (RetVal->getName() == "")  {
@@ -334,6 +330,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CallInst *CI) {
 
 /// extractRedirections - Returns the relative level of redirection based of
 /// LHS and RHS on the statement
+
 std::vector<int>
 LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
   std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0}, temp{2, 0}, gep{1, 0};

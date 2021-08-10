@@ -1,8 +1,8 @@
 #ifndef LFCPAINSTMODEL_LFCPAINSTMODEL_H
 #define LFCPAINSTMODEL_LFCPAINSTMODEL_H
 
-#include "spatial/InstInfo/InstInfo.h"
-#include "spatial/InstModel/InstModel.h"
+#include "InstInfo/InstInfo.h"
+#include "InstModel/InstModel.h"
 #include "spatial/Token/Token.h"
 #include "vector"
 #include "llvm/IR/Argument.h"
@@ -37,9 +37,13 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
+<<<<<<< HEAD
   bool isInstSkip (llvm::Instruction *);
+=======
+  bool isInstSkip(llvm::Instruction *);
+>>>>>>> 363f78205a09ada6fb56f3083eb0c170b3d39a57
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
-  Token* extractDummy(std::string);
+  Token *extractDummy(std::string);
 };
 } // namespace spatial
 

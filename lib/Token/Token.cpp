@@ -108,6 +108,15 @@ void Token::setIndex(llvm::GEPOperator *GEPOp) {
   this->Index = getIndex(GEPOp);
 }
 
+/// setIndex - For a Token. Required in case of nested structures
+/// wherein the token belongs to a chain of GEP instructions
+void Token::setIndex(Token *T, std::string indx) {
+  this->Index = indx + T->Index;
+}
+
+/// setIndex - For a Token
+void Token::setIndex(Token *T) { this->Index = T->Index; }
+
 /// resetIndex - Resets the index back to an empty string
 void Token::resetIndex() { this->Index = ""; }
 
@@ -223,6 +232,12 @@ bool Token::isBasePointerType() const {
   return false;
 }
 
+bool Token::isValPointerType() const {
+  if (this->Ty->isPointerTy())
+    return true;
+  return false;
+}
+
 ///  getHash - Calculates the hash for alias to avoid multiple enteries of same
 ///  alias
 std::string Token::getHash() const {
@@ -256,5 +271,4 @@ void Token::operator=(const Token &TheToken) {
     set(TheToken.name, TheToken.Kind, TheToken.Index, TheToken.Func);
   }
 }
-
 } // namespace spatial
