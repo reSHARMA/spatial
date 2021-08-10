@@ -440,23 +440,4 @@ bool LFCPAInstModel::isInstSkip(llvm::Instruction *I) {
  }
   return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // namespace spatial
