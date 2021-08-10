@@ -302,7 +302,7 @@ LFCPAInstModel::extractToken(llvm::GetElementPtrInst *Inst) {
   std::vector<Token *> TokenVec;
 
   // Check if the operand is a pointer
-  if (isStructFieldPointerTy(Inst)) {
+  if (isStructFieldPointerTy(Inst) or Inst->getOperand(0)->getType()->getContainedType(0)->isStructTy()) {
 	llvm::Function *Func = Inst->getParent()->getParent();
 	TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
 	Token* opRhs = handleGEPUtil(Inst, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
@@ -405,11 +405,18 @@ LFCPAInstModel::handleGEPUtil<llvm::GEPOperator>(llvm::GEPOperator *G,
 */
 template <typename GOP>
 bool LFCPAInstModel::isStructFieldPointerTy(GOP *G) {
-	long int cntOp = G->getNumOperands();
+	llvm::Type *StructType = G->getOperand(0)->getType()->getContainedType(0);
+	for (int i = 2; i < G->getNumOperands(); i++) { 
+		llvm::Value *IdxV = G->getOperand(i); 
+		llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
+		StructType = StructType->getStructElementType(Idx->getSExtValue());
+	}
+	 return StructType->isPointerTy();
+/*	long int cntOp = G->getNumOperands();
 	llvm::Type* BaseTy = G->getOperand(0)->getType()->getContainedType(0);
         llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(G->getOperand(cntOp-1));
         auto conVal = CI->getSExtValue();
-    	return (BaseTy->getStructElementType(conVal)->isPointerTy());
+    	return (BaseTy->getStructElementType(conVal)->isPointerTy());*/
 }
 
 template bool LFCPAInstModel::isStructFieldPointerTy<llvm::GetElementPtrInst>(llvm::GetElementPtrInst *G);
