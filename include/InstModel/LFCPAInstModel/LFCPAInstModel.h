@@ -15,10 +15,11 @@
 namespace spatial {
 
 class LFCPAInstModel : public InstModel {
-  std::map<llvm::Instruction*, spatial::InstInfo*> InstInfoMap;
+  std::map<llvm::Instruction *, spatial::InstInfo *> InstInfoMap;
+
 public:
- using InstModel::InstModel;
- 
+  using InstModel::InstModel;
+
   ~LFCPAInstModel();
   std::vector<int> extractRedirections(llvm::Instruction *);
   InstInfo extractInstInfo(llvm::Instruction *);
@@ -37,7 +38,7 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-  bool isInstSkip (llvm::Instruction *);
+  bool isInstSkip(llvm::Instruction *);
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
   Token *extractDummy(std::string);
 };
