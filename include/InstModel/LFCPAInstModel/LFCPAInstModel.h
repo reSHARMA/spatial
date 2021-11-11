@@ -4,7 +4,6 @@
 #include "Token/Token.h"
 #include "InstModel/InstModel.h"
 #include "InstInfo/InstInfo.h"
-
 #include "vector"
 #include "llvm/IR/Argument.h"
 #include "llvm/IR/Function.h"
@@ -39,7 +38,7 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-  bool isInstSkip (llvm::Instruction *);
+  bool isInstSkip(llvm::Instruction *);
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
   template <typename GOP> bool isArrayType(GOP *);
   Token* extractDummy(std::string);
