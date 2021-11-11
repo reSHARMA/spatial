@@ -10,8 +10,11 @@
 #include "llvm/IR/Type.h"
 #include "llvm/IR/Value.h"
 #include "llvm/Support/raw_ostream.h"
+#include "llvm/ADT/BitVector.h"
 
 namespace spatial {
+
+enum opTokenTy {isArray, isAlloca, isOpBitcast};
 
 class Token {
 private:
@@ -35,29 +38,34 @@ private:
            llvm::Function *Func);
   void set(std::string S, unsigned int Kind, std::string Index,
            llvm::Function *Func);
+  llvm::BitVector opTokenTy;
+  unsigned int TyLength;
+
 
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-
-  void setIndex(Token *, std::string);
-  void setIndex(Token *);
-
+  void setIndex(Token*, std::string);
+  void setIndex(Token*);
   void resetIndex();
+  void resetIndexToZero();
+  void resetIndexToZero(std::string);
   std::string getIndex(llvm::GEPOperator *GEPOp);
-
+  
   Token(llvm::Value *Val, std::string Index = "");
   Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
   Token(llvm::Argument *Arg, std::string Index = "");
   Token(llvm::Type *Ty, std::string Index = "");
   Token(std::string S, llvm::Function *Func, std::string Index = "");
   Token(Token *A);
+  Token();
 
   llvm::Value *getValue() const;
   llvm::StringRef getName() const;
   std::string getMemTypeName() const;
   std::string getFunctionName() const;
   std::string getFieldIndex() const;
+  
   friend std::ostream &operator<<(std::ostream &OS, const Token &A);
 
   bool isMem() const;
@@ -74,6 +82,16 @@ public:
   bool operator<(const Token &TheToken) const;
   bool operator==(const Token &TheToken) const;
   void operator=(const Token &TheToken);
+  void setIsGlobal();
+  void setIsArray();
+  bool getIsArray();
+  void setIsAlloca(); 
+  bool getIsAlloca();
+  void setIsOpBitcast();
+  bool getIsOpBitcast();  
+
+  template <typename GOP> bool isGEPOperandArrayTy(GOP *, int);
+  template <typename GEP> std::vector<int> getGEPArrayIndex(GEP*);
 };
 } // namespace spatial
 
