@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rwmem_282',['RWMem',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1aa0c108f66461113ebb3ca4d363b3fce0',1,'spatial']]]
+  ['phi_0',['Phi',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a8b6b0485d77cddffb6ea1af79b2d79e7',1,'spatial']]]
 ];

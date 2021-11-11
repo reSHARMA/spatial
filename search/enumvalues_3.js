@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['skip_283',['Skip',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8',1,'spatial']]]
+  ['rwmem_0',['RWMem',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1aa0c108f66461113ebb3ca4d363b3fce0',1,'spatial']]]
 ];
