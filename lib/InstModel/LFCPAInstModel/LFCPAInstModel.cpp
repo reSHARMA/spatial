@@ -111,7 +111,6 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::LoadInst *Inst) {
           this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
     } // end if
     else {
-
 	llvm::errs() << "\n ****Load Instruction skipped: Struct field is not pointer type.\n"<<*Inst;
         InstInfo *II = new InstInfo();
         II->setSkipInst();
@@ -125,6 +124,7 @@ else {
 	llvm::errs() << "\n ****Load Instruction skipped: Load of a non pointer. \n"<<*Inst;
 	InstInfo *II = new InstInfo();
         II->setSkipInst();   
+      }
 }
 
 /// extractToken - Returns a vector of Token objects for PHI Inst operands.
