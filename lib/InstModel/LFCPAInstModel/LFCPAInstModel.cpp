@@ -131,25 +131,6 @@ else {
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::PHINode *Inst) {
   // The operands are returned in the same order as they are present in the
   // instruction example x = phi op1 op2
-  std::vector<Token *> TokenVec;
-  TokenVec.push_back(this->getTokenWrapper()->getToken(Inst)); // Push Lhs
-  if (this->getTokenWrapper()
-          ->getToken(Inst->getOperand(0))
-          ->isValPointerType())
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
-
-  if (this->getTokenWrapper()
-          ->getToken(Inst->getOperand(1))
-          ->isValPointerType())
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(1)));
-  return TokenVec;
-}
-
-
-/// extractToken - Returns a vector of Token objects for PHI Inst operands.
-std::vector<Token *> LFCPAInstModel::extractToken(llvm::PHINode *Inst) {
-  // The operands are returned in the same order as they are present in the
-  // instruction example x = phi op1 op2
 
  std::vector<Token *> TokenVec;
  TokenVec.push_back(this->getTokenWrapper()->getToken(Inst)); //Push Lhs
