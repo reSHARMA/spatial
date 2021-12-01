@@ -1,9 +1,9 @@
 #ifndef LFCPAINSTMODEL_LFCPAINSTMODEL_H
 #define LFCPAINSTMODEL_LFCPAINSTMODEL_H
 
-#include "spatial/InstInfo/InstInfo.h"
-#include "spatial/InstModel/InstModel.h"
-#include "spatial/Token/Token.h"
+#include "InstInfo/InstInfo.h"
+#include "InstModel/InstModel.h"
+#include "Token/Token.h"
 #include "vector"
 #include "llvm/IR/Argument.h"
 #include "llvm/IR/Function.h"
@@ -15,10 +15,11 @@
 namespace spatial {
 
 class LFCPAInstModel : public InstModel {
-  std::map<llvm::Instruction*, spatial::InstInfo*> InstInfoMap;
+  std::map<llvm::Instruction *, spatial::InstInfo *> InstInfoMap;
+
 public:
- using InstModel::InstModel;
- 
+  using InstModel::InstModel;
+
   ~LFCPAInstModel();
   std::vector<int> extractRedirections(llvm::Instruction *);
   InstInfo extractInstInfo(llvm::Instruction *);
@@ -26,6 +27,7 @@ public:
   std::vector<Token *> extractToken(llvm::Instruction *);
   std::vector<Token *> extractToken(llvm::StoreInst *);
   std::vector<Token *> extractToken(llvm::LoadInst *);
+  std::vector<Token *> extractToken(llvm::PHINode *);
   std::vector<Token *> extractToken(llvm::AllocaInst *);
   std::vector<Token *> extractToken(llvm::BitCastInst *);
   std::vector<Token *> extractToken(llvm::ReturnInst *);
@@ -37,10 +39,10 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-  Token * handleGEPUtil_1(llvm::GEPOperator *, Token *);
-  bool isInstSkip (llvm::Instruction *);
+  bool isInstSkip(llvm::Instruction *);
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
-  Token* extractDummy(std::string);
+  template <typename GOP> bool isArrayType(GOP *);
+  Token *extractDummy(std::string);
 };
 } // namespace spatial
 
