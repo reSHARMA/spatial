@@ -211,7 +211,12 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   std::vector<Token *> TokenVec;
   llvm::Value *RetVal = Inst->getReturnValue();
 
-  if (RetVal->getName() == "")  {
+  if (RetVal == NULL) {
+	llvm::errs() << "\n ****Ignored: Return Value is Null\n "<<*Inst;
+	InstInfoMap[Inst] = II;
+	auto bit = II->isSkipInst();
+  }
+  else if (RetVal->getName() == "")  {
 	llvm::errs() << "\n ****Ignored: Return Val name is empty stringn\n "<<*Inst;
 	InstInfoMap[Inst] = II;
 	auto bit = II->isSkipInst();
