@@ -62,35 +62,34 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
   // The operands are returned in the same order as they are present in the
   // instruction example store op1 op2
   std::vector<Token *> TokenVec;
-  // Check for store to non-pointers
-  if (llvm::isa<llvm::GEPOperator>(Inst->getOperand(1))) {
-    llvm::GEPOperator *GOP =
-        llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
 
-    if (isStructFieldPointerTy(GOP)) {
-      Token *opLhs = handleGEPUtil(
-          GOP, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
-      TokenVec.push_back(opLhs);
-      llvm::Value *ValOp = Inst->getValueOperand();
-      if (!llvm::isa<llvm::ConstantInt>(ValOp))
-        TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
-    } // end if
+  //Check for store to non-pointers
+  if (llvm::isa<llvm::GEPOperator>(Inst->getOperand(1))) {  
+    llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
+  
+    if (isStructFieldPointerTy(GOP)) { 
+  	Token* opLhs = handleGEPUtil(GOP, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
+	TokenVec.push_back(opLhs);
+        llvm::Value *ValOp = Inst->getValueOperand();
+	if (!llvm::isa<llvm::ConstantInt>(ValOp))
+	    TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
+    }//end if
     else {
-      InstInfo *II = new InstInfo();
-      II->setSkipInst();
-    } // end else
-  }   // end outer if
-  else if (this->getTokenWrapper()
-               ->getToken(Inst->getPointerOperand())
-               ->isBasePointerType()) { /* Ignore Stores to non-pointers */
-    TokenVec.push_back(
-        this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
-    llvm::Value *ValOp = Inst->getValueOperand();
-    if (!llvm::isa<llvm::ConstantInt>(ValOp))
-      TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
-  } else {
-    InstInfo *II = new InstInfo();
-    II->setSkipInst();
+	llvm::errs() << "\n ****Store Instruction skipped:Struct field is not pointer type.\n "<<*Inst;
+        InstInfo *II = new InstInfo();
+        II->setSkipInst();
+    }//end else
+  }//end outer if
+  else if (this->getTokenWrapper()->getToken(Inst->getPointerOperand())->isBasePointerType()) { /* Ignore Stores to non-pointers */
+     TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
+     llvm::Value *ValOp = Inst->getValueOperand();
+     if (!llvm::isa<llvm::ConstantInt>(ValOp))
+     	 TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
+  }
+  else {
+	llvm::errs() << "\n ****Store Instruction skipped: Store to a non pointer.\n"<<*Inst;
+	InstInfo *II = new InstInfo();
+        II->setSkipInst();   
   }
   return TokenVec;
 }
@@ -112,39 +111,43 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::LoadInst *Inst) {
           this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
     } // end if
     else {
-      InstInfo *II = new InstInfo();
-      II->setSkipInst();
-    } // end else
-  }   // end outer if
-  else if (this->getTokenWrapper()
-               ->getToken(Inst->getPointerOperand())
-               ->isBasePointerType()) { /* Ignore load of non-pointers */
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
-    TokenVec.push_back(
-        this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
-  } else {
-    InstInfo *II = new InstInfo();
-    II->setSkipInst();
-  }
-  return TokenVec;
+	llvm::errs() << "\n ****Load Instruction skipped: Struct field is not pointer type.\n"<<*Inst;
+        InstInfo *II = new InstInfo();
+        II->setSkipInst();
+    }//end else
+}//end outer if
+else if (this->getTokenWrapper()->getToken(Inst->getPointerOperand())->isBasePointerType()) { /* Ignore load of non-pointers */
+     TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
+     TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getPointerOperand()));     
+}
+else {
+	llvm::errs() << "\n ****Load Instruction skipped: Load of a non pointer. \n"<<*Inst;
+	InstInfo *II = new InstInfo();
+        II->setSkipInst();   
+      }
 }
 
 /// extractToken - Returns a vector of Token objects for PHI Inst operands.
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::PHINode *Inst) {
   // The operands are returned in the same order as they are present in the
   // instruction example x = phi op1 op2
-  std::vector<Token *> TokenVec;
-  TokenVec.push_back(this->getTokenWrapper()->getToken(Inst)); // Push Lhs
-  if (this->getTokenWrapper()
-          ->getToken(Inst->getOperand(0))
-          ->isValPointerType())
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
 
-  if (this->getTokenWrapper()
-          ->getToken(Inst->getOperand(1))
-          ->isValPointerType())
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(1)));
-  return TokenVec;
+ std::vector<Token *> TokenVec;
+ TokenVec.push_back(this->getTokenWrapper()->getToken(Inst)); //Push Lhs
+ if (!llvm::isa<llvm::Constant>(Inst->getOperand(0))) {   //Consider only if not a constant
+ 	if (this->getTokenWrapper()->getToken(Inst->getOperand(0))->isValPointerType()) 
+     		TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));  
+ }
+ else 
+	llvm::errs() << "\n ****Phi Instruction OP0 skipped non-pointer: \n "<<*Inst;
+
+ if (!llvm::isa<llvm::Constant>(Inst->getOperand(1))) {   //Consider only if not a constant
+	 if (this->getTokenWrapper()->getToken(Inst->getOperand(1))->isValPointerType()) 
+	     TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(1))); 
+ }
+ else 
+	llvm::errs() << "\n ****Phi Instruction OP1 skipped non-pointer: \n"<<*Inst;
+ return TokenVec;
 }
 
 /// extractToken - Returns a vector of alias objects for AllocaInst \Inst
@@ -154,11 +157,12 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::AllocaInst *Inst) {
   // instruction example x = alloca op1
   std::vector<Token *> TokenVec;
   Token *Alloca = this->getTokenWrapper()->getToken(Inst);
-  Alloca->setIsAlloca(); // Set isAlloca explicitly for all ALLOCA Lhs
-  Alloca->setIsGlobal(); // Set type of Alloca variable to GLOBAL
+
+  Alloca->setIsAlloca(); //Set isAlloca explicitly for all ALLOCA Lhs
+  Alloca->setIsGlobal(); //Set type of Alloca variable to GLOBAL
   TokenVec.push_back(Alloca);
   TokenVec.push_back(this->getTokenWrapper()->getToken(
-      Alloca->getName().str() + "-orig", Inst->getParent()->getParent()));
+  Alloca->getName().str() + "-orig", Inst->getParent()->getParent()));
   return TokenVec;
 }
 
@@ -167,28 +171,31 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::AllocaInst *Inst) {
 /* Compare Instruction is not skipped but the Load instrs for loading the
  * operand value are skipped */
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::CmpInst *Inst) {
-  InstInfo *II = new InstInfo();
-  II->setSkipInst();
 
-  bool skipFlag = false;
-  std::vector<Token *> TokenVec;
-  llvm::Instruction *Ins, *I;
-  Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
-  std::queue<llvm::Instruction *> q;
+   InstInfo *II = new InstInfo();
+   II->setSkipInst();
+    
+   bool skipFlag = false;
+   std::vector<Token *> TokenVec;
+   llvm::Instruction* Ins, *I;
+   Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
+   std::queue<llvm::Instruction*> q;
 
-  I = llvm::dyn_cast<llvm::Instruction>(Inst);
-  for (int i = 0; i < I->getNumOperands(); i++) {
-    auto *Op = I->getOperand(i);
-    while (llvm::isa<llvm::LoadInst>(Op)) {
-      Ins = llvm::dyn_cast<llvm::LoadInst>(Op);
-      Op = llvm::cast<llvm::LoadInst>(Op)->getPointerOperand();
-      InstInfoMap[Ins] = II;
-    }
-    Token *OpVal = new Token(Op);
-    if (OpVal->isBasePointerType())
-      TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
-  }
-  return TokenVec;
+   I = llvm::dyn_cast<llvm::Instruction>(Inst);
+   for(int i = 0;i < I->getNumOperands(); i++) {
+       	    auto *Op = I->getOperand(i);
+            while(llvm::isa<llvm::LoadInst>(Op)){
+		  Ins = llvm::dyn_cast<llvm::LoadInst>(Op); 
+        	  Op = llvm::cast<llvm::LoadInst>(Op)->getPointerOperand();
+		  InstInfoMap[Ins] = II;		  
+            }
+            Token* OpVal = new Token(Op);
+	    if (OpVal->isBasePointerType())
+		TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
+	    else 
+		llvm::errs() << "\n ****Compare Instruction Operand skipped non-pointer: \n"<<*Ins;
+   }
+   return TokenVec;
 }
 
 /// extractToken - Returns a vector of Token objects for ReturnInst \Inst
@@ -206,45 +213,46 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   std::vector<Token *> TokenVec;
   llvm::Value *RetVal = Inst->getReturnValue();
 
-  if (RetVal->getName() == "") {
-    InstInfoMap[Inst] = II;
-    auto bit = II->isSkipInst();
-  } else if (RetVal && !llvm::isa<llvm::ConstantInt>(RetVal)) {
-    Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
-    while (!skipFlag) {
-      for (llvm::Use &U : Ins->operands()) {
-        llvm::Value *v = U.get();
-        I = llvm::dyn_cast<llvm::Instruction>(v);
-        if (llvm::isa<llvm::LoadInst>(I)) {
-          if (llvm::isa<llvm::GlobalVariable>(I->getOperand(0))) {
-            if (I->getOperand(0)
-                    ->getType()
-                    ->getContainedType(0)
-                    ->isPointerTy()) {
-              llvm::LoadInst *loadI = llvm::dyn_cast<llvm::LoadInst>(I);
-              llvm::Value *OpVal = loadI->getOperand(0);
 
-              TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
-              InstInfoMap[I] = II; // Load global instr is skipped
-              skipFlag = true;
-            } // end if
-            else {
-              InstInfoMap[I] = II;
-              skipFlag = true;
-              auto bit = II->isSkipInst();
-              break;
-            } // end else
-          }   // end if ptr
-          else {
-            InstInfoMap[I] = II;
-            Ins = I;
-          } // end else
-        }   // end if load
-      }     // end for
-    }       // end while
-  }         // end if
-  else
-    InstInfoMap[Inst] = II;
+  if (RetVal->getName() == "")  {
+	llvm::errs() << "\n ****Ignored: Return Val name is empty stringn\n "<<*Inst;
+	InstInfoMap[Inst] = II;
+	auto bit = II->isSkipInst();
+  }
+  else if (RetVal && !llvm::isa<llvm::ConstantInt>(RetVal)) { 
+     Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
+     while(!skipFlag) {  
+	for (llvm::Use &U : Ins->operands()) { 
+	    llvm::Value* v = U.get();
+	    I = llvm::dyn_cast<llvm::Instruction>(v); 
+	    if (llvm::isa<llvm::LoadInst>(I))	    { 
+		if (llvm::isa<llvm::GlobalVariable>(I->getOperand(0)))	{
+		  if (I->getOperand(0)->getType()->getContainedType(0)->isPointerTy())  {
+		   	llvm::LoadInst *loadI = llvm::dyn_cast<llvm::LoadInst>(I);
+		   	llvm::Value *OpVal = loadI->getOperand(0);
+		   	
+		   	TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
+			InstInfoMap[I]= II; //Load global instr is skipped
+		   	skipFlag = true;
+		    }//end if
+		    else  { 
+			llvm::errs() << "\n ****Return Instruction skipped OPD non-pointer: \n"<<*I;
+  		  	InstInfoMap[I]= II;
+			skipFlag = true;
+			auto bit = II->isSkipInst();
+			break;
+		    }//end else 
+		}//end if ptr
+		else {
+ 		   InstInfoMap[I]= II;
+		   Ins = I;
+		}//end else
+	    }//end if load
+	}//end for
+     }//end while	
+  }//end if
+  else 
+	  InstInfoMap[Inst]= II;
   return TokenVec;
 }
 
@@ -261,8 +269,9 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::BitCastInst *Inst) {
         CI->getCalledFunction()->getName().startswith("_zn"))
       TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getDestTy()));
   } else if (llvm::BitCastInst *BI =
-                 llvm::dyn_cast<llvm::BitCastInst>(Inst->getOperand(0))) {
-    TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
+
+                 llvm::dyn_cast<llvm::BitCastInst>(Inst->getOperand(0))) { 
+  TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
   }
   if (TokenVec.size() == 1) {
     TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
@@ -280,8 +289,7 @@ LFCPAInstModel::extractToken(llvm::GetElementPtrInst *Inst) {
 
   llvm::Function *Func = Inst->getParent()->getParent();
   TokenVec.push_back(this->getTokenWrapper()->getToken(Inst));
-  Token *opRhs = handleGEPUtil(
-      Inst, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
+  Token* opRhs = handleGEPUtil(Inst, this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
   TokenVec.push_back(opRhs);
   return TokenVec;
 }
@@ -306,48 +314,54 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CallInst *CI) {
   bool skipFlag = false;
   llvm::Instruction *I, *Ins;
   std::vector<Token *> TokenVec;
-  if (!CI->doesNotReturn())
+
+  if (!CI->doesNotReturn()) 
     TokenVec.push_back(this->getTokenWrapper()->getToken(CI));
 
-  I = llvm::dyn_cast<llvm::Instruction>(CI);
-  for (int i = 1; i < I->getNumOperands(); i++) {
-    auto *Op = I->getOperand(i);
-    while (llvm::isa<llvm::LoadInst>(Op)) {
-      Ins = llvm::dyn_cast<llvm::LoadInst>(Op);
-      Op = llvm::cast<llvm::LoadInst>(Op)->getPointerOperand();
-      InstInfoMap[Ins] = II;
-    }
-    Token *OpVal = new Token(Op);
-    if (OpVal->isBasePointerType())
-      TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
-  }
+   I = llvm::dyn_cast<llvm::Instruction>(CI);
+   for(int i = 1;i < I->getNumOperands(); i++) {
+       	    auto *Op = I->getOperand(i);
+            while(llvm::isa<llvm::LoadInst>(Op)){
+		  Ins = llvm::dyn_cast<llvm::LoadInst>(Op); 
+        	  Op = llvm::cast<llvm::LoadInst>(Op)->getPointerOperand();
+		  InstInfoMap[Ins] = II;		  
+            }
+            Token* OpVal = new Token(Op);
+	    if (OpVal->isBasePointerType())
+		TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
+	    else 
+		llvm::errs() << "\n ****Operands of call Instruction non-pointer: \n"<<*I;
+   }
   return TokenVec;
 }
+
 
 /// extractRedirections - Returns the relative level of redirection based of
 /// LHS and RHS on the statement
 
-std::vector<int> LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
-  std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0},
-      temp{2, 0}, gep{1, 0};
-  std::vector<int> phi1{1, 1, 1}, phi2{1, 0, 0}, phi3{1, 0, 1}, phi4{1, 1, 0};
+std::vector<int>
+LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
+  std::vector<int> load{1, 2}, store{2, 1}, copy{1, 1}, assign{1, 0}, temp{2, 0}, gep{1, 0};
+  //std::vector<int> phi1{1, 1, 1}, phi2{1, 0, 0}, phi3{1, 0, 1}, phi4{1, 1, 0};
   if (llvm::isa<llvm::AllocaInst>(Inst) ||
       llvm::isa<llvm::GetElementPtrInst>(Inst))
-    return gep;
+      return gep;
   if (llvm::isa<llvm::PHINode>(Inst)) {
-    llvm::PHINode *PHI = llvm::dyn_cast<llvm::PHINode>(Inst);
-    std::vector<Token *> vecPhiIns = extractToken(PHI);
-    Token *opRhs1 = vecPhiIns[1];
-    Token *opRhs2 = vecPhiIns[2];
-    if (opRhs1->isGlobalVar() and opRhs2->isGlobalVar())
-      return phi2;
-    else if (!opRhs1->isGlobalVar() and opRhs2->isGlobalVar())
-      return phi4;
-    else if (opRhs1->isGlobalVar() and !opRhs2->isGlobalVar())
-      return phi3;
-    else // if (!opLhs->isGlobalVar() and !opRhs->isGlobalVar())
-      return phi1;
-  }
+  	llvm::PHINode *PHI = llvm::dyn_cast<llvm::PHINode>(Inst);
+ 	std::vector<Token*> vecPhiIns = extractToken(PHI);
+	std::vector<int> phiIndir;
+	phiIndir.push_back(1); //indir for lhs
+	if(vecPhiIns.size() > 1) {
+		for (int i = 1; i < vecPhiIns.size(); i++) {
+	  		Token *opRhs = vecPhiIns[i];
+			if (opRhs->isGlobalVar())
+				phiIndir.push_back(0);
+			else 
+				phiIndir.push_back(1);
+		}//end for
+  	}//end inner if
+	return phiIndir;
+  }//end if for phi
 
   if (llvm::isa<llvm::StoreInst>(Inst)) {
     llvm::StoreInst *SI = llvm::dyn_cast<llvm::StoreInst>(Inst);
@@ -384,16 +398,16 @@ std::vector<int> LFCPAInstModel::extractRedirections(llvm::GlobalVariable *G) {
 
 /// handleGEPUtil - Returns the extended field value for a GEP
 template <typename GEP>
-Token *LFCPAInstModel::handleGEPUtil(GEP *G, Token *Ptr) {
+
+Token *LFCPAInstModel::handleGEPUtil(GEP *G, Token *Ptr) { 
   if (!Ptr)
     return Ptr;
   Token *FieldVal = new Token(Ptr);
-  FieldVal->setIndex(G);
-  FieldVal = this->getTokenWrapper()->getToken(FieldVal);
-  FieldVal->setIndex(G);
+  FieldVal->setIndex(G); 
+  FieldVal = this->getTokenWrapper()->getToken(FieldVal);  
+  FieldVal->setIndex(G); 
   if (Ptr->getIsAlloca())
-    FieldVal->setIsAlloca(); // Set Alloca for new token if prev token was
-                             // alloca
+     FieldVal->setIsAlloca();  //Set Alloca for new token if prev token was alloca
   return FieldVal;
 }
 
@@ -401,53 +415,52 @@ template Token *LFCPAInstModel::handleGEPUtil<llvm::GetElementPtrInst>(
     llvm::GetElementPtrInst *G, Token *Ptr);
 template Token *
 LFCPAInstModel::handleGEPUtil<llvm::GEPOperator>(llvm::GEPOperator *G,
-                                                 Token *Ptr);
+                                                   Token *Ptr);
 
-template <typename GOP> bool LFCPAInstModel::isStructFieldPointerTy(GOP *G) {
-  llvm::Type *StructType = G->getOperand(0)->getType()->getContainedType(0);
-  for (int i = 2; i < G->getNumOperands(); i++) {
-    llvm::Value *IdxV = G->getOperand(i);
-    llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
-    if (llvm::isa<llvm::StructType>(StructType))
-      StructType = StructType->getStructElementType(Idx->getSExtValue());
-    else if (llvm::isa<llvm::ArrayType>(StructType))
-      StructType = StructType->getArrayElementType();
-  }
-  return StructType->isPointerTy();
+template <typename GOP>
+bool LFCPAInstModel::isStructFieldPointerTy(GOP *G) { 
+	llvm::Type *StructType = G->getOperand(0)->getType()->getContainedType(0);
+	for (int i = 2; i < G->getNumOperands(); i++) { 
+		llvm::Value *IdxV = G->getOperand(i); 
+		llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
+		if (llvm::isa<llvm::StructType>(StructType)) 
+			StructType = StructType->getStructElementType(Idx->getSExtValue());
+		else if (llvm::isa<llvm::ArrayType>(StructType))
+			StructType = StructType->getArrayElementType();		
+	}
+	 return StructType->isPointerTy();
 }
 
 /// Returns true if operand is of array type
-template <typename GOP> bool LFCPAInstModel::isArrayType(GOP *G) {
+template <typename GOP>
+bool LFCPAInstModel::isArrayType(GOP *G) {
 
-  llvm::Type *ArrayType = G->getOperand(0)->getType()->getContainedType(0);
-  bool flgArr = false;
-
-  if (ArrayType->isArrayTy()) {
-    return true;
+ llvm::Type *ArrayType = G->getOperand(0)->getType()->getContainedType(0);
+ bool flgArr = false;
+ 
+ if (ArrayType->isArrayTy()) {
+	return true;
   }
 
-  for (int i = 2; i < G->getNumOperands(); i++) {
-    llvm::Value *IdxV = G->getOperand(i);
-    llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
-    if (llvm::isa<llvm::StructType>(ArrayType)) { /*case: p->x[0] or ob.x[0]*/
-      ArrayType = ArrayType->getStructElementType(Idx->getSExtValue());
-      if (ArrayType->isArrayTy())
-        return true;
-    }
+  for (int i = 2; i < G->getNumOperands(); i++) { 
+	llvm::Value *IdxV = G->getOperand(i); 
+	llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
+	if (llvm::isa<llvm::StructType>(ArrayType)) {/*case: p->x[0] or ob.x[0]*/
+		ArrayType = ArrayType->getStructElementType(Idx->getSExtValue());
+  		if (ArrayType->isArrayTy()) 
+			return true;
+	}
   }
   return false;
 }
 
-template bool LFCPAInstModel::isStructFieldPointerTy<llvm::GetElementPtrInst>(
-    llvm::GetElementPtrInst *G);
-template bool
-LFCPAInstModel::isStructFieldPointerTy<llvm::GEPOperator>(llvm::GEPOperator *G);
+template bool LFCPAInstModel::isStructFieldPointerTy<llvm::GetElementPtrInst>(llvm::GetElementPtrInst *G);
+template bool LFCPAInstModel::isStructFieldPointerTy<llvm::GEPOperator>(llvm::GEPOperator *G);
 
-template bool LFCPAInstModel::isArrayType<llvm::GetElementPtrInst>(
-    llvm::GetElementPtrInst *G);
-template bool
-LFCPAInstModel::isArrayType<llvm::GEPOperator>(llvm::GEPOperator *G);
+template bool LFCPAInstModel::isArrayType<llvm::GetElementPtrInst>(llvm::GetElementPtrInst *G);
+template bool LFCPAInstModel::isArrayType<llvm::GEPOperator>(llvm::GEPOperator *G);
 
+  
 Token *LFCPAInstModel::extractDummy(std::string S) {
   return (this->getTokenWrapper()->getToken(S, nullptr));
 }
@@ -464,5 +477,4 @@ bool LFCPAInstModel::isInstSkip(llvm::Instruction *I) {
   }
   return false;
 }
-
 } // namespace spatial
