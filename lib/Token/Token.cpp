@@ -147,14 +147,14 @@ void Token::resetIndexToZero(std::string S) { this->Index = S + "[0]"; }
 
 /// getIndex - For a GEP Operator find the offset
 std::string Token::getIndex(llvm::GEPOperator *GEPOp) {
- auto Iter = GEPOp->idx_begin();
- std::string Index = "[";
- while (Iter != GEPOp->idx_end()) { 
+  auto Iter = GEPOp->idx_begin();
+  std::string Index = "[";
+  while (Iter != GEPOp->idx_end()) {
     llvm::Value *temp = &(*Iter->get());
-    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) 
+    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp))
       Index += CI->getValue().toString(10, true) + "][";
-    else 
-	Index += temp->getName().str() + "][";
+    else
+      Index += temp->getName().str() + "][";
     Iter++;
   }
   return Index.substr(0, Index.size() - 1);
