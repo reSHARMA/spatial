@@ -138,6 +138,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::LoadInst *Inst) {
     InstInfo *II = new InstInfo();
     II->setSkipInst();
   }
+  return TokenVec;
 }
 
 /// extractToken - Returns a vector of Token objects for PHI Inst operands.
