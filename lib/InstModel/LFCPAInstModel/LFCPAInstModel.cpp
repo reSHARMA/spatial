@@ -237,49 +237,53 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::ReturnInst *Inst) {
   llvm::Value *RetVal = Inst->getReturnValue();
 
   if (RetVal == NULL) {
-	llvm::errs() << "\n ****Ignored: Return Value is Null\n "<<*Inst;
-	InstInfoMap[Inst] = II;
-	auto bit = II->isSkipInst();
-  }
-  else if (RetVal->getName() == "")  {
-	llvm::errs() << "\n ****Ignored: Return Val name is empty stringn\n "<<*Inst;
-	InstInfoMap[Inst] = II;
-	auto bit = II->isSkipInst();
-  }
-  else if (RetVal && !llvm::isa<llvm::ConstantInt>(RetVal)) { 
-     Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
-     while(!skipFlag) {  
-	for (llvm::Use &U : Ins->operands()) { 
-	    llvm::Value* v = U.get();
-	    I = llvm::dyn_cast<llvm::Instruction>(v); 
-	    if (llvm::isa<llvm::LoadInst>(I))	    { 
-		if (llvm::isa<llvm::GlobalVariable>(I->getOperand(0)))	{
-		  if (I->getOperand(0)->getType()->getContainedType(0)->isPointerTy())  {
-		   	llvm::LoadInst *loadI = llvm::dyn_cast<llvm::LoadInst>(I);
-		   	llvm::Value *OpVal = loadI->getOperand(0);
-		   	
-		   	TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
-			InstInfoMap[I]= II; //Load global instr is skipped
-		   	skipFlag = true;
-		    }//end if
-		    else  { 
-			llvm::errs() << "\n ****Return Instruction skipped OPD non-pointer: \n"<<*I;
-  		  	InstInfoMap[I]= II;
-			skipFlag = true;
-			auto bit = II->isSkipInst();
-			break;
-		    }//end else 
-		}//end if ptr
-		else {
- 		   InstInfoMap[I]= II;
-		   Ins = I;
-		}//end else
-	    }//end if load
-	}//end for
-     }//end while	
-  }//end if
-  else 
-	  InstInfoMap[Inst]= II;
+    llvm::errs() << "\n ****Ignored: Return Value is Null\n " << *Inst;
+    InstInfoMap[Inst] = II;
+    auto bit = II->isSkipInst();
+  } else if (RetVal->getName() == "") {
+    llvm::errs() << "\n ****Ignored: Return Val name is empty stringn\n "
+                 << *Inst;
+    InstInfoMap[Inst] = II;
+    auto bit = II->isSkipInst();
+  } else if (RetVal && !llvm::isa<llvm::ConstantInt>(RetVal)) {
+    Ins = llvm::dyn_cast<llvm::Instruction>(Inst);
+    while (!skipFlag) {
+      for (llvm::Use &U : Ins->operands()) {
+        llvm::Value *v = U.get();
+        I = llvm::dyn_cast<llvm::Instruction>(v);
+        if (llvm::isa<llvm::LoadInst>(I)) {
+          if (llvm::isa<llvm::GlobalVariable>(I->getOperand(0))) {
+            if (I->getOperand(0)
+                    ->getType()
+                    ->getContainedType(0)
+                    ->isPointerTy()) {
+              llvm::LoadInst *loadI = llvm::dyn_cast<llvm::LoadInst>(I);
+              llvm::Value *OpVal = loadI->getOperand(0);
+
+              TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
+              InstInfoMap[I] = II; // Load global instr is skipped
+              skipFlag = true;
+            } // end if
+            else {
+              llvm::errs()
+                  << "\n ****Return Instruction skipped OPD non-pointer: \n"
+                  << *I;
+              InstInfoMap[I] = II;
+              skipFlag = true;
+              auto bit = II->isSkipInst();
+              break;
+            } // end else
+          }   // end if ptr
+          else {
+            InstInfoMap[I] = II;
+            Ins = I;
+          } // end else
+        }   // end if load
+      }     // end for
+    }       // end while
+  }         // end if
+  else
+    InstInfoMap[Inst] = II;
   return TokenVec;
 }
 
