@@ -455,7 +455,7 @@ template <typename GOP> bool LFCPAInstModel::isStructFieldPointerTy(GOP *G) {
   llvm::Type *StructType = G->getOperand(0)->getType()->getContainedType(0);
   for (int i = 2; i < G->getNumOperands(); i++) {
     llvm::Value *IdxV = G->getOperand(i);
-    llvm::ConstantInt *Idx = llvm::cast<llvm::ConstantInt>(IdxV);
+    llvm::ConstantInt *Idx = llvm::dyn_cast<llvm::ConstantInt>(IdxV);
     if (llvm::isa<llvm::StructType>(StructType))
       StructType = StructType->getStructElementType(Idx->getSExtValue());
     else if (llvm::isa<llvm::ArrayType>(StructType))
