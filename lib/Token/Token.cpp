@@ -160,16 +160,16 @@ std::string Token::getIndex(llvm::GEPOperator *GEPOp) {
   auto Iter = GEPOp->idx_begin();
   std::string Index = "[";
   while (Iter != GEPOp->idx_end()) { 
+
     llvm::Value *temp = &(*Iter->get());
-    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) 
+    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp))
       Index += CI->getValue().toString(10, true) + "][";
-    else 
-	Index += temp->getName().str() + "][";
+    else
+      Index += temp->getName().str() + "][";
     Iter++;
   }
   return Index.substr(0, Index.size() - 1);
 }
-
 
 template <typename GOP> bool Token::isGEPOperandArrayTy(GOP *G, int Idx) {
   llvm::Type *StructType = G->getOperand(0)->getType();
