@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generic_20instruction_20modeling_0',['Generic Instruction Modeling',['../index.html',1,'']]]
+  ['spatial_0',['Spatial',['../index.html',1,'']]]
 ];

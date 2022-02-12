@@ -15,10 +15,11 @@ var searchData=
   ['isglobalvar_12',['isGlobalVar',['../classspatial_1_1Token.html#ad786f2eda4c88f3490ac5a4c49ae02bb',1,'spatial::Token']]],
   ['isinstskip_13',['isInstSkip',['../classspatial_1_1LFCPAInstModel.html#a69cbd0676c933feb0e97e3f89184d225',1,'spatial::LFCPAInstModel']]],
   ['ismem_14',['isMem',['../classspatial_1_1Token.html#aa8c4a33c4fe5a850e22d2e568c5b85d5',1,'spatial::Token']]],
-  ['isphiinst_15',['isPhiInst',['../classspatial_1_1InstInfo.html#a623301fa39f6aac49fe8f8edb803c598',1,'spatial::InstInfo']]],
-  ['ispointertype_16',['isPointerType',['../classspatial_1_1Token.html#a40891b106bf85f4566ca21d501db093b',1,'spatial::Token']]],
-  ['isrwmem_17',['isRWMem',['../classspatial_1_1InstInfo.html#a6c6da1c602eb4dc8b7ef6b7911bbd793',1,'spatial::InstInfo']]],
-  ['isskipinst_18',['isSkipInst',['../classspatial_1_1InstInfo.html#a3a5d3ad455ee85ebc56e60dfc1620931',1,'spatial::InstInfo']]],
-  ['isstructfieldpointerty_19',['isStructFieldPointerTy',['../classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8',1,'spatial::LFCPAInstModel']]],
-  ['isvalpointertype_20',['isValPointerType',['../classspatial_1_1Token.html#a1a0237326af32af629a3433e86479a56',1,'spatial::Token']]]
+  ['isnulltoken_15',['isNullToken',['../classspatial_1_1Token.html#afcfb07cd246b7542e7e88272c92840f8',1,'spatial::Token']]],
+  ['isphiinst_16',['isPhiInst',['../classspatial_1_1InstInfo.html#a623301fa39f6aac49fe8f8edb803c598',1,'spatial::InstInfo']]],
+  ['ispointertype_17',['isPointerType',['../classspatial_1_1Token.html#a40891b106bf85f4566ca21d501db093b',1,'spatial::Token']]],
+  ['isrwmem_18',['isRWMem',['../classspatial_1_1InstInfo.html#a6c6da1c602eb4dc8b7ef6b7911bbd793',1,'spatial::InstInfo']]],
+  ['isskipinst_19',['isSkipInst',['../classspatial_1_1InstInfo.html#a3a5d3ad455ee85ebc56e60dfc1620931',1,'spatial::InstInfo']]],
+  ['isstructfieldpointerty_20',['isStructFieldPointerTy',['../classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8',1,'spatial::LFCPAInstModel']]],
+  ['isvalpointertype_21',['isValPointerType',['../classspatial_1_1Token.html#a1a0237326af32af629a3433e86479a56',1,'spatial::Token']]]
 ];
