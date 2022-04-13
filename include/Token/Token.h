@@ -14,8 +14,15 @@
 
 namespace spatial {
 
-
-enum opTokenTy {isArray, isAlloca, isOpBitcast, isPhiGEPOpd, isIcmpGEPOpd, isOneGEPIndx, isFunArg};
+enum opTokenTy {
+  isArray,
+  isAlloca,
+  isOpBitcast,
+  isPhiGEPOpd,
+  isIcmpGEPOpd,
+  isOneGEPIndx,
+  isFunArg
+};
 
 class Token {
 private:
@@ -103,8 +110,8 @@ public:
 
   bool isNullToken();
   void setNullToken();
-  llvm::Type* getTy();
-  void setTy(llvm::Type*);
+  llvm::Type *getTy();
+  void setTy(llvm::Type *);
 };
 } // namespace spatial
 
