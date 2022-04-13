@@ -3,8 +3,8 @@
 namespace spatial {
 
 Token::Token() {
-  this->TyLength = 6;
-  this->opTokenTy = llvm::BitVector(this->TyLength, false);
+	this->TyLength = 7;
+  	this->opTokenTy = llvm::BitVector(this->TyLength, false);
 }
 
 void Token::set(llvm::Value *Val, unsigned int Kind, std::string Index,
@@ -48,8 +48,8 @@ void Token::set(std::string S, unsigned int Kind, std::string Index,
   this->Func = Func;
 }
 
-Token::Token(llvm::Value *Val, std::string Index) {
-  this->TyLength = 6;
+Token::Token(llvm::Value *Val, std::string Index) { 
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
   if (llvm::Argument *Arg = llvm::dyn_cast<llvm::Argument>(Val)) {
@@ -78,8 +78,8 @@ Token::Token(llvm::Value *Val, std::string Index) {
   }
 }
 
-Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
-  this->TyLength = 6;
+Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) { 
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
   llvm::Value *Val = GOP->getPointerOperand();
@@ -87,26 +87,26 @@ Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
   set(Val, /* Kind = */ 0, Index, Func);
 }
 
-Token::Token(llvm::Argument *Arg, std::string Index) {
-  this->TyLength = 6;
-  this->opTokenTy = llvm::BitVector(this->TyLength, false);
-  set(Arg, /* Kind = */ 2, Index, Arg->getParent());
+Token::Token(llvm::Argument *Arg, std::string Index) { 
+ this->TyLength = 7;
+ this->opTokenTy = llvm::BitVector(this->TyLength, false);
+ set(Arg, /* Kind = */ 2, Index, Arg->getParent());
 }
 
 Token::Token(llvm::Type *Ty, std::string Index) {
-  this->TyLength = 6;
-  this->opTokenTy = llvm::BitVector(this->TyLength, false);
-  set(Ty, /* Kind = */ 1, Index);
+ this->TyLength = 7;
+ this->opTokenTy = llvm::BitVector(this->TyLength, false);
+ set(Ty, /* Kind = */ 1, Index);
 }
 
-Token::Token(std::string S, llvm::Function *Func, std::string Index) {
-  this->TyLength = 6;
+Token::Token(std::string S, llvm::Function *Func, std::string Index) { 
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   set(S, /* Kind = */ 3, Index, Func);
 }
 
 Token::Token(Token *A) {
-  this->TyLength = 6;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   unsigned int Kind = A->Kind;
   if (Kind == 0) {
@@ -359,7 +359,9 @@ bool Token::getIsIcmpGEPOpd() { return opTokenTy.test(isIcmpGEPOpd); }
 
 void Token::setIsOneGEPIndx() { this->opTokenTy.set(isOneGEPIndx); }
 
-bool Token::getIsOneGEPIndx() { return opTokenTy.test(isOneGEPIndx); }
+void Token::setIsFunArg() { this->opTokenTy.set(isFunArg); }
+
+bool Token::getIsFunArg() { return opTokenTy.test(isFunArg); }
 
 template <typename GOP> std::vector<int> Token::getGEPArrayIndex(GOP *G) {
   std::vector<int> Idx;
@@ -377,8 +379,12 @@ template std::vector<int>
 Token::getGEPArrayIndex<llvm::GEPOperator>(llvm::GEPOperator *G);
 
 bool Token::isNullToken() {
-  if (this->name == "NULL" and this->Kind == 3)
-    return true;
-  return false;
+   if(this->name == "NULL" and this->Kind == 3)
+	return true;
+   return false;
 }
+
+llvm::Type* Token::getTy() { return this->Ty;}
+
+void Token::setTy(llvm::Type* type) { this->Ty = type;}
 } // namespace spatial
