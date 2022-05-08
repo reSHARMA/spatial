@@ -3,7 +3,7 @@
 namespace spatial {
 
 Token::Token() {
-	this->TyLength = 7;
+	this->TyLength = 8;
   	this->opTokenTy = llvm::BitVector(this->TyLength, false);
 }
 
@@ -48,13 +48,15 @@ void Token::set(std::string S, unsigned int Kind, std::string Index,
   this->Func = Func;
 }
 
-Token::Token(llvm::Value *Val, std::string Index) { 
-  this->TyLength = 7;
+Token::Token(llvm::Value *Val, std::string Index) {  
+  this->TyLength = 8;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
  
   if (llvm::Argument *Arg = llvm::dyn_cast<llvm::Argument>(Val)) {   
     set(Arg, /* Kind = */ 2, Index, Arg->getParent());
+    this->setIsGlobal();
+    this->setIsFunArg();
   } else {   
     // If Val is GEPOperator, it must be coming from load/store
     if (llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Val)) { 
@@ -82,7 +84,7 @@ Token::Token(llvm::Value *Val, std::string Index) {
 }
 
 Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) { 
-  this->TyLength = 7;
+  this->TyLength = 8;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
   llvm::Value *Val = GOP->getPointerOperand();
@@ -91,25 +93,25 @@ Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
 }
 
 Token::Token(llvm::Argument *Arg, std::string Index) { 
- this->TyLength = 7;
+ this->TyLength = 8;
  this->opTokenTy = llvm::BitVector(this->TyLength, false);
  set(Arg, /* Kind = */ 2, Index, Arg->getParent());
 }
 
 Token::Token(llvm::Type *Ty, std::string Index) {
- this->TyLength = 7;
+ this->TyLength = 8;
  this->opTokenTy = llvm::BitVector(this->TyLength, false);
  set(Ty, /* Kind = */ 1, Index);
 }
 
 Token::Token(std::string S, llvm::Function *Func, std::string Index) { 
-  this->TyLength = 7;
+  this->TyLength = 8;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   set(S, /* Kind = */ 3, Index, Func);
 }
 
 Token::Token(Token *A) {
-  this->TyLength = 7;
+  this->TyLength = 8;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   unsigned int Kind = A->Kind;
   if (Kind == 0) {
@@ -364,10 +366,13 @@ void Token::operator=(const Token &TheToken) {
 
  bool Token::getIsOneGEPIndx() { return opTokenTy.test(isOneGEPIndx); }
 
+ void Token::setIsFunPtr() { this->opTokenTy.set(isFunPtr); }
+
+ bool Token::getIsFunPtr() { return opTokenTy.test(isFunPtr); }
+
  void Token::setIsFunArg() { this->opTokenTy.set(isFunArg); }
 
  bool Token::getIsFunArg() { return opTokenTy.test(isFunArg); }
-
 
 
 template <typename GOP> std::vector<int> Token::getGEPArrayIndex(GOP *G) {
@@ -393,4 +398,9 @@ template std::vector<int> Token::getGEPArrayIndex<llvm::GEPOperator>(llvm::GEPOp
  llvm::Type* Token::getTy() { return this->Ty;}
 
  void Token::setTy(llvm::Type* type) { this->Ty = type;}
+
+ void Token::setFunction(llvm::Function* F) { this->Func = F; }
+
+ llvm::Function* Token::getFunction() { return this->Func; }
+
 } // namespace spatial
