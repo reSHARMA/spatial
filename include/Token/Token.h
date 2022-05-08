@@ -14,7 +14,15 @@
 
 namespace spatial {
 
-enum opTokenTy { isArray, isAlloca, isOpBitcast };
+enum opTokenTy {
+  isArray,
+  isAlloca,
+  isOpBitcast,
+  isPhiGEPOpd,
+  isIcmpGEPOpd,
+  isOneGEPIndx,
+  isFunArg
+};
 
 class Token {
 private:
@@ -88,9 +96,22 @@ public:
   bool getIsAlloca();
   void setIsOpBitcast();
   bool getIsOpBitcast();
+  void setIsPhiGEPOpd();
+  bool getIsPhiGEPOpd();
+  void setIsIcmpGEPOpd();
+  bool getIsIcmpGEPOpd();
+  void setIsOneGEPIndx();
+  bool getIsOneGEPIndx();
+  void setIsFunArg();
+  bool getIsFunArg();
 
   template <typename GOP> bool isGEPOperandArrayTy(GOP *, int);
   template <typename GEP> std::vector<int> getGEPArrayIndex(GEP *);
+
+  bool isNullToken();
+  void setNullToken();
+  llvm::Type *getTy();
+  void setTy(llvm::Type *);
 };
 } // namespace spatial
 

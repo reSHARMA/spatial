@@ -3,7 +3,7 @@
 namespace spatial {
 
 Token::Token() {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 }
 
@@ -49,7 +49,7 @@ void Token::set(std::string S, unsigned int Kind, std::string Index,
 }
 
 Token::Token(llvm::Value *Val, std::string Index) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
   if (llvm::Argument *Arg = llvm::dyn_cast<llvm::Argument>(Val)) {
@@ -71,10 +71,15 @@ Token::Token(llvm::Value *Val, std::string Index) {
     else
       set(Val, /* Kind = */ 0, Index, func);
   }
+  if (Val->getName() == "") { // Operand could be NULL
+    this->Kind = 3;
+    this->name = "NULL";
+    // NULL operand is set as Global
+  }
 }
 
 Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
 
   llvm::Value *Val = GOP->getPointerOperand();
@@ -83,25 +88,25 @@ Token::Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index) {
 }
 
 Token::Token(llvm::Argument *Arg, std::string Index) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   set(Arg, /* Kind = */ 2, Index, Arg->getParent());
 }
 
 Token::Token(llvm::Type *Ty, std::string Index) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   set(Ty, /* Kind = */ 1, Index);
 }
 
 Token::Token(std::string S, llvm::Function *Func, std::string Index) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   set(S, /* Kind = */ 3, Index, Func);
 }
 
 Token::Token(Token *A) {
-  this->TyLength = 3;
+  this->TyLength = 7;
   this->opTokenTy = llvm::BitVector(this->TyLength, false);
   unsigned int Kind = A->Kind;
   if (Kind == 0) {
@@ -147,16 +152,19 @@ void Token::resetIndexToZero(std::string S) { this->Index = S + "[0]"; }
 
 /// getIndex - For a GEP Operator find the offset
 std::string Token::getIndex(llvm::GEPOperator *GEPOp) {
+
   auto Iter = GEPOp->idx_begin();
   std::string Index = "[";
   while (Iter != GEPOp->idx_end()) {
+
     llvm::Value *temp = &(*Iter->get());
-    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp)) {
+    if (llvm::ConstantInt *CI = llvm::dyn_cast<llvm::ConstantInt>(temp))
       Index += CI->getValue().toString(10, true) + "][";
-    }
+    else
+      Index += temp->getName().str() + "][";
     Iter++;
   }
-  return Index.substr(3, Index.size() - 4);
+  return Index.substr(0, Index.size() - 1);
 }
 
 template <typename GOP> bool Token::isGEPOperandArrayTy(GOP *G, int Idx) {
@@ -341,6 +349,20 @@ void Token::setIsOpBitcast() { this->opTokenTy.set(isOpBitcast); }
 
 bool Token::getIsOpBitcast() { return opTokenTy.test(isOpBitcast); }
 
+void Token::setIsPhiGEPOpd() { this->opTokenTy.set(isPhiGEPOpd); }
+
+bool Token::getIsPhiGEPOpd() { return opTokenTy.test(isPhiGEPOpd); }
+
+void Token::setIsIcmpGEPOpd() { this->opTokenTy.set(isIcmpGEPOpd); }
+
+bool Token::getIsIcmpGEPOpd() { return opTokenTy.test(isIcmpGEPOpd); }
+
+void Token::setIsOneGEPIndx() { this->opTokenTy.set(isOneGEPIndx); }
+
+void Token::setIsFunArg() { this->opTokenTy.set(isFunArg); }
+
+bool Token::getIsFunArg() { return opTokenTy.test(isFunArg); }
+
 template <typename GOP> std::vector<int> Token::getGEPArrayIndex(GOP *G) {
   std::vector<int> Idx;
   for (int i = 2; i < G->getNumOperands(); i++) {
@@ -356,4 +378,13 @@ Token::getGEPArrayIndex<llvm::GetElementPtrInst>(llvm::GetElementPtrInst *G);
 template std::vector<int>
 Token::getGEPArrayIndex<llvm::GEPOperator>(llvm::GEPOperator *G);
 
+bool Token::isNullToken() {
+  if (this->name == "NULL" and this->Kind == 3)
+    return true;
+  return false;
+}
+
+llvm::Type *Token::getTy() { return this->Ty; }
+
+void Token::setTy(llvm::Type *type) { this->Ty = type; }
 } // namespace spatial
