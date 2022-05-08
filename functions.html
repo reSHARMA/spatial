@@ -97,6 +97,7 @@ $(function() {
 <li>getDataFlowIn&#160;:&#160;<a class="el" href="classspatial_1_1ValueContext.html#a47b6a12bffdb38445bdb83796c34ff4d">spatial::ValueContext&lt; DataflowValue &gt;</a></li>
 <li>getDataFlowOut&#160;:&#160;<a class="el" href="classspatial_1_1ValueContext.html#adf2e5295a905038f0ae4444580a3537b">spatial::ValueContext&lt; DataflowValue &gt;</a></li>
 <li>getFieldIndex()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a81b49886df62864ae224be09f9dbf832">spatial::Token</a></li>
+<li>getFunction()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#aa2be8f3247501ff0f0d0235bc60290a6">spatial::Token</a></li>
 <li>getFunctionName()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a59d6e3e41c2dd7135dcb13addd3bca7b">spatial::Token</a></li>
 <li>getGEPArrayIndex()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#ae00acd02e801ef8793e59dd9e3b4a19f">spatial::Token</a></li>
 <li>getHash()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a935f28d14f81121d7b4a047e36ea1f00">spatial::Token</a></li>
@@ -104,6 +105,7 @@ $(function() {
 <li>getIsAlloca()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a93b57713f7a2fe8a45329550b0ef5c99">spatial::Token</a></li>
 <li>getIsArray()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#afed3591a45e3cdef1c308148e8103cb9">spatial::Token</a></li>
 <li>getIsFunArg()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a739ffa5b0a7b119f1b637b416cb51c6a">spatial::Token</a></li>
+<li>getIsFunPtr()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a0da95e11fc817c2864962ddfa4bc6f58">spatial::Token</a></li>
 <li>getIsIcmpGEPOpd()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a5e1d778fb460577427795fa4be299df9">spatial::Token</a></li>
 <li>getIsOneGEPIndx()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#af77803d96e1c7a9e6483f0bdd98f6e3f">spatial::Token</a></li>
 <li>getIsOpBitcast()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#acb41d206ad791dd21aabb31302bbfdb7">spatial::Token</a></li>
@@ -113,7 +115,7 @@ $(function() {
 <li>getPointee()&#160;:&#160;<a class="el" href="classspatial_1_1Graph.html#a5817a2913fc2bc0e5fcd139acb7d93aa">spatial::Graph&lt; Node &gt;</a></li>
 <li>getResult()&#160;:&#160;<a class="el" href="classspatial_1_1ValueContext.html#a523d11d21d1b6ef14767163b38abd261">spatial::ValueContext&lt; DataflowValue &gt;</a></li>
 <li>getSavedContext()&#160;:&#160;<a class="el" href="classspatial_1_1ValueContext.html#a1c1ba84be02d95e7c9ca7b91e86110f3">spatial::ValueContext&lt; DataflowValue &gt;</a></li>
-<li>getToken()&#160;:&#160;<a class="el" href="classspatial_1_1TokenWrapper.html#ac827d9d3087f6cc21c273b2925dfa71e">spatial::TokenWrapper</a></li>
+<li>getToken()&#160;:&#160;<a class="el" href="classspatial_1_1TokenWrapper.html#ad942a3b1498eab989e478e8361d39560">spatial::TokenWrapper</a></li>
 <li>getTokenWithoutIndex()&#160;:&#160;<a class="el" href="classspatial_1_1TokenWrapper.html#a8697a1f4a9676fbce28150362a19570d">spatial::TokenWrapper</a></li>
 <li>getTokenWrapper()&#160;:&#160;<a class="el" href="classspatial_1_1InstModel.html#a0af15bd2e9fc1109fa4f32f2e5b550d5">spatial::InstModel</a></li>
 <li>getTop()&#160;:&#160;<a class="el" href="classspatial_1_1ValueContext.html#a81eb8fb6d67a60236e4da54dbd2d6b90">spatial::ValueContext&lt; DataflowValue &gt;</a></li>
@@ -195,10 +197,12 @@ $(function() {
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>sameFunc()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a303c960ceab6f099888f2927bfd0ddda">spatial::Token</a></li>
 <li>setCallInst()&#160;:&#160;<a class="el" href="classspatial_1_1InstInfo.html#aa2046e0e0697e35d2e680b53eb2a52a5">spatial::InstInfo</a></li>
+<li>setFunction()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a7ee3c9529ab0df3b0e622cd9e2f5ba1b">spatial::Token</a></li>
 <li>setIndex()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a2b17bde92ef93e7689740434b8f6ffa8">spatial::Token</a></li>
 <li>setIsAlloca()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a899f28fe3fbd15997bda5cd20e581c8c">spatial::Token</a></li>
 <li>setIsArray()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a5ea2ac0f7c74b2a6f7bf3fee41510e40">spatial::Token</a></li>
 <li>setIsFunArg()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a00d71c20413f8b3465f65cda74314db5">spatial::Token</a></li>
+<li>setIsFunPtr()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a7e63b7e3ec68c4d1a39c62c44152df01">spatial::Token</a></li>
 <li>setIsGlobal()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a75ea9914fa48d4885639e9898b467ccb">spatial::Token</a></li>
 <li>setIsIcmpGEPOpd()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#a4c93cdf42aa73754ae125d2f08d7e798">spatial::Token</a></li>
 <li>setIsOneGEPIndx()&#160;:&#160;<a class="el" href="classspatial_1_1Token.html#adcdb3872d2e11ce8fcaa337cb942c023">spatial::Token</a></li>
