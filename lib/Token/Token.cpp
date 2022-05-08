@@ -404,3 +404,4 @@ template std::vector<int> Token::getGEPArrayIndex<llvm::GEPOperator>(llvm::GEPOp
  llvm::Function* Token::getFunction() { return this->Func; }
 
 } // namespace spatial
+
