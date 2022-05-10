@@ -65,6 +65,7 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
   std::vector<Token *> TokenVec;
   //Check for store to non-pointers
   if (llvm::isa<llvm::GEPOperator>(Inst->getOperand(1))) {  
+
     llvm::GEPOperator *GOP = llvm::dyn_cast<llvm::GEPOperator>(Inst->getOperand(1));
   
     if (isStructFieldPointerTy(GOP)) { 
@@ -80,11 +81,15 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
         II->setSkipInst();
     }//end else
   }//end outer if
-  else if (this->getTokenWrapper()->getToken(Inst->getPointerOperand())->isBasePointerType()) { /* Ignore Stores to non-pointers */
+   else if (this->getTokenWrapper()->getToken(Inst->getPointerOperand())->isBasePointerType()) { /* Ignore Stores to non-pointers */
+     llvm::errs()<<"\n STORE TO A POINTER";
      TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getPointerOperand()));
      llvm::Value *ValOp = Inst->getValueOperand();
-     if (!llvm::isa<llvm::ConstantInt>(ValOp))   
+     if (!llvm::isa<llvm::ConstantInt>(ValOp)) {  
+         //if (this->getTokenWrapper()->getToken(ValOp)->isNullToken())
+	//	llvm::errs() << "\n TOKEN IS A NULL";
      	 TokenVec.push_back(this->getTokenWrapper()->getToken(ValOp));
+	}
   }
   else {
 	llvm::errs() << "\n ****Store Instruction skipped: Store to a non pointer.\n"<<*Inst;
@@ -122,7 +127,7 @@ else {
 	llvm::errs() << "\n ****Load Instruction skipped: Load of a non pointer. \n"<<*Inst;
 	InstInfo *II = new InstInfo();
         II->setSkipInst();   
-}
+}	
 return TokenVec;	
 }
 
@@ -336,18 +341,34 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::CallInst *CI) {
   bool skipFlag = false;
   llvm::Instruction *I, *Ins;
   std::vector<Token *> TokenVec;
+ 
+  llvm::Function *FP = CI->getCalledFunction();
+  if (FP == nullptr) { 
+	//Indirect call
+	if (!CI->doesNotReturn())
+		TokenVec.push_back(this->getTokenWrapper()->getToken(CI));  //Return value
+	TokenVec.push_back(this->getTokenWrapper()->getToken(CI->getCalledOperand()));	//Function name
+	for(int i = 0;i < CI->arg_size(); i++) {	
+ 		TokenVec.push_back(this->getTokenWrapper()->getToken(CI->getArgOperand(i)));	//parameters
+	}
+	return TokenVec;
+ }
+
+ // Direct function call
   if (!CI->doesNotReturn()) 
-    TokenVec.push_back(this->getTokenWrapper()->getToken(CI));
+    TokenVec.push_back(this->getTokenWrapper()->getToken(CI));//return value
 
    I = llvm::dyn_cast<llvm::Instruction>(CI);
-   for(int i = 1;i < I->getNumOperands(); i++) {
+   for(int i = 0;i < I->getNumOperands(); i++) {
        	    auto *Op = I->getOperand(i);
+	 //   llvm::errs() << "\n OP: "<<*Op;
             while(llvm::isa<llvm::LoadInst>(Op)){
 		  Ins = llvm::dyn_cast<llvm::LoadInst>(Op); 
         	  Op = llvm::cast<llvm::LoadInst>(Op)->getPointerOperand();
-		  InstInfoMap[Ins] = II;		  
+		 // InstInfoMap[Ins] = II;		  
             }
             Token* OpVal = new Token(Op);
+	   // llvm::errs() << "\n OpVal: "<<OpVal->getName();
 	    if (OpVal->isBasePointerType())
 		TokenVec.push_back(this->getTokenWrapper()->getToken(OpVal));
 	    else 
@@ -388,8 +409,10 @@ LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
    std::vector<Token*> vecStoreIns = extractToken(SI);
    Token* opLhs = vecStoreIns[0];
    Token* opRhs = vecStoreIns[1];
-   if (opLhs->isGlobalVar() and opRhs->isGlobalVar())
+   if (opLhs->isGlobalVar() and (opRhs->isGlobalVar() and !opRhs->getIsFunArg()))
 	return assign;
+   else if (opLhs->isGlobalVar() and (opRhs->isGlobalVar() and opRhs->getIsFunArg()))
+	return copy; 
    else if (!opLhs->isGlobalVar() and opRhs->isGlobalVar())
 	return temp;
    else if (opLhs->isGlobalVar() and !opRhs->isGlobalVar())
@@ -400,12 +423,14 @@ LFCPAInstModel::extractRedirections(llvm::Instruction *Inst) {
   if (llvm::isa<llvm::LoadInst>(Inst)) {
      llvm::LoadInst *LI = llvm::dyn_cast<llvm::LoadInst>(Inst);
      std::vector<Token*> vecLoadIns = extractToken(LI);
-     Token* opLhs = vecLoadIns[0];
-     Token* opRhs = vecLoadIns[1];
-     if (opRhs->isGlobalVar())
-	return copy;
-     else if (!opRhs->isGlobalVar())
-	return load;
+     if (!vecLoadIns.empty()) {
+       Token* opLhs = vecLoadIns[0];
+       Token* opRhs = vecLoadIns[1];
+       if (opRhs->isGlobalVar())
+	 return copy;
+       else if (!opRhs->isGlobalVar())
+	 return load;
+     }
  }
   return copy;
 }
@@ -498,4 +523,10 @@ bool LFCPAInstModel::isInstSkip(llvm::Instruction *I) {
  }
   return false;
 }
+
+ void LFCPAInstModel::setSkipIns(llvm::Instruction* I) {
+	InstInfo *II = new InstInfo();
+        II->setSkipInst();  
+	InstInfoMap[I] = II;
+ }
 } // namespace spatial
