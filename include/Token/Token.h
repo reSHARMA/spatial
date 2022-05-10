@@ -2,6 +2,7 @@
 #define TOKEN_H
 
 #include "string"
+#include "llvm/ADT/BitVector.h"
 #include "llvm/ADT/StringRef.h"
 #include "llvm/IR/Argument.h"
 #include "llvm/IR/Function.h"
@@ -10,11 +11,19 @@
 #include "llvm/IR/Type.h"
 #include "llvm/IR/Value.h"
 #include "llvm/Support/raw_ostream.h"
-#include "llvm/ADT/BitVector.h"
 
 namespace spatial {
 
-enum opTokenTy {isArray, isAlloca, isOpBitcast, isPhiGEPOpd, isIcmpGEPOpd, isOneGEPIndx, isFunPtr, isFunArg};
+enum opTokenTy {
+  isArray,
+  isAlloca,
+  isOpBitcast,
+  isPhiGEPOpd,
+  isIcmpGEPOpd,
+  isOneGEPIndx,
+  isFunPtr,
+  isFunArg
+};
 
 class Token {
 private:
@@ -41,17 +50,16 @@ private:
   llvm::BitVector opTokenTy;
   unsigned int TyLength;
 
-
 public:
   void setIndex(llvm::GetElementPtrInst *GEPInst);
   void setIndex(llvm::GEPOperator *GEPOp);
-  void setIndex(Token*, std::string);
-  void setIndex(Token*);
+  void setIndex(Token *, std::string);
+  void setIndex(Token *);
   void resetIndex();
   void resetIndexToZero();
   void resetIndexToZero(std::string);
   std::string getIndex(llvm::GEPOperator *GEPOp);
-  
+
   Token(llvm::Value *Val, std::string Index = "");
   Token(llvm::GEPOperator *GOP, llvm::Function *Func, std::string Index = "");
   Token(llvm::Argument *Arg, std::string Index = "");
@@ -65,7 +73,7 @@ public:
   std::string getMemTypeName() const;
   std::string getFunctionName() const;
   std::string getFieldIndex() const;
-  
+
   friend std::ostream &operator<<(std::ostream &OS, const Token &A);
 
   bool isMem() const;
@@ -85,10 +93,10 @@ public:
   void setIsGlobal();
   void setIsArray();
   bool getIsArray();
-  void setIsAlloca(); 
+  void setIsAlloca();
   bool getIsAlloca();
   void setIsOpBitcast();
-  bool getIsOpBitcast();  
+  bool getIsOpBitcast();
   void setIsPhiGEPOpd();
   bool getIsPhiGEPOpd();
   void setIsIcmpGEPOpd();
@@ -101,14 +109,14 @@ public:
   bool getIsFunArg();
 
   template <typename GOP> bool isGEPOperandArrayTy(GOP *, int);
-  template <typename GEP> std::vector<int> getGEPArrayIndex(GEP*);
+  template <typename GEP> std::vector<int> getGEPArrayIndex(GEP *);
 
   bool isNullToken();
   void setNullToken();
-  llvm::Type* getTy();
-  void setTy(llvm::Type*);
-  void setFunction(llvm::Function*);
-  llvm::Function* getFunction();
+  llvm::Type *getTy();
+  void setTy(llvm::Type *);
+  void setFunction(llvm::Function *);
+  llvm::Function *getFunction();
 };
 } // namespace spatial
 
