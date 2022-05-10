@@ -56,7 +56,6 @@ LFCPAInstModel::extractToken(llvm::GlobalVariable *Global) {
   return TokenVec;
 }
 
-
 /// extractToken - Returns a vector of alias objects for StoreInst \Inst
 /// operands.
 std::vector<Token *> LFCPAInstModel::extractToken(llvm::StoreInst *Inst) {
