@@ -17,11 +17,12 @@ var searchData=
   ['setphiinst_14',['setPhiInst',['../classspatial_1_1InstInfo.html#a5eee736f032ba64c7cffa4eaaf2eba32',1,'spatial::InstInfo']]],
   ['setresult_15',['setResult',['../classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5',1,'spatial::ValueContext']]],
   ['setrwmeminst_16',['setRWMemInst',['../classspatial_1_1InstInfo.html#a4a143e23093fb0940ae7346eb124a992',1,'spatial::InstInfo']]],
-  ['setskipinst_17',['setSkipInst',['../classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9',1,'spatial::InstInfo']]],
-  ['setty_18',['setTy',['../classspatial_1_1Token.html#ae17994955bbae73c2c66b65345c357f6',1,'spatial::Token']]],
-  ['size_19',['size',['../classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16',1,'spatial::Worklist']]],
-  ['skip_20',['Skip',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8',1,'spatial']]],
-  ['skipfunction_21',['SkipFunction',['../namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb',1,'spatial']]],
-  ['spatial_22',['Spatial',['../index.html',1,'']]],
-  ['spatial_23',['spatial',['../namespacespatial.html',1,'']]]
+  ['setskipins_17',['setSkipIns',['../classspatial_1_1LFCPAInstModel.html#a7a1dfc9944937ecbd155a7da2147b3c3',1,'spatial::LFCPAInstModel']]],
+  ['setskipinst_18',['setSkipInst',['../classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9',1,'spatial::InstInfo']]],
+  ['setty_19',['setTy',['../classspatial_1_1Token.html#ae17994955bbae73c2c66b65345c357f6',1,'spatial::Token']]],
+  ['size_20',['size',['../classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16',1,'spatial::Worklist']]],
+  ['skip_21',['Skip',['../namespacespatial.html#aa6c0d0311681e6f27d464fe4fa78a6b1a2dc4d94f806e4c3fbd7264dd95bf9fe8',1,'spatial']]],
+  ['skipfunction_22',['SkipFunction',['../namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb',1,'spatial']]],
+  ['spatial_23',['Spatial',['../index.html',1,'']]],
+  ['spatial_24',['spatial',['../namespacespatial.html',1,'']]]
 ];
