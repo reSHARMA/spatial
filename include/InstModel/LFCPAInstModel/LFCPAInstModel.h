@@ -1,9 +1,9 @@
 #ifndef LFCPAINSTMODEL_LFCPAINSTMODEL_H
 #define LFCPAINSTMODEL_LFCPAINSTMODEL_H
 
-#include "Token/Token.h"
-#include "InstModel/InstModel.h"
 #include "InstInfo/InstInfo.h"
+#include "InstModel/InstModel.h"
+#include "Token/Token.h"
 
 #include "vector"
 #include "llvm/IR/Argument.h"
@@ -16,10 +16,11 @@
 namespace spatial {
 
 class LFCPAInstModel : public InstModel {
-  std::map<llvm::Instruction*, spatial::InstInfo*> InstInfoMap;
+  std::map<llvm::Instruction *, spatial::InstInfo *> InstInfoMap;
+
 public:
- using InstModel::InstModel;
- 
+  using InstModel::InstModel;
+
   ~LFCPAInstModel();
   std::vector<int> extractRedirections(llvm::Instruction *);
   InstInfo extractInstInfo(llvm::Instruction *);
@@ -39,11 +40,17 @@ public:
 
   std::vector<int> extractRedirections(llvm::GlobalVariable *);
   template <typename GEP> Token *handleGEPUtil(GEP *, Token *);
-  bool isInstSkip (llvm::Instruction *);
+  bool isInstSkip(llvm::Instruction *);
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
   template <typename GOP> bool isArrayType(GOP *);
+<<<<<<< HEAD
   Token* extractDummy(std::string);
   void setSkipIns(llvm::Instruction*);
+||||||| merged common ancestors
+  Token* extractDummy(std::string);
+=======
+  Token *extractDummy(std::string);
+>>>>>>> 6962cfb43530cae86a0eb7625e947a9cb87bc439
 };
 } // namespace spatial
 
