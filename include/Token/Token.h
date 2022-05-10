@@ -21,6 +21,7 @@ enum opTokenTy {
   isPhiGEPOpd,
   isIcmpGEPOpd,
   isOneGEPIndx,
+  isFunPtr,
   isFunArg
 };
 
@@ -102,6 +103,8 @@ public:
   bool getIsIcmpGEPOpd();
   void setIsOneGEPIndx();
   bool getIsOneGEPIndx();
+  void setIsFunPtr();
+  bool getIsFunPtr();
   void setIsFunArg();
   bool getIsFunArg();
 
@@ -112,6 +115,8 @@ public:
   void setNullToken();
   llvm::Type *getTy();
   void setTy(llvm::Type *);
+  void setFunction(llvm::Function *);
+  llvm::Function *getFunction();
 };
 } // namespace spatial
 
