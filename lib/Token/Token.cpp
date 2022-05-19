@@ -370,6 +370,11 @@ void Token::setIsFunArg() { this->opTokenTy.set(isFunArg); }
 
 bool Token::getIsFunArg() { return opTokenTy.test(isFunArg); }
 
+void Token::setIsRetGEP() { this->opTokenTy.set(isRetGEP); }
+
+bool Token::getIsRetGEP() { return opTokenTy.test(isRetGEP); }
+
+
 template <typename GOP> std::vector<int> Token::getGEPArrayIndex(GOP *G) {
   std::vector<int> Idx;
   for (int i = 2; i < G->getNumOperands(); i++) {

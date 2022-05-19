@@ -107,6 +107,9 @@ public:
   bool getIsFunPtr();
   void setIsFunArg();
   bool getIsFunArg();
+  void setIsRetGEP();
+  bool getIsRetGEP();
+
 
   template <typename GOP> bool isGEPOperandArrayTy(GOP *, int);
   template <typename GEP> std::vector<int> getGEPArrayIndex(GEP *);
