@@ -293,12 +293,13 @@ std::vector<Token *> LFCPAInstModel::extractToken(llvm::BitCastInst *Inst) {
   std::vector<Token *> TokenVec;
 
   TokenVec.push_back(this->getTokenWrapper()->getToken(Inst)); 
-  if (llvm::CallInst *CI =
+ /* Commented following code as it gave segmentation fault if the operand is an LHS of call instruction (19.5.22)*/
+  /*if (llvm::CallInst *CI =
           llvm::dyn_cast<llvm::CallInst>(Inst->getOperand(0))) {   
     if (CI->getCalledFunction()->getName().startswith("_Zn") ||
         CI->getCalledFunction()->getName().startswith("_zn"))
       TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getDestTy()));
-  } else if (llvm::BitCastInst *BI =
+  } else*/ if (llvm::BitCastInst *BI =
                  llvm::dyn_cast<llvm::BitCastInst>(Inst->getOperand(0)))  
   TokenVec.push_back(this->getTokenWrapper()->getToken(Inst->getOperand(0)));
   
