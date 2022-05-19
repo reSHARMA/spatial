@@ -44,7 +44,7 @@ public:
   template <typename GOP> bool isStructFieldPointerTy(GOP *);
   template <typename GOP> bool isArrayType(GOP *);
   Token *extractDummy(std::string);
+  void setSkipIns(llvm::Instruction *);
 };
 } // namespace spatial
-
 #endif
