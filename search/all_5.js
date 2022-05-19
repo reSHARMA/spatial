@@ -31,9 +31,10 @@ var searchData=
   ['isphigepopd_28',['isPhiGEPOpd',['../namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aaf001364a991835657f217e58552c65d9',1,'spatial']]],
   ['isphiinst_29',['isPhiInst',['../classspatial_1_1InstInfo.html#a623301fa39f6aac49fe8f8edb803c598',1,'spatial::InstInfo']]],
   ['ispointertype_30',['isPointerType',['../classspatial_1_1Token.html#a40891b106bf85f4566ca21d501db093b',1,'spatial::Token']]],
-  ['isrwmem_31',['isRWMem',['../classspatial_1_1InstInfo.html#a6c6da1c602eb4dc8b7ef6b7911bbd793',1,'spatial::InstInfo']]],
-  ['isskipinst_32',['isSkipInst',['../classspatial_1_1InstInfo.html#a3a5d3ad455ee85ebc56e60dfc1620931',1,'spatial::InstInfo']]],
-  ['isstructfieldpointerty_33',['isStructFieldPointerTy',['../classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8',1,'spatial::LFCPAInstModel']]],
-  ['isvalpointertype_34',['isValPointerType',['../classspatial_1_1Token.html#a1a0237326af32af629a3433e86479a56',1,'spatial::Token']]],
-  ['iterator_35',['iterator',['../classspatial_1_1Graph.html#a3195fb2870bf0032110b3782d65f4075',1,'spatial::Graph']]]
+  ['isretgep_31',['isRetGEP',['../namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aa6ebed3089e86e5cdbe24dc88c11615de',1,'spatial']]],
+  ['isrwmem_32',['isRWMem',['../classspatial_1_1InstInfo.html#a6c6da1c602eb4dc8b7ef6b7911bbd793',1,'spatial::InstInfo']]],
+  ['isskipinst_33',['isSkipInst',['../classspatial_1_1InstInfo.html#a3a5d3ad455ee85ebc56e60dfc1620931',1,'spatial::InstInfo']]],
+  ['isstructfieldpointerty_34',['isStructFieldPointerTy',['../classspatial_1_1LFCPAInstModel.html#a344e1395970b9d50cf7e242c9074b0d8',1,'spatial::LFCPAInstModel']]],
+  ['isvalpointertype_35',['isValPointerType',['../classspatial_1_1Token.html#a1a0237326af32af629a3433e86479a56',1,'spatial::Token']]],
+  ['iterator_36',['iterator',['../classspatial_1_1Graph.html#a3195fb2870bf0032110b3782d65f4075',1,'spatial::Graph']]]
 ];

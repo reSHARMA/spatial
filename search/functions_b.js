@@ -13,13 +13,14 @@ var searchData=
   ['setisonegepindx_10',['setIsOneGEPIndx',['../classspatial_1_1Token.html#adcdb3872d2e11ce8fcaa337cb942c023',1,'spatial::Token']]],
   ['setisopbitcast_11',['setIsOpBitcast',['../classspatial_1_1Token.html#a6943348a640426768aa0baa1c93baadd',1,'spatial::Token']]],
   ['setisphigepopd_12',['setIsPhiGEPOpd',['../classspatial_1_1Token.html#ab6b080afa4f78c4e988eb4438be123ee',1,'spatial::Token']]],
-  ['setnulltoken_13',['setNullToken',['../classspatial_1_1Token.html#ae5a35be5830209d4f856ca04229d51f9',1,'spatial::Token']]],
-  ['setphiinst_14',['setPhiInst',['../classspatial_1_1InstInfo.html#a5eee736f032ba64c7cffa4eaaf2eba32',1,'spatial::InstInfo']]],
-  ['setresult_15',['setResult',['../classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5',1,'spatial::ValueContext']]],
-  ['setrwmeminst_16',['setRWMemInst',['../classspatial_1_1InstInfo.html#a4a143e23093fb0940ae7346eb124a992',1,'spatial::InstInfo']]],
-  ['setskipins_17',['setSkipIns',['../classspatial_1_1LFCPAInstModel.html#a7a1dfc9944937ecbd155a7da2147b3c3',1,'spatial::LFCPAInstModel']]],
-  ['setskipinst_18',['setSkipInst',['../classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9',1,'spatial::InstInfo']]],
-  ['setty_19',['setTy',['../classspatial_1_1Token.html#ae17994955bbae73c2c66b65345c357f6',1,'spatial::Token']]],
-  ['size_20',['size',['../classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16',1,'spatial::Worklist']]],
-  ['skipfunction_21',['SkipFunction',['../namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb',1,'spatial']]]
+  ['setisretgep_13',['setIsRetGEP',['../classspatial_1_1Token.html#a8370bab186a48afdd2abfb10bfbf20fb',1,'spatial::Token']]],
+  ['setnulltoken_14',['setNullToken',['../classspatial_1_1Token.html#ae5a35be5830209d4f856ca04229d51f9',1,'spatial::Token']]],
+  ['setphiinst_15',['setPhiInst',['../classspatial_1_1InstInfo.html#a5eee736f032ba64c7cffa4eaaf2eba32',1,'spatial::InstInfo']]],
+  ['setresult_16',['setResult',['../classspatial_1_1ValueContext.html#a90b4fea9af4085a703542ad9711fc4b5',1,'spatial::ValueContext']]],
+  ['setrwmeminst_17',['setRWMemInst',['../classspatial_1_1InstInfo.html#a4a143e23093fb0940ae7346eb124a992',1,'spatial::InstInfo']]],
+  ['setskipins_18',['setSkipIns',['../classspatial_1_1LFCPAInstModel.html#a7a1dfc9944937ecbd155a7da2147b3c3',1,'spatial::LFCPAInstModel']]],
+  ['setskipinst_19',['setSkipInst',['../classspatial_1_1InstInfo.html#aaf1c187da00ed715e57cc0462ca8b0d9',1,'spatial::InstInfo']]],
+  ['setty_20',['setTy',['../classspatial_1_1Token.html#ae17994955bbae73c2c66b65345c357f6',1,'spatial::Token']]],
+  ['size_21',['size',['../classspatial_1_1Worklist.html#a6ed266acc32e6351bf9cd68a90729b16',1,'spatial::Worklist']]],
+  ['skipfunction_22',['SkipFunction',['../namespacespatial.html#acb4476a68b23a85cbcbd35aaf5ff7cfb',1,'spatial']]]
 ];

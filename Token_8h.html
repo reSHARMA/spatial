@@ -75,7 +75,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;string&quot;</code><br />
-<code>#include &quot;llvm/ADT/BitVector.h&quot;</code><br />
 <code>#include &quot;llvm/ADT/StringRef.h&quot;</code><br />
 <code>#include &quot;llvm/IR/Argument.h&quot;</code><br />
 <code>#include &quot;llvm/IR/Function.h&quot;</code><br />
@@ -84,22 +83,23 @@ $(function() {
 <code>#include &quot;llvm/IR/Type.h&quot;</code><br />
 <code>#include &quot;llvm/IR/Value.h&quot;</code><br />
 <code>#include &quot;llvm/Support/raw_ostream.h&quot;</code><br />
+<code>#include &quot;llvm/ADT/BitVector.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Token.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Token_8h__incl.png" border="0" usemap="#ainclude_2Token_2Token_8h" alt=""/></div>
 <map name="ainclude_2Token_2Token_8h" id="ainclude_2Token_2Token_8h">
-<area shape="rect" title=" " alt="" coords="645,5,799,32"/>
+<area shape="rect" title=" " alt="" coords="637,5,791,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,60,107"/>
 <area shape="rect" title=" " alt="" coords="85,80,229,107"/>
-<area shape="rect" title=" " alt="" coords="253,80,397,107"/>
-<area shape="rect" title=" " alt="" coords="421,80,554,107"/>
-<area shape="rect" title=" " alt="" coords="579,80,705,107"/>
-<area shape="rect" title=" " alt="" coords="729,80,875,107"/>
-<area shape="rect" title=" " alt="" coords="899,80,1025,107"/>
-<area shape="rect" title=" " alt="" coords="1049,80,1155,107"/>
-<area shape="rect" title=" " alt="" coords="1179,80,1289,107"/>
-<area shape="rect" title=" " alt="" coords="1314,80,1498,107"/>
+<area shape="rect" title=" " alt="" coords="253,80,386,107"/>
+<area shape="rect" title=" " alt="" coords="411,80,537,107"/>
+<area shape="rect" title=" " alt="" coords="561,80,707,107"/>
+<area shape="rect" title=" " alt="" coords="731,80,857,107"/>
+<area shape="rect" title=" " alt="" coords="881,80,987,107"/>
+<area shape="rect" title=" " alt="" coords="1011,80,1121,107"/>
+<area shape="rect" title=" " alt="" coords="1146,80,1330,107"/>
+<area shape="rect" title=" " alt="" coords="1354,80,1498,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -144,6 +144,8 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aad358d524c20bf24ea33466ce7508ba04">spatial::isOneGEPIndx</a>
 , <a class="el" href="namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aa0a61ced5571ec3da151a9fbb7e463bc6">spatial::isFunPtr</a>
 , <a class="el" href="namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aae663b42311b90610b30e46e801572bd1">spatial::isFunArg</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacespatial.html#a6d56a98337ae4a2142e918e5d685522aa6ebed3089e86e5cdbe24dc88c11615de">spatial::isRetGEP</a>
 <br />
  }</td></tr>
 <tr class="separator:a6d56a98337ae4a2142e918e5d685522a"><td class="memSeparator" colspan="2">&#160;</td></tr>
