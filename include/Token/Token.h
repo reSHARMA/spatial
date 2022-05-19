@@ -112,6 +112,7 @@ public:
   void setFunction(llvm::Function*);
   llvm::Function* getFunction();
 };
+
 } // namespace spatial
 
 #endif
